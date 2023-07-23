@@ -1,0 +1,14 @@
+/* VARIABLE */
+:root{
+    --davys-gray: #565264;
+    --timberwolf: #D6CFCB;
+}
+
+/* BODY */
+body{
+    height: 300vh;
+    background: rgb(86,82,100);
+    background: linear-gradient(149deg, rgba(86,82,100,1) 48%, rgba(131,125,152,1) 100%);
+}
+
+/* HEADER */
