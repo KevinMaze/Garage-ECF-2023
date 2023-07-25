@@ -2,8 +2,12 @@
 :root{
     --davys-gray: #565264;
     --timberwolf: #D6CFCB;
+    --border-color: #706677;
+    --shadow-box:10px 10px 30px 2px #3b3a41;
+    --shadow-box-smooth: rgba(112, 102, 119, 0.35) 0px 5px 15px;
     --font-paragraphe: 'Marvel', sans-serif;
     --font-titles: 'Fira Sans Extra Condensed', sans-serif;
+
 }
 
 /* FLUX */
@@ -20,9 +24,25 @@
     margin-top: 30px;
 }
 
+/* TITLE STYLE */
+.title-h2{
+    font-family: var(--font-titles);
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 30px;
+    text-align: center;
+    color: var(--timberwolf);
+    letter-spacing: 1px;
+}
+
+/* BORDER SHADOW */
+.border-shadow{
+    box-shadow: var(--shadow-box);
+    border-radius: 15px;
+}
+
 /* BODY */
 body{
-    /* height: 300vh; */
     background: rgb(86,82,100);
     background: linear-gradient(149deg, rgba(86,82,100,1) 48%, rgba(131,125,152,1) 100%);
 }
@@ -66,15 +86,87 @@ body{
 }
 
 
-/* SECTION SERVICE*/
-.section__service{
-    height: 200vh;
+/* SECTION SERVICE */
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
-.section__service__title{
+.card-service{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+
+.card-service img{
+    margin-bottom: 30px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: .4s ease;
+}
+
+.card-service img:hover {
+    opacity: 0.4;
+    transform: scale(1.2);
+}
+
+.card-service p{
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+    align-self: center;
+}
+
+/* SECTION CARROUSEL LAST OCCASION */
+.carrousel-last-occasion{
+    margin-bottom: 100px;
+}
+
+.carrousel-title{
+    color: var(--timberwolf);
+    font-size: 1.5em;
+}
+
+/*  SECTION OPINION */
+.section__opinion{
+    margin-bottom: 100px;
+}
+
+.section__last-opinion{
+    width: 1200px;
+    height: 500px;
+    background-color: var(--timberwolf);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 25px;
+}
+
+.section__last-opinion h3{
     font-family: var(--font-titles);
-    font-size: 2em;
-    text-transform: uppercase;
-    margin: 30px;
-    
+    color: var(--davys-gray);
+}
+
+.section__last-opinion p{
+    font-family: var(--font-paragraphe);
+    color: var(--davys-gray);
+    font-size: 1.8em;
+}
+
+.section__opinion__note{
+    align-self: flex-end;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: var(--shadow-box-smooth);
+}
+
+/* FOOTER */
+.footer-grid{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }

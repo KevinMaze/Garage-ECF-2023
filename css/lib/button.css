@@ -2,7 +2,7 @@
 
 .custom-button{
     border: 1px solid var(--davys-gray);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(112, 102, 119, 0.35) 0px 5px 15px;
     border-radius: 15px;
     padding: 1em;
     letter-spacing: 1px;
