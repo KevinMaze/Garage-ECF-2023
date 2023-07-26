@@ -100,39 +100,57 @@
             <h2 class="title-h2">Les services</h2>
             <div class="card-grid">
                 <div class="card-service">
-                    <img src="./upload/services/amortisseurs.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/amortisseurs.jpg" alt="#">
+                    </div>
                     <p>Amortisseurs</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/batterie.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/batterie.jpg" alt="#">
+                    </div>
                     <p>Batterie</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/bougie.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/bougie.jpg" alt="#">
+                    </div>
                     <p>Bougies</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/climatisation.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/climatisation.jpg" alt="#">
+                    </div>
                     <p>Climatisation</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/courroie.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/courroie.jpg" alt="#">
+                    </div>
                     <p>Courroie</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/entretiens.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/entretiens.jpg" alt="#">
+                    </div>
                     <p>Entretiens</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/frein.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/frein.jpg" alt="#">
+                    </div>
                     <p>Freins</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/pneu.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/pneu.jpg" alt="#">
+                    </div>
                     <p>Pneus</p>
                 </div>
                 <div class="card-service">
-                    <img src="./upload/services/vidange.jpg" alt="#">
+                    <div class="section__service__img">
+                        <img src="./upload/services/vidange.jpg" alt="#">
+                    </div>
                     <p>Vidange</p>
                 </div>
             </div>
@@ -198,7 +216,7 @@
 
         <footer class="flux">
             <div class="footer-grid">
-                <div class="footer-horaire">
+                <div class="footer-grid-div border-div">
                     <h3>Horaires</h3>
                     <ul>
                         <li>Lun. : 08:45 - 12:00, 14:00 - 18h00</li>
@@ -210,7 +228,7 @@
                         <li>Dim. : Fermé</li>
                     </ul>
                 </div>
-                <div  class="footer-contact">
+                <div  class="footer-grid-div border-div">
                     <h3>Contact</h3>
                     <ul>
                         <li>Téléphone : <a href="tel:+33606060606">0606060606</a></li>
@@ -219,7 +237,7 @@
                         <li><a href="#">Formulaire de contact</a></li>
                     </ul>
                 </div>
-                <div class="footer__other-link">
+                <div class="footer-grid-div">
                     <h3>Autres liens</h3>
                     <ul>
                         <li><a href="#">Conditions Générales</a></li>
@@ -228,10 +246,15 @@
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Avis Clients</a></li>
                     </ul>
-
                 </div>
-
             </div>
+            <div class="copyright">
+                    &#169;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                    &#160;VP Garage.
+                </div>
         </footer>
 
 

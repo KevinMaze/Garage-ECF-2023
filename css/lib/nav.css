@@ -73,15 +73,13 @@
     position: fixed;
     top: 4vh;
     right: 3vw;
-    width: 1.75rem;
-    height: 1.3rem;
+    width: 2rem;
+    height: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     overflow: hidden;
-    background-color: var(--timberwolf);
-
 }
 
 .sidebar_toggler span {

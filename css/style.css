@@ -10,18 +10,10 @@
 
 }
 
-/* FLUX */
-.flux {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* LINE */
 .line-style{
     border: 1px solid var(--timberwolf);
-    margin-top: 30px;
+    margin: 30px;
 }
 
 /* TITLE STYLE */
@@ -49,8 +41,8 @@ body{
 
 /* HEADER */
 .header__background{
-    width: 100%;
     height: 100vh;
+    width: 100%;
     background-image: url(../assets/voiture_background.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -67,7 +59,8 @@ body{
 }
 
 .header__description img{
-    width: 20em;
+    width: 10em;
+    align-items: center;
 }
 
 .header__title{
@@ -75,21 +68,22 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
     margin: 1em;
-    font-size: 3em;
+    font-size: 1.8em;
     color: var(--davys-gray);
 }
 
 .header__para{
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
-    font-size: 1.8em;
+    font-size: 1.5em;
+    padding: 20px;
 }
 
 
 /* SECTION SERVICE */
 .card-grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 10px;
 }
 
@@ -97,19 +91,19 @@ body{
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
 }
 
-.card-service img{
-    margin-bottom: 30px;
+.section__service__img{
+    margin: 25px;
+}
+
+.section__service__img img{
     object-fit: cover;
     width: 100%;
-    height: 100%;
     transition: .4s ease;
 }
 
-.card-service img:hover {
-    opacity: 0.4;
+.section__service__img img:hover {
     transform: scale(1.2);
 }
 
@@ -136,8 +130,8 @@ body{
 }
 
 .section__last-opinion{
-    width: 1200px;
-    height: 500px;
+    width: 100%;
+    height: 300px;
     background-color: var(--timberwolf);
     display: flex;
     flex-direction: column;
@@ -148,12 +142,13 @@ body{
 .section__last-opinion h3{
     font-family: var(--font-titles);
     color: var(--davys-gray);
+    font-size: 1.5em;
 }
 
 .section__last-opinion p{
     font-family: var(--font-paragraphe);
     color: var(--davys-gray);
-    font-size: 1.8em;
+    font-size: 1em;
 }
 
 .section__opinion__note{
@@ -168,5 +163,120 @@ body{
 .footer-grid{
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-content: center;
+    grid-gap: 10px;
+}
+
+.footer-grid-div ul li {
+    margin: 10px;
+    color: var(--timberwolf);
+    font-family: var(--font-titles);
+    font-size: 1.2em;
+}
+
+.footer-grid-div h3{
+    font-family: var(--font-paragraphe);
+    color: var(--timberwolf);
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-grid-div a:hover{
+    color: var(--davys-gray);
+}
+
+.border-div{
+    border-bottom: 2px solid var(--timberwolf);
+}
+
+.copyright{
+    margin: 20px;
+    text-align: center;
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+}
+
+/********MEDIA QUERY********/
+@media screen and (min-width: 720px) {
+    /**HEADER**/
+    .header__description img {
+        width: 25em;
+    }
+    .header__title{
+        font-size: 2.4em;
+    }
+    .header__para{
+        font-size: 1.8em;
+    }
+
+    /**SERVICE**/
+    .card-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /**OPINION**/
+    .section__last-opinion h3{
+        font-size: 2em;
+    }
+    .section__last-opinion p{
+        font-size: 1.3em;
+    }
+
+    /**FOOTER**/
+    .footer-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .footer-grid-div ul li{
+        font-size: 1em;
+    }
+    .border-div{
+        border-bottom: none;
+        border-right: 2px solid var(--timberwolf);
+    }
+}
+
+@media screen and (min-width: 1200px){
+    /**FLUX**/
+    .flux {
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /**HEADER**/
+    .header__description img{
+        width: 20em;
+    }
+    .header__title{
+        font-size: 3em;
+    }
+    .header__para{
+        font-size: 1.8em;
+    }
+
+    /**SERVICES**/
+    .card-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /**OPINION**/
+    .section__last-opinion h3{
+        font-size: 2em;
+    }
+    .section__last-opinion p{
+        font-size: 1.8em;
+    }
+
+    /**FOOTER**/
+    .footer-grid-div ul li{
+        font-size: 1.2em;
+    }
+
+
+
 }
