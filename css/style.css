@@ -114,6 +114,45 @@ body{
     align-self: center;
 }
 
+/* SERVICE.PHP*/
+.service-php{
+    display: flex;
+    flex-direction: column;
+}
+
+.service-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-img h3{
+    padding-top: 20px;
+    font-family: var(--font-titles);
+    color: var(--timberwolf);
+}
+
+.service-img img{
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-box);
+}
+
+.description-service{
+    background-color: var(--timberwolf);
+    color: var(--davys-gray);
+    font-family: var(--font-paragraphe);
+    width: 100%;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: var(--shadow-box);
+}
+
+.description-service p{
+    font-size: .8em;
+    line-height: 1.5em;
+}
+
 /* SECTION CARROUSEL LAST OCCASION */
 .carrousel-last-occasion{
     margin-bottom: 100px;
@@ -122,6 +161,57 @@ body{
 .carrousel-title{
     color: var(--timberwolf);
     font-size: 1.5em;
+}
+
+/* OCCASION */
+.section-occasion{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.section-occasion-card{
+    background-color: var(--timberwolf);
+    border-radius: 15px;
+    box-shadow: var(--shadow-box);
+    width: 300px;
+    margin: auto;
+    padding: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-occasion__div{
+    border-top: 2px solid var(--davys-gray);
+    margin: 15px;
+}
+
+.occasion-para{
+    font-size: .8em;
+    color: var(--davys-gray);
+
+}
+
+.section-occasion img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.section-occasion h2{
+    color: var(--davys-gray);
+    font-size: 1.2em;
+}
+
+.occasion-price{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.occasion-price p{
+    font-size: 1.2em;
+    color: var(--davys-gray);
 }
 
 /*  SECTION OPINION */
@@ -218,6 +308,20 @@ body{
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .service-php{
+        flex-direction: row;
+        margin: 20px;
+    }
+    .service-img img{
+        margin-right: 20px;
+    }
+    .service-img h3{
+        font-size: 1.6em;
+    }
+    .description-service p{
+        font-size: 1em;
+    }
+
     /**OPINION**/
     .section__last-opinion h3{
         font-size: 2em;
@@ -262,6 +366,13 @@ body{
     /**SERVICES**/
     .card-grid{
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-img h3{
+        font-size: 2em;
+    }
+    .description-service p{
+        font-size: 1.2em;
     }
 
     /**OPINION**/

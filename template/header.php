@@ -30,9 +30,9 @@
                 <div class="sidebar_content sidebar_body">
                     <nav class="side_navlinks">
                         <ul>
-                            <li><a href="#">Accueil</a></li>
-                            <li><a href="#">Nos services</a></li>
-                            <li><a href="#">Les occasions</a></li>
+                            <li><a href="./index.php">Accueil</a></li>
+                            <li><a href="./service.php">Nos services</a></li>
+                            <li><a href="./occasion.php">Les occasions</a></li>
                             <li><a href="#">Contact / Avis</a></li>
                             <a href="/" class="custom-button">Connection</a>
                         </ul>

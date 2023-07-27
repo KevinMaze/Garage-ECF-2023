@@ -1,7 +1,7 @@
 <?php 
 
 $service = [
-  ["title" => "Amortisseurs", "description" => "Le démontage des amortisseurs et coupelles usés", "image" => "amortisseurs.jpg"],
+  ["title" => "Amortisseurs", "description" => "- Le démontage des amortisseurs et coupelles usés <br/> - Une paire d'amortisseurs avant premium et une paire de coupelles neuves <br/> - Contrôle et nettoyage des éléments du train roulant <br/> - La pose de vos nouveaux amortisseurs et coupelles <br/> - L'inspection, le contrôle et le réglage de votre géométrie <br/> - Un diagnostic sécurité 30 points de contrôle ", "image" => "amortisseurs.jpg"],
   ["title" => "Batterie / Eclairage", "description" => "Batterie auto", "image" => "batterie.jpg"],
   ["title" => "Bougies", "description" => "Le démontage des bougies de préchauffage", "image" => "bougie.jpg"],
   ["title" => "Climatisation", "description" => "Un diagnostic de fonctionnement climatisation de votre véhicule", "image" => "climatisation.jpg"],

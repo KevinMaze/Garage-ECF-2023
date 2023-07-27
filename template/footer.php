@@ -25,7 +25,7 @@
                     <h3>Autres liens</h3>
                     <ul>
                         <li><a href="#">Conditions Générales</a></li>
-                        <li><a href="#">Services</a></li>
+                        <li><a href="./service.php">Services</a></li>
                         <li><a href="#">Véhicules Occasions</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Avis Clients</a></li>
