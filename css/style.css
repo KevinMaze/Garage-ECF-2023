@@ -163,7 +163,7 @@ body{
     font-size: 1.5em;
 }
 
-/* OCCASION */
+/* OCCASION.PHP */
 .section-occasion{
     display: grid;
     grid-template-columns: 1fr;
@@ -174,7 +174,7 @@ body{
     background-color: var(--timberwolf);
     border-radius: 15px;
     box-shadow: var(--shadow-box);
-    width: 300px;
+    width: 350px;
     margin: auto;
     padding: auto;
     display: flex;
@@ -187,9 +187,8 @@ body{
 }
 
 .occasion-para{
-    font-size: .8em;
+    font-size: 1em;
     color: var(--davys-gray);
-
 }
 
 .section-occasion img{
@@ -207,10 +206,7 @@ body{
     justify-content: space-around;
     align-items: center;
     padding-bottom: 20px;
-}
-
-.occasion-price p{
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--davys-gray);
 }
 
@@ -247,6 +243,64 @@ body{
     padding: 10px;
     border-radius: 5px;
     box-shadow: var(--shadow-box-smooth);
+}
+
+/* CONTACT.PHP */
+.form-legend{
+    font-family: var(--font-titles);
+    font-size: 2em;
+    text-transform: uppercase;
+    color: var(--timberwolf);
+    text-align: center;
+}
+
+.form-textarea{
+    background-color: var(--timberwolf);
+    resize: none;
+    font-family: var(--font-paragraphe);
+    width: 90%;
+    height: 20em;
+    margin: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-box);
+}
+
+.form-style{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.form-input{
+    font-family: var(--font-paragraphe);
+    background-color: var(--timberwolf);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-box);
+    border-radius: 10px;
+    margin: 15px;
+    height: 3em;
+    width: 90%;
+}
+
+.form-opinion{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+:placeholder-shown{
+    padding-left: 10px;
+}
+
+.opinion{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 90%;
+    margin: 15px;
+}
+
+.form-button{
+    margin-left: 2em;
 }
 
 /* FOOTER */
@@ -292,6 +346,10 @@ body{
 
 /********MEDIA QUERY********/
 @media screen and (min-width: 720px) {
+    .title-h2{
+        font-size: 2.5em;
+    }
+
     /**HEADER**/
     .header__description img {
         width: 25em;
@@ -322,12 +380,40 @@ body{
         font-size: 1em;
     }
 
+    /**OCCASION**/
+    .section-occasion{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .occasion-para{
+        font-size: 1.2em;
+    }
+    .section-occasion h2{
+        font-size: 1.5em;
+    }
+    .occasion-price{
+        font-size: 1.2em;
+    }
+
     /**OPINION**/
     .section__last-opinion h3{
         font-size: 2em;
     }
     .section__last-opinion p{
         font-size: 1.3em;
+    }
+
+    .form-legend{
+        font-size: 2.5em;
+    }
+    .form-input{
+        width: 80%;
+    }
+    .form-textarea{
+        width: 80%;
+    }
+
+    :placeholder-shown{
+        font-size: 1.2em;
     }
 
     /**FOOTER**/
@@ -375,6 +461,12 @@ body{
         font-size: 1.2em;
     }
 
+    /**OCCASION**/
+    .section-occasion{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
     /**OPINION**/
     .section__last-opinion h3{
         font-size: 2em;
@@ -382,6 +474,18 @@ body{
     .section__last-opinion p{
         font-size: 1.8em;
     }
+
+    .form-input{
+        width: 60%;
+    }
+    .form-textarea{
+        width: 60%;
+    }
+
+    :placeholder-shown{
+        font-size: 1.5em;
+    }
+
 
     /**FOOTER**/
     .footer-grid-div ul li{

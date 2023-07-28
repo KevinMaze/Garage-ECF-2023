@@ -33,7 +33,7 @@
                             <li><a href="./index.php">Accueil</a></li>
                             <li><a href="./service.php">Nos services</a></li>
                             <li><a href="./occasion.php">Les occasions</a></li>
-                            <li><a href="#">Contact / Avis</a></li>
+                            <li><a href="./contact.php">Contact / Avis</a></li>
                             <a href="/" class="custom-button">Connection</a>
                         </ul>
                     </nav>
