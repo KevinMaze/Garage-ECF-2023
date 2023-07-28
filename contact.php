@@ -63,6 +63,7 @@ require_once ('template/header.php');
 
         <div class="section__last-opinion border-shadow">
             <h3><?= $opinion["name"]?></h3>
+            <div class="line-inside-div-style flux"></div>
             <p><?= $opinion["description"] ?></p>
             <p class="section__opinion__note">Note : <?= $opinion["note"] ?>/5</p>
         </div>

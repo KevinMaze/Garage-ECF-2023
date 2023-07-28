@@ -72,6 +72,7 @@
             <h2 class="title-h2">Dernier avis</h2>
             <div class="section__last-opinion border-shadow">
                 <h3>Name</h3>
+                <div class="line-inside-div-style flux"></div>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem voluptatum dolores iusto assumenda quibusdam repellendus rerum explicabo atque ipsum maxime incidunt aliquam tempore nulla dolor debitis similique vitae quae accusamus voluptate doloribus, omnis, optio alias quam quia. Fugit, incidunt consequatur.</p>
                 <p class="section__opinion__note">Note : 5/5</p>
             </div>

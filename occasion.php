@@ -6,43 +6,42 @@ require_once ('template/header.php')
 
 <section class="flux filtre">
 
-    <h2>Filtres :</h2>
+    <h2 class="title-h2">Filtres :</h2>
 
-
-    <form action="">
+    <form action="" class="form-filter">
         <label for="price" id="price">
-            <select name="price" id="price-select">
-                <option value="0" disabled selected>Prix</option>
-                <option value="1">0 € / 2 000 €</option>
-                <option value="2">2 001 € / 4 000 €</option>
-                <option value="3">4 001 € / 6 000 €</option>
-                <option value="4">6 001 € / 8 000 €</option>
-                <option value="5">8 001 € / 9 999 €</option>
+            <select name="price" id="price-select" class="form-select">
+                <option value="0" selected>Prix</option>
+                <option value="1">0 € / 1 999 €</option>
+                <option value="2">2 000 € / 3 999 €</option>
+                <option value="3">4 000 € / 5 999 €</option>
+                <option value="4">6 000 € / 7 999 €</option>
+                <option value="5">8 000 € / 9 999 €</option>
                 <option value="6">10 000 € et plus</option>
             </select>
         </label>
     
         <label for="miles">
-            <select name="miles" id="miles-select">
-                <option value="0" disabled selected>Kilométrage</option>
+            <select name="miles" id="miles-select" class="form-select">
+                <option value="0" selected>Kilométrage</option>
                 <option value="1">0 / 25 000</option>
-                <option value="2">25 001 / 50 000</option>
-                <option value="3">50 001/ 75 000</option>
-                <option value="4">75 001/ 100 000</option>
-                <option value="5">100 001/ 149 000</option>
-                <option value="6">150 000 et plus</option>
+                <option value="2">26 000 / 50 000</option>
+                <option value="3">51 000/ 75 000</option>
+                <option value="4">76 000/ 100 000</option>
+                <option value="5">101 000/ 150 000</option>
+                <option value="6">151 000 et plus</option>
             </select>
         </label>
     
         <label for="years">
-            <select name="years" id="years-select">
-                <option value="0" disabled selected>Années</option>
-                <option value="1">1970 / 1979</option>
-                <option value="2">1980 / 1989</option>
-                <option value="3">1990 / 1999</option>
-                <option value="4">2000 / 2009</option>
-                <option value="5">2010 / 2019</option>
-                <option value="6">2020 et plus</option>
+            <select name="years" id="years-select" class="form-select">
+                <option value="0" selected>Années</option>
+                <option value="1">1978 et moins</option>
+                <option value="2">1979 / 1990</option>
+                <option value="3">1991 / 2000</option>
+                <option value="4">2001 / 2010</option>
+                <option value="5">2011 / 2020</option>
+                <option value="6">2021 et plus</option>
             </select>
         </label>
     </form>
@@ -61,7 +60,7 @@ require_once ('template/header.php')
         </div>
         <div class="occasion-price">
             <p class="occasion-para">10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
+            <a href="occasion-page.php" class="custom-button">Voir l'annonce</a>
         </div>
     </div>
 

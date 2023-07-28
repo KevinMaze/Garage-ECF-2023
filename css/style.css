@@ -16,6 +16,11 @@
     margin: 30px;
 }
 
+.line-inside-div-style{
+    border: 2px solid var(--davys-gray);
+    margin: 10px;
+}
+
 /* TITLE STYLE */
 .title-h2{
     font-family: var(--font-titles);
@@ -101,6 +106,7 @@ body{
     object-fit: cover;
     width: 100%;
     transition: .4s ease;
+    border-radius: 10px;
 }
 
 .section__service__img img:hover {
@@ -168,6 +174,23 @@ body{
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
+}
+
+.form-filter{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-left: 10%;
+}
+
+.form-select{
+    font-family: var(--font-paragraphe);
+    background-color: var(--timberwolf);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-box);
+    border-radius: 10px;
+    height: 3em;
+    width: 90%;
 }
 
 .section-occasion-card{
@@ -392,6 +415,11 @@ body{
     }
     .occasion-price{
         font-size: 1.2em;
+    }
+
+    .form-filter{
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 5%;
     }
 
     /**OPINION**/
