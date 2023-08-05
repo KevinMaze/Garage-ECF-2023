@@ -1,7 +1,9 @@
 <?php  
-    require_once ("template/header.php");
     require_once ('lib/config.php');
-    require_once ('lib/services.php')
+    // require_once ('lib/pdo.php');
+    require_once ("template/header.php");
+    require_once ('lib/services.php');
+
 ?>
 
         <div class="line-style flux"></div>
