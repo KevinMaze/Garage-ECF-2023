@@ -1,4 +1,5 @@
 <?php 
+require_once ('lib/main_menu.php');
 require_once ('template/header.php');
 require_once ('lib/config.php');
 require_once ('lib/services.php')

@@ -233,6 +233,42 @@ body{
     color: var(--davys-gray);
 }
 
+/* OCCASION PAGE*/
+.section-occasion-page{
+    background-color: var(--timberwolf);
+    border-radius: 15px;
+    box-shadow: var(--shadow-box);
+}
+
+.section-occasion-page h2{
+    color: var(--davys-gray);
+    padding-top: 10px;
+    font-size: 1.5em;
+}
+
+.carrousel-occasion-page {
+    padding: 50px 10px;
+}
+
+.section-occasion-page__description{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.section-occasion-page__description p {
+    padding: 10px 20px;
+    font-family: var(--font-paragraphe);
+    font-size: 1.2em;
+}
+
+.section-occasion-page__description__equipment{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px 20px;
+    font-family: var(--font-paragraphe);
+    font-size: 1.2em;
+}
+
 /*  SECTION OPINION */
 .section__opinion{
     margin-bottom: 100px;
@@ -422,6 +458,19 @@ body{
         margin-left: 5%;
     }
 
+    /**OCCASION PAGE**/
+    .section-occasion-page h2{
+        font-size: 1.8em;
+    }
+    .section-occasion-page__description p {
+        font-size: 1.5em;
+    }
+
+    .section-occasion-page__description__equipment{
+        grid-template-columns: repeat(2, 1fr);
+        font-size: 1.5em;
+    }
+
     /**OPINION**/
     .section__last-opinion h3{
         font-size: 2em;
@@ -492,6 +541,23 @@ body{
     /**OCCASION**/
     .section-occasion{
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    /**OCCASION PAGE**/
+    .section-occasion-page h2{
+        font-size: 2.2em;
+    }
+    .section-occasion-page__description p {
+        font-size: 2em;
+    }
+    .section-occasion-page__description__para {
+        border-right: 2px solid var(--davys-gray);
+    }
+    .section-occasion-page__description {
+        grid-template-columns: 2fr 1fr;
+    }
+    .section-occasion-page__description__equipment{
+        font-size: 1.8em;
     }
 
 

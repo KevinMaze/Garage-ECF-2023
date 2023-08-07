@@ -1,5 +1,7 @@
 <?php  
-require_once ('template/header.php')
+require_once ('lib/main_menu.php');
+require_once ('template/header.php');
+require_once ("lib/car.php")
 ?>
 
 <div class="line-style flux"></div>
@@ -52,113 +54,21 @@ require_once ('template/header.php')
 
 <section class="section-occasion flux">
 
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p class="occasion-para">10.000 €</p>
-            <a href="occasion-page.php" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
+    <?php foreach ($cars as $key => $car) {?>
 
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
+        <div class="section-occasion-card">
+            <img src="./upload/cars/clio.jpg" alt="">
+            <div class="section-occasion__div">
+                <h2 class="title-h2"><?= $car["title"]  ?></h2>
+                <p class="occasion-para"><?= $car["description"] ?>.</p>
+            </div>
+            <div class="occasion-price">
+                <p class="occasion-para"><?= $car["price"]  ?></p>
+                <a href="occasion-page.php" class="custom-button">Voir l'annonce</a>
+            </div>
         </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
-
-    <div class="section-occasion-card">
-        <img src="./upload/cars/clio.jpg" alt="">
-        <div class="section-occasion__div">
-            <h2 class="title-h2">CLIO | 20.000 km | 2015</h2>
-            <p class="occasion-para">Renault Clio Estate TCE 90 LIMITED GARANTIE 3 ANS break, rouge métallisé, 5cv, 5 portes, première mise en circulation le 12/12/2019, garantie 36 mois.</p>
-        </div>
-        <div class="occasion-price">
-            <p>10.000 €</p>
-            <a href="#" class="custom-button">Voir l'annonce</a>
-        </div>
-    </div>
+        
+    <?php }  ?>
 
     
 </section>
