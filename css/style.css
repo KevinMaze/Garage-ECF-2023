@@ -362,6 +362,38 @@ body{
     margin-left: 2em;
 }
 
+/* CONNECTION */
+.header__description__connection{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+.header__description__connection img {
+    width: 10em;
+    align-items: center;
+}
+
+.label-connection{
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+.form-style-connection{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-style-connection p{
+    font-family: var(--font-paragraphe);
+    color: var(--timberwolf);
+    text-align: center;
+}
+
+
 /* FOOTER */
 .footer-grid{
     margin-top: 50px;

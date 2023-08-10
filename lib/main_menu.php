@@ -11,8 +11,11 @@
         "occasion.php" =>["title" => "Les occasions", "head_title" => "VP Garage - Les occasions" , "meta-description" => "Vous trouverez ici tout les véhicules d'occasions proposé par le garage Vincet Parrot", "exclude" => false],
 
         "occasion-page.php" =>["title" => "Les occasions", "head_title" => "VP Garage - Les occasions" , "meta-description" => "Voiture d'occasion", "exclude" => true],
+
         
         "contact.php" =>["title" => "Contact / Avis", "head_title" => "VP Garage - Les contacts" , "meta-description" => "Vous trouverez ici le formulaire de contact ainsi que d'autre moyen pour contacter le garage Vincent Parrot. Vous pourrez même laisser votre avis sur le garage et les services via le formulaire d'avis dans cette page.", "exclude" => false],
+
+        "connection.php" =>["title" => "Expace connection", "head_title" => "VP Garage - Connection", "meta-description" => "Connection", "exclude" => true],
     ];
 
 ?>
