@@ -37,6 +37,7 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+
                 <div class="carousel-inner flux border-shadow">
                     <div class="carousel-item active">
                         <img src="./upload/cars/clio.jpg" class="d-block w-100" alt="...">
@@ -45,6 +46,7 @@
                             <p>20000 km | 2015 | 10000 €</p>
                         </div>
                     </div>
+                    
                     <div class="carousel-item active">
                         <img src="./upload/cars/clio.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
