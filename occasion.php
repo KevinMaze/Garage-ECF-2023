@@ -7,7 +7,6 @@
 
     
     $cars = getCars($pdo);
-    $image = getImages($pdo)
 ?>
 
 <div class="line-style flux"></div>

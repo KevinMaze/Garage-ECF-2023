@@ -1,9 +1,9 @@
 <?php
-    if ($image['name'] === null) {
+    if ($car['image1'] === null) {
         $imagePath = "assets/default.jpg";
     }
     else {
-        $imagePath = "./upload/cars/".$image_car["name"];
+        $imagePath = "./upload/cars/".$car["image1"];
     }
 ?>
 

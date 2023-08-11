@@ -8,10 +8,10 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCar($pdo, $id);
-        if ($image_car['name'] === null) {
+        if ($car['image1'] === null) {
             $imagePath = "assets/default.jpg";
         }else {
-            $imagePath = "./upload/cars/".$image["name"];
+            $imagePath = "./upload/cars/".$car["image1"];
         }
         if (!$car){
             $error = true;
@@ -37,16 +37,36 @@
             <div class="line-inside-div-style"></div>
             
             <div id="carouselExampleCaptions" class="carousel slide carrousel-occasion-page">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner flux border-shadow">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner flux border-shadow">
+                    <div class="carousel-item active">
                         <div class="carousel-item active">
                             <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
                         </div>
                     </div>
+                    <div class="carousel-item active">
+                        <div class="carousel-item active">
+                            <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <div class="carousel-item active">
+                        <div class="carousel-item active">
+                            <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
 
             <div class="line-inside-div-style"></div>
