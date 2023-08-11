@@ -8,11 +8,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCar($pdo, $id);
-        if ($car['image1'] === null) {
-            $imagePath = "assets/default.jpg";
-        }else {
-            $imagePath = "./upload/cars/".$car["image1"];
-        }
+        $arrayImages = [$car["image1"], $car["image2"], $car["image3"], $car["image4"]];
         if (!$car){
             $error = true;
         }
@@ -36,29 +32,22 @@
 
             <div class="line-inside-div-style"></div>
             
-            <div id="carouselExampleCaptions" class="carousel slide carrousel-occasion-page">
+            <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+
                 <div class="carousel-inner flux border-shadow">
-                    <div class="carousel-item active">
-                        <div class="carousel-item active">
-                            <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <div class="carousel-item active">
-                        <div class="carousel-item active">
-                            <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <div class="carousel-item active">
-                        <div class="carousel-item active">
-                            <img src="<?=$imagePath?>" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
+                    <?php 
+                        foreach ($arrayImages as $arrayImage) {?>
+                            <div class="carousel-item active">
+                                <img src="./upload/cars/<?= $arrayImage ?>" class="d-block w-100" alt="...">
+                            </div>
+                        <?php } ?>
                 </div>
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
