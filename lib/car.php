@@ -1,11 +1,18 @@
 <?php
 
 // récupération de la table car
-function getCars(PDO $pdo):array|bool
+function getCars(PDO $pdo, int $limit = null):array
 {
-    
     $sql = "SELECT * FROM car ORDER BY car_id DESC";
+
+    if ($limit){
+        $sql .= " LIMIT :limit";
+    }
     $query = $pdo->prepare($sql);
+
+    if($limit){
+        $query->bindValue(":limit", $limit, PDO::PARAM_INT);
+    }
     $query->execute();
     $cars = $query->fetchAll(PDO::FETCH_ASSOC);
 

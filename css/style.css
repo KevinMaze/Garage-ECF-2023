@@ -12,7 +12,7 @@
 
 /* LINE */
 .line-style{
-    border: 1px solid var(--timberwolf);
+    border: 2px solid var(--timberwolf);
     margin: 30px;
 }
 
@@ -434,6 +434,72 @@ body{
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
 }
+
+/* SECTION ADMIN STYLE */
+.witdh-logo{
+    width: 5em;
+}
+
+.section-admin{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.section-admin__nav{
+    background-color: var(--timberwolf);
+    border-radius: 0 0 15px 15px;
+}
+
+.section-admin__nav__header{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    padding: 10px;
+    color: var(--davys-grayr);
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+}
+
+.section-admin__liste ul li{
+    color: var(--davys-gray);
+    font-family: var(--font-paragraphe);
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.section-admin__liste ul li:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.section-admin__liste ul li::before{
+    content: "-> ";
+}
+
+.section-admin__footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+}
+
+.section-admin__footer img{
+    border-radius: 50%;
+}
+
+.button-group-admin{
+    border-radius: 50%;
+    background-color: var(--timberwolf);
+}
+
+
+
+
+
+
 
 /********MEDIA QUERY********/
 @media screen and (min-width: 720px) {

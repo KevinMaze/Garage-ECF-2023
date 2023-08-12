@@ -16,6 +16,8 @@
         "contact.php" =>["title" => "Contact / Avis", "head_title" => "VP Garage - Les contacts" , "meta-description" => "Vous trouverez ici le formulaire de contact ainsi que d'autre moyen pour contacter le garage Vincent Parrot. Vous pourrez même laisser votre avis sur le garage et les services via le formulaire d'avis dans cette page.", "exclude" => false],
 
         "connection.php" =>["title" => "Expace connection", "head_title" => "VP Garage - Connection", "meta-description" => "Connection", "exclude" => true],
+
+        "index-admin.php" =>["title" => "", "head_title" => "VP Garage - Administration", "meta-description" => "", "exclude" => true],
     ];
 
 ?>

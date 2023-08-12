@@ -1,0 +1,16 @@
+@import url("../css/style.css");
+
+.section-admin{
+    height: 100vh;
+    display: grid;
+}
+
+.section-admin__nav{
+    width: 50%;
+    background-color: var(--timberwolf);
+}
+
+.section-admin__description{
+    width: 50%;
+    background-color: var(--davys-gray);
+}

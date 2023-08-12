@@ -42,11 +42,10 @@
 
                 <div class="carousel-inner flux border-shadow">
                     <?php 
-                    $count = 0;
                         foreach ($arrayImages as $key => $arrayImage){ 
                             if ($arrayImage != null ) {?> 
                             <div class="carousel-item active">
-                                <img src="./upload/cars/<?= $arrayImage ?>" class="d-block w-100" alt="...">
+                                <img src="<?= _CAR_IMAGE_PATH_.$arrayImage ?>" class="d-block w-100" alt="...">
                             </div> 
                             <?php }?>
                         <?php } ?>

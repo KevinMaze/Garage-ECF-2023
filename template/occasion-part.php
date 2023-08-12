@@ -3,7 +3,7 @@
         $imagePath = "assets/default.jpg";
     }
     else {
-        $imagePath = "./upload/cars/".$car["image1"];
+        $imagePath = _CAR_IMAGE_PATH_.$car["image1"];
     }
 ?>
 
@@ -18,7 +18,3 @@
         <a href="occasion-page.php?id=<?=$car['car_id']?>" class="custom-button">Voir l'annonce</a>
     </div>
 </div>
-
-
-<!-- ajout htmlentities() -->
-<!-- episode 6 39:26 -->
