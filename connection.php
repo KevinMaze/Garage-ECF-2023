@@ -1,6 +1,24 @@
 <?php
-require_once ('lib/main_menu.php');
+    require_once ('lib/config.php');
+    require_once ('lib/pdo.php');
+    require_once ('lib/main_menu.php');
     $currentPage = basename($_SERVER['SCRIPT_NAME']);
+
+    if (isset($_POST["loginuser"])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $query = $pdo->prepare("SELECT * FROM user WHERE email = :email");
+        $query->bindValue(":email", $email, PDO::PARAM_STR);
+        $query->execute();
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user && password_verify($password, $user["password"])) {
+            var_dump("connection autoriser");
+        }else {
+            var_dump("login ou password incorrect");
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -82,13 +100,13 @@ require_once ('lib/main_menu.php');
             <form action="" method="post" class="form-style-connection flux">
             
                 <label for="email" class="label-connection"> Login</label>
-                <input type="text" id="email"  class="form-input">
+                <input type="text" id="email" name="email"  class="form-input" required>
 
                 <label for="password" class="label-connection"> Mot de passe</label>
-                <input type="text" id="password" class="form-input">
+                <input type="password" id="password" name="password" class="form-input" required>
 
                 <div class="form-button">
-                    <input type="submit" value="Connection" class="custom-button">
+                    <input type="submit" value="Connection" name="loginUser" class="custom-button">
                 </div>
             
                 <p> &#169;<script>document.write(new Date().getFullYear());</script>&#160;VP Garage.
@@ -98,7 +116,7 @@ require_once ('lib/main_menu.php');
                     
         </header>
 
-        <script src="./js/script.js"></script>
+        <!-- <script src="./js/script.js"></script> -->
         <script src="./js/lib/nav.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

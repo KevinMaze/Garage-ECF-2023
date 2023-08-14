@@ -18,47 +18,113 @@
 </head>
     <body>
 
+        <div class="button-up"><img src="../assets/arrowup.png" alt="flèche haut"></div>
+
         <section class="section-admin">
-                <div class="section-admin__nav">
-                    <div class="section-admin__nav__header">
-                        <img src="../assets/logo_VP.png" alt="Logo garage" class="witdh-logo">
-                        <p>Espace Administrateur</p>
-                    </div>
+            <?php require_once("../admin/template-admin/aside-admin.php") ?>
 
-                    <div class="line-inside-div-style"></div>
 
-                    <div class="section-admin__liste">
-                        <ul>
-                            <li><a href="#">Articles</a></li>
-                            <li><a href="#">Horaires</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Création de compte pro</a></li>
-                            <li><a href="#">Modération avis clients</a></li>
-                        </ul>
-                    </div>
 
-                    <div class="line-inside-div-style"></div>
 
-                    <div class="section-admin__footer">
-                        <img src="../assets/logo_VP.png" alt="#" class="witdh-logo">
-                        <p>Vincent Parrot</p>
-                        <div class="">
-                            <button type="button" class="dropdown-toggle dropdown-toggle-split button-group-admin" data-bs-toggle="dropdown" aria-expanded="false">
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="../index.php">Retour à l'accueil</a></li>
-                                <li><a href="">Déconnection</a></li>
-                            </ul>
-                        </div>
+            <aside class="section-admin__crud">
+                <div class="section-admin__crud__title">
+                    <h2 class="title-h2"  id="articles">Articles</h2>
+                    <div class="custom-button"><a href="">Ajouter un article</a></div>
+                </div>
 
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__description">
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1 - Clio Estate TCE 90 LIMITED | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                </div>
+
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__title">
+                    <h2 class="title-h2"  id="horaires">Horaires</h2>
+                    <div class="custom-button"><a href="#">Ajouter une horaire</a></div>
+                </div>
+
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__description">
+                    <p>LUN : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>MAR : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>MER : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>JEU : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>VEN : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>SAM : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>DIM : | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
                 </div>
 
 
-            </section>
-            
-            
-            <section class="section-admin__description">
-            </section>
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__title"  id="services">
+                    <h2 class="title-h2">Services</h2>
+                    <div class="custom-button"><a href="#">Ajouter un service</a></div>
+                </div>
+
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__description">
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- Services 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                </div>
+
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__title"  id="moderation">
+                    <h2 class="title-h2">Modération avis</h2>
+                    <div class="custom-button"><a href="#">Ajouter un avis</a></div>
+                </div>
+
+                <div class="line-style"></div>
+
+                <div class="section-admin__crud__description">
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                    <p>1- avis 1 | <a href="#">Modifier</a> | <a href="#">Supprimer</a></p>
+                </div>
+
+                <div class="copyright">
+                    &#169;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                    &#160;VP Garage.
+                </div>
+
+            </aside>
+
+        </section>
+
+
+
 
 
 

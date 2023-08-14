@@ -95,4 +95,6 @@
                     data-aos-once="false"><?=$mainMenu[$currentPage]["meta-description"]?>
                 </p>
             </div>
+
+            <div class="button-up"><img src="./assets/arrowup.png" alt="flèche haut"></div>
         </header>

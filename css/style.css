@@ -441,14 +441,14 @@ body{
 }
 
 .section-admin{
-    height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr;
 }
 
 .section-admin__nav{
     background-color: var(--timberwolf);
     border-radius: 0 0 15px 15px;
+    box-shadow: var(--shadow-box);
 }
 
 .section-admin__nav__header{
@@ -495,10 +495,38 @@ body{
     background-color: var(--timberwolf);
 }
 
+.button-group-admin__menu{
+    background-color: var(--timberwolf);
+    padding-left: 10px;
+}
 
+.button-group-admin__menu li{
+    margin: 10px;
+}
 
+/* SECTION ADMIN CRUD */
+.section-admin__crud__description {
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    font-size: 1.1em ;
+    padding-left: 1em;
+}
 
+.section-admin__crud__description a{
+    font-weight: bold;
+}
 
+.section-admin__crud__description a:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.section-admin__crud__title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /********MEDIA QUERY********/
@@ -602,7 +630,26 @@ body{
         border-bottom: none;
         border-right: 2px solid var(--timberwolf);
     }
+
+    /**SECTION ADMIN STYLE**/
+    .section-admin__nav__header p{
+        font-size: 1.7em;
+    }
+    .section-admin__liste ul li{
+        font-size: 1.5em;
+    }
+    .section-admin__footer{
+        font-size: 1.7em;
+    }
+
+    /**SECTION ADMIN CRUD**/
+    .section-admin__crud__description{
+        font-size: 1.4em;
+    }
+
 }
+
+
 
 @media screen and (min-width: 1200px){
     /**FLUX**/
@@ -684,6 +731,31 @@ body{
         font-size: 1.2em;
     }
 
+    /**SECTION ADMIN STYLE**/
+    .section-admin{
+        grid-template-columns: 1fr 2fr;
+    }
+    .section-admin__liste ul li{
+        font-size: 1.6em;
+    }
+    .section-admin__footer{
+        font-size: 1.8em;
+    }
+    .button-group-admin__menu{
+        font-size: 1em;
+    }
+    .section-admin__nav{
+        border-radius: 0 15px 15px 0;
+    }
+
+    /**SECTION ADMIN CRUD**/
+    .section-admin__crud__title{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .section-admin__crud__description{
+        font-size: 1.6em;
+    }
 
 
 }
