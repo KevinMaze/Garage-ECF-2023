@@ -21,13 +21,13 @@
 
     <div class="section-admin__footer">
         <img src="../assets/logo_VP.png" alt="#" class="witdh-logo">
-        <p>Vincent Parrot</p>
+        <p> <?= $_SESSION["user"]["lastname"]." ".$_SESSION["user"]["firstname"]?> </p>
         <div class="">
             <button type="button" class="dropdown-toggle dropdown-toggle-split button-group-admin" data-bs-toggle="dropdown" aria-expanded="false">
             </button>
             <ul class="dropdown-menu button-group-admin__menu">
                 <li><a href="../index.php">Retour à l'accueil</a></li>
-                <li><a href="">Déconnection</a></li>
+                <li><a href="../deconnection.php">Déconnection</a></li>
             </ul>
         </div>
     </div>

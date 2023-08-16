@@ -2,14 +2,12 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
-    require_once ('lib/main_menu.php');
     require_once ('lib/services.php');
+    require_once ('lib/main_menu.php');
     require_once ("template/header.php");
 
     $cars = getCars($pdo, 3);
-
-
-    
+    $services = getServices($pdo);
 ?>
 
         <div class="line-style flux"></div>
@@ -17,13 +15,13 @@
         <section class="section__service flux">
             <h2 class="title-h2">Les services</h2>
             <div class="card-grid">
-                <?php foreach ($service as $key => $service) {?>
+                <?php foreach ($services as $key => $service) {?>
 
                     <div class="card-service">
                         <div class="section__service__img">
-                            <img src=<?= _SERVICE_IMG_PATH_.$service['image']?> alt="#">
+                            <img src=<?= _SERVICE_IMG_PATH_.$service['image_service']?> alt="#">
                         </div>
-                        <p><?= $service['title'] ?></p>
+                        <p><?= $service['name_service'] ?></p>
                     </div>
                 <?php } ?>
             </div>

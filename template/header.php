@@ -1,4 +1,6 @@
 <?php
+    require_once ('lib/config.php');
+    require_once ('lib/session.php');
     $currentPage = basename($_SERVER['SCRIPT_NAME']);
 ?>
 
@@ -40,8 +42,12 @@
                                 <li><a href=<?= $key ?>><?= $menuItem["title"] ?></a></li>
                             <?php }
                             } 
-                            ?> 
+                            ?>
+                            <?php if (isset($_SESSION["user"])) {?>
+                                <a href="./admin/index-admin.php" class="custom-button">Espace admin</a>
+                            <?php }else{?>
                             <a href="connection.php" class="custom-button">Connection</a>
+                            <?php };?>
 
                         </ul>
 

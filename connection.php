@@ -1,21 +1,30 @@
 <?php
     require_once ('lib/config.php');
+    require_once ('lib/session.php');
     require_once ('lib/pdo.php');
+    require_once ('lib/user.php');
     require_once ('lib/main_menu.php');
     $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
-    if (isset($_POST["loginuser"])) {
+    $errors = [];
+
+    if (isset($_POST["loginUser"])) {
+        // si le bouton "connection" est appuyé alors ...
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $query = $pdo->prepare("SELECT * FROM user WHERE email = :email");
-        $query->bindValue(":email", $email, PDO::PARAM_STR);
-        $query->execute();
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-        
-        if ($user && password_verify($password, $user["password"])) {
-            var_dump("connection autoriser");
-        }else {
-            var_dump("login ou password incorrect");
+
+        $user = verifyUserloginPassword($pdo, $email, $password);
+        if ($user) {
+            // regenerer cookie (id) de session
+            session_regenerate_id(true);
+            $_SESSION["user"] = $user;
+            if($user["role"] === "admin"){
+                header("location: admin/index-admin.php");
+            }elseif ($user["role"] === "employe"){
+                header("location: index.php");
+            };
+        }else{
+            $errors[] = "Email ou mot de passe incorrect";
         }
     }
 
@@ -97,6 +106,12 @@
 
             <div class="line-style flux"></div>
 
+            <?php foreach ($errors as $error) {?>
+                <div class="alert alert-danger flux">
+                    <?= $error ;?>
+                </div>
+            <?php } ?>
+
             <form action="" method="post" class="form-style-connection flux">
             
                 <label for="email" class="label-connection"> Login</label>
@@ -109,10 +124,10 @@
                     <input type="submit" value="Connection" name="loginUser" class="custom-button">
                 </div>
             
-                <p> &#169;<script>document.write(new Date().getFullYear());</script>&#160;VP Garage.
-                </p>
             </form>
-
+            
+            <p> &#169;<script>document.write(new Date().getFullYear());</script>&#160;VP Garage.
+            </p>
                     
         </header>
 
