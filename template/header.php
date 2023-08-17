@@ -44,7 +44,7 @@
                             } 
                             ?>
                             <?php if (isset($_SESSION["user"])) {?>
-                                <a href="./admin/index-admin.php" class="custom-button">Espace admin</a>
+                            <a href="./admin/index-admin.php" class="custom-button">Espace admin</a>
                             <?php }else{?>
                             <a href="connection.php" class="custom-button">Connection</a>
                             <?php };?>

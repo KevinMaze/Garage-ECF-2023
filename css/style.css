@@ -510,6 +510,7 @@ body{
     font-family: var(--font-paragraphe);
     font-size: 1.1em ;
     padding-left: 1em;
+    padding-right: 1em;
 }
 
 .section-admin__crud__description a{

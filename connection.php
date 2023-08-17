@@ -21,7 +21,7 @@
             if($user["role"] === "admin"){
                 header("location: admin/index-admin.php");
             }elseif ($user["role"] === "employe"){
-                header("location: index.php");
+                header("location: admin/index-admin.php");
             };
         }else{
             $errors[] = "Email ou mot de passe incorrect";
@@ -123,11 +123,11 @@
                 <div class="form-button">
                     <input type="submit" value="Connection" name="loginUser" class="custom-button">
                 </div>
+                
+                <p> &#169;<script>document.write(new Date().getFullYear());</script>&#160;VP Garage.
+                </p>
             
             </form>
-            
-            <p> &#169;<script>document.write(new Date().getFullYear());</script>&#160;VP Garage.
-            </p>
                     
         </header>
 

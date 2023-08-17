@@ -8,12 +8,19 @@
 
     <div class="section-admin__liste">
         <ul>
-            <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
-            <li><a href="../admin/index-admin.php#articles">Articles</a></li>
-            <li><a href="../admin/index-admin.php#horaires">Horaires</a></li>
-            <li><a href="../admin/index-admin.php#services">Services</a></li>
-            <li><a href="../admin/index-admin.php#moderation">Modération avis clients</a></li>
-            <li><a href="#">Création de compte pro</a></li>
+            <?php if ($_SESSION["user"]["role"] === "admin")  {?>
+                <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
+                <li><a href="../admin/index-admin.php#articles">Articles</a></li>
+                <li><a href="../admin/index-admin.php#horaires">Horaires</a></li>
+                <li><a href="../admin/index-admin.php#services">Services</a></li>
+                <li><a href="../admin/index-admin.php#moderation">Modération avis clients</a></li>
+                <li><a href="#">Création de compte pro</a></li>
+                <?php }elseif ($_SESSION["user"]["role"] === "employe"){?>
+                <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
+                <li><a href="../admin/index-admin.php#articles">Articles</a></li>
+                <li><a href="../admin/index-admin.php#services">Services</a></li>
+                <li><a href="../admin/index-admin.php#moderation">Modération avis clients</a></li>
+            <?php };?>
         </ul>
     </div>
 
