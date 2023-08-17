@@ -47,7 +47,7 @@
                                 $imagePath = _CAR_IMAGE_PATH_.$car["image1"];
                             }?>
                         <div class="carousel-item active">
-                            <img src="<?= $imagePath?>" class="d-block w-100" alt="...">
+                            <img src="<?= $imagePath?>" class="d-block w-100" alt="<?php $car["name"] ?>">
                             <div class="carousel-caption d-none d-md-block">
                                 <h3><?= htmlentities($car["name"])?></h3>
                                 <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>

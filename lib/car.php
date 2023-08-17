@@ -11,7 +11,7 @@ function getCars(PDO $pdo, int $limit = null, int $page = null):array
     if ($page) {
         $sql .= " LIMIT :offset, :limit";
     }
-    
+
     $query = $pdo->prepare($sql);
 
     if($limit){
@@ -42,5 +42,16 @@ function getCar(PDO $pdo, int $id):array|bool
     $car = $query->fetch(PDO::FETCH_ASSOC);
 
     return $car;
+}
+
+// Récupération nb de page car
+function getTotalPageCar(PDO $pdo):int
+{
+    
+    $sql = "SELECT COUNT(*) FROM car";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $nbPageCar = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $nbPageCar["0"]["COUNT(*)"];
 }
 

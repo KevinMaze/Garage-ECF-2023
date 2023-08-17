@@ -529,6 +529,25 @@ body{
     align-items: center;
 }
 
+/* NAVIGATION PAGE ADMIN */
+.navigation-page{
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation-page__item{
+    background-color: var(--timberwolf);
+    color: var(--davys-gray);
+    margin: 2.5px;
+    width: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.active-page{
+    color: var(--timberwolf);
+    background-color: var(--davys-gray);
+}
 
 /********MEDIA QUERY********/
 @media screen and (min-width: 720px) {

@@ -1,7 +1,6 @@
 <?php  
 
     require_once ('./template-admin/header-admin.php');
-    require_once ('../lib/config.php');
     require_once ('../lib/pdo.php');
     require_once ('../lib/car.php');
     require_once ('../lib/services.php');
@@ -15,6 +14,10 @@
     $carArticles = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
 
     $serviceArticles = getServices($pdo, _ADMIN_SERVICE_PER_PAGE_, $page);
+
+    $totalArticleCar = getTotalPageCar($pdo);
+
+    $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
 ?>
 
 
@@ -49,6 +52,16 @@
 
                         </tbody>
                     </table>
+                    
+                    <?php if ($totalPageCar) {?>
+                    <nav>
+                        <ul class="navigation-page">
+                            <?php for ($i = 1; $i <= $totalPageCar; $i++) { ?>
+                                <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                            <?php }  ?>
+                        </ul>
+                    </nav>
+                    <?php }?>
                 </div>
 
                 <div class="line-style"></div>
