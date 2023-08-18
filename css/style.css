@@ -549,6 +549,22 @@ body{
     background-color: var(--davys-gray);
 }
 
+/* ADD CAR */
+.form-add-car{
+    margin-top: 15px;
+}
+
+.form-file{
+    color: var(--timberwolf);
+    margin: 15px;
+}
+
+.para-select-image{
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    margin: 15px;
+}
+
 /********MEDIA QUERY********/
 @media screen and (min-width: 720px) {
     .title-h2{
@@ -636,6 +652,11 @@ body{
     }
 
     :placeholder-shown{
+        font-size: 1.2em;
+    }
+
+    /**CONTACT**/
+    .para-select-image{
         font-size: 1.2em;
     }
 
@@ -742,6 +763,11 @@ body{
     }
 
     :placeholder-shown{
+        font-size: 1.5em;
+    }
+
+    /**CONTACT**/
+    .para-select-image{
         font-size: 1.5em;
     }
 

@@ -1,6 +1,6 @@
 <?php  
 
-    require_once ('./template-admin/header-admin.php');
+    require_once ('template-admin/header-admin.php');
     require_once ('../lib/pdo.php');
     require_once ('../lib/car.php');
     require_once ('../lib/services.php');
@@ -24,7 +24,7 @@
             <aside class="section-admin__crud">
                 <div class="section-admin__crud__title">
                     <h2 class="title-h2"  id="articles">Articles</h2>
-                    <div class="custom-button"><a href="">Ajouter un article</a></div>
+                    <div class="custom-button"><a href="./add-car.php">Ajouter un article</a></div>
                 </div>
 
                 <div class="line-style"></div>

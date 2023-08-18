@@ -28,4 +28,4 @@
         <div class="button-up"><img src="../assets/arrowup.png" alt="flèche haut"></div>
 
         <section class="section-admin">
-            <?php require_once("../admin/template-admin/aside-admin.php") ?>
+            <?php require_once("template-admin/aside-admin.php") ?>
