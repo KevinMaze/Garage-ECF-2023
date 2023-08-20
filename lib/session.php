@@ -6,7 +6,7 @@ session_set_cookie_params([
     'path' => '/',
     'domain' => 'localhost',
     'secure' => true,
-    'httponly' => true
+    // 'httponly' => true
 ]);
 
 

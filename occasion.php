@@ -5,8 +5,17 @@
     require_once ('lib/main_menu.php');
     require_once ('template/header.php');
 
-    
-    $cars = getCars($pdo);
+    if (isset($_GET["page"])) {
+        $page = (int)$_GET["page"];
+    }else {
+        $page = 1;
+    }
+
+
+    $cars = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
+    $totalArticleCar = getTotalPageCar($pdo);
+    $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
+
 ?>
 
 <div class="line-style flux"></div>
@@ -65,8 +74,20 @@
         
     <?php }  ?>
 
-    
+
 </section>
+<div class="flux occasion_paging">
+    <?php if ($totalPageCar) {?>
+        <nav>
+            <ul class="navigation-page">
+                <?php for ($i = 1; $i <= $totalPageCar; $i++) { ?>
+                    <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                <?php }  ?>
+            </ul>
+        </nav>
+    <?php }?>
+
+</div>
 
 <div class="line-style flux"></div>
 

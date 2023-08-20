@@ -233,6 +233,10 @@ body{
     color: var(--davys-gray);
 }
 
+.occasion_paging{
+    margin-top: 15px;
+}
+
 /* OCCASION PAGE*/
 .section-occasion-page{
     background-color: var(--timberwolf);

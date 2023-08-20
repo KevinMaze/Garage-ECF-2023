@@ -1,9 +1,7 @@
 <?php  
 
     require_once ('template-admin/header-admin.php');
-    require_once ('../lib/pdo.php');
-    require_once ('../lib/car.php');
-    require_once ('../lib/services.php');
+
 
     if (isset($_GET["page"])) {
         $page = (int)$_GET["page"];
@@ -11,13 +9,15 @@
         $page = 1;
     }
 
+    // total pages car
     $carArticles = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
-
-    $serviceArticles = getServices($pdo, _ADMIN_SERVICE_PER_PAGE_, $page);
-
     $totalArticleCar = getTotalPageCar($pdo);
-
     $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
+
+    // total pages service
+    $serviceArticles = getServices($pdo, _ADMIN_SERVICE_PER_PAGE_, $page);
+    $totalService = getTotalPageService($pdo);
+    $totalPageService = ceil($totalService / _ADMIN_SERVICE_PER_PAGE_);
 ?>
 
 
@@ -103,7 +103,7 @@
 
                 <div class="section-admin__crud__title"  id="services">
                     <h2 class="title-h2">Services</h2>
-                    <div class="custom-button"><a href="#">Ajouter un service</a></div>
+                    <div class="custom-button"><a href="./add-service.php">Ajouter un service</a></div>
                 </div>
 
                 <div class="line-style"></div>
@@ -131,6 +131,17 @@
 
                         </tbody>
                     </table>
+
+                    <?php if ($totalPageService) {?>
+                    <nav>
+                        <ul class="navigation-page">
+                            <?php for ($i = 1; $i <= $totalPageService; $i++) { ?>
+                                <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                            <?php }  ?>
+                        </ul>
+                    </nav>
+                    <?php }?>
+
                 </div>
 
                 <div class="line-style"></div>

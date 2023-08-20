@@ -22,7 +22,8 @@ $services = getServices($pdo);
                 <h3> <?= $service["name_service"]?> </h3>
             </div>
             <div class="description-service">
-                <p><?= $service["description"]?></p>
+                <!-- nl2br permet un saut de ligne -->
+                <p><?= nl2br($service["description"])?></p>
             </div>
         </div>
     <?php } ?>

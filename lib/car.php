@@ -1,6 +1,6 @@
 <?php
 
-// récupération de la table car
+// récupération de la table car (avec limit et pagination)
 function getCars(PDO $pdo, int $limit = null, int $page = null):array
 {
     $sql = "SELECT * FROM car ORDER BY car_id DESC";
