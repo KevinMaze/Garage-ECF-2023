@@ -59,21 +59,21 @@ function getTotalPageCar(PDO $pdo):int
 function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, string|null $image1, string|null $image2, string|null $image3, string|null $image4, int $id = null):bool
 {
     if ($id === null) {
-        $query = $pdo->prepare("INSERT INTO car ('name', 'description', 'price', 'mileage', 'year', 'image1', 'image2', 'image3', 'image4')"."VALUES(:name, :description, :price, :mileage, :year, :image1, :image2, :image3, :image4)");
+        $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year, image1, image2, image3, image4) VALUES (:name, :description, :price, :mileage, :year, :image1 ,:image2, :image3, :image4)");
     }else{
-        $query = $pdo->prepare("UPDATE 'car' SET 'name' = :name"."'description' = :description , 'price' = :price, 'mileage' = :mileage, 'year' = :year");
+        $query = $pdo->prepare("UPDATE 'car' SET 'name' = ':name', 'description' = ':description', 'price' = ':price', 'mileage' = ':mileage', 'year' = ':year', 'image1' = ':image1', 'image2' = ':image2', 'image3' = ':image3', 'image4' = ':image4', 'id' = ':id'");
         $query->bindValue(':id', $id, $pdo::PARAM_INT);
     }
 
-    $query->bindvalue(":name", $name, PDO::PARAM_STR);
-    $query->bindvalue(":description", $description, PDO::PARAM_STR);
-    $query->bindvalue(":price", $price, PDO::PARAM_INT);
-    $query->bindvalue(":mileage", $mileage, PDO::PARAM_INT);
-    $query->bindvalue(":year", $year, PDO::PARAM_INT);
-    $query->bindvalue(":image1", $image1, PDO::PARAM_STR);
-    $query->bindvalue(":image2", $image2, PDO::PARAM_STR);
-    $query->bindvalue(":image3", $image3, PDO::PARAM_STR);
-    $query->bindvalue(":image4", $image4, PDO::PARAM_STR);
+    $query->bindValue(":name", $name, PDO::PARAM_STR);
+    $query->bindValue(":description", $description, PDO::PARAM_STR);
+    $query->bindValue(":price", $price, PDO::PARAM_INT);
+    $query->bindValue(":mileage", $mileage, PDO::PARAM_INT);
+    $query->bindValue(":year", $year, PDO::PARAM_INT);
+    $query->bindValue(":image1", $image1, PDO::PARAM_STR);
+    $query->bindValue(":image2", $image2, PDO::PARAM_STR);
+    $query->bindValue(":image3", $image3, PDO::PARAM_STR);
+    $query->bindValue(":image4", $image4, PDO::PARAM_STR);
 
     return $query->execute();
 
