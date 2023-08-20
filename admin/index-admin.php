@@ -45,7 +45,7 @@
                                 <tr>
                                 <th scope="row"><?= $carArticle["car_id"] ?></th>
                                     <td><?= $carArticle["name"] ?></td>
-                                    <td>Modifier | Supprimer</td>
+                                    <td><a href="add-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href=""></a>Supprimer</td>
                                 </tr>
                                 
                             <?php }  ?>

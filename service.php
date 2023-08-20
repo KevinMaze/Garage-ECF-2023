@@ -7,6 +7,8 @@ require_once ('template/header.php');
 
 $services = getServices($pdo);
 
+
+
 ?>
 
 <div class="line-style flux"></div>
@@ -22,7 +24,7 @@ $services = getServices($pdo);
                 <h3> <?= $service["name_service"]?> </h3>
             </div>
             <div class="description-service">
-                <!-- nl2br permet un saut de ligne -->
+                <!-- nl2br permet un saut de ligne ou utilisation explode(PHP_EOL, $service["description"]) -->
                 <p><?= nl2br($service["description"])?></p>
             </div>
         </div>

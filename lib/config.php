@@ -4,7 +4,7 @@
 
 	define('_HOME_CAR_LIMIT_', 3);
 
-	define("_ADMIN_CAR_PER_PAGE_", 10);
+	define("_ADMIN_CAR_PER_PAGE_", 9);
 	define("_ADMIN_SERVICE_PER_PAGE_", 10);
 
 	define('_DB_NAME_PATH_', 'maze_ecf_garage_2023');
