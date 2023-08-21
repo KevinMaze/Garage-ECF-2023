@@ -1,4 +1,14 @@
 <?php
+// Récupération d'une seule colonne car en fonction de l'id
+function getCarById(PDO $pdo, int $id):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM car WHERE car_id = :id");
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
 
 // récupération de la table car (avec limit et pagination)
 function getCars(PDO $pdo, int $limit = null, int $page = null):array
@@ -77,4 +87,18 @@ function addCar(PDO $pdo, string $name, string $description, float $price, int $
 
     return $query->execute();
 
+}
+
+// Suppression de l'article car
+function deleteCar(PDO $pdo, int $id):bool 
+{
+    $query = $pdo->prepare("DELETE FROM car WHERE car_id = :id");
+    $query-> bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+
+    if($query->rowCount() > 0){
+        return true;
+    }else{
+        return false;
+    }
 }

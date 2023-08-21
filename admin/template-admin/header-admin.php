@@ -1,12 +1,3 @@
-<?php  
-    require_once ("../lib/session.php");
-    require_once ("../lib/config.php");
-    require_once ("../lib/pdo.php");
-    require_once ("../lib/user.php");
-    require_once ("../lib/car.php");
-    require_once ("../lib/services.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +38,7 @@
                             <li><a href="../admin/index-admin.php#services">Services</a></li>
                             <li><a href="../admin/index-admin.php#moderation">Modération avis clients</a></li>
                             <li><a href="#">Création de compte pro</a></li>
-                            <?php }elseif ($_SESSION["user"]["role"] === "employe"){?>
+                        <?php }elseif ($_SESSION["user"]["role"] === "employe"){?>
                             <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
                             <li><a href="../admin/index-admin.php#articles">Articles</a></li>
                             <li><a href="../admin/index-admin.php#services">Services</a></li>

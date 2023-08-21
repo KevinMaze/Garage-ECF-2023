@@ -2,7 +2,7 @@
 
 // paramètre de session (cookie)
 session_set_cookie_params([
-    'lifetime' => 7200,
+    'lifetime' => 3600,
     'path' => '/',
     'domain' => 'localhost',
     'secure' => true,

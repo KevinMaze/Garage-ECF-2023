@@ -1,6 +1,12 @@
 <?php  
 
-    require_once ('template-admin/header-admin.php');
+require_once ("../lib/session.php");
+require_once ("../lib/config.php");
+require_once ("../lib/pdo.php");
+require_once ("../lib/user.php");
+require_once ("../lib/car.php");
+require_once ("../lib/services.php");
+require_once ('template-admin/header-admin.php');
 
 
     if (isset($_GET["page"])) {
@@ -45,7 +51,7 @@
                                 <tr>
                                 <th scope="row"><?= $carArticle["car_id"] ?></th>
                                     <td><?= $carArticle["name"] ?></td>
-                                    <td><a href="add-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href=""></a>Supprimer</td>
+                                    <td><a href="add-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href="delete-car.php?id=<?=$carArticle["car_id"] ?>" id="delete">Supprimer</a></td>
                                 </tr>
                                 
                             <?php }  ?>
