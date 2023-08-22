@@ -51,7 +51,7 @@ if(isset($_POST["add-car"])){
         if(isset($_GET["id"])){
             if(isset($_POST["delete_image"])){
                 // Si on coche la case suppression de l'image, on supprime
-                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$_POST["image1"]);
+                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$car["image1"]);
 
             }else{
                 $fileName1 = $_POST["image1"];
@@ -76,10 +76,10 @@ if(isset($_POST["add-car"])){
         if(isset($_GET["id"])){
             if(isset($_POST["delete_image"])){
                 // Si on coche la case suppression de l'image, on supprime
-                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$_POST["image2"]);
+                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$car["image2"]);
 
             }else{
-                $fileName1 = $_POST["image2"];
+                $fileName2 = $car["image2"];
             }
         }
     }
@@ -101,10 +101,10 @@ if(isset($_POST["add-car"])){
         if(isset($_GET["id"])){
             if(isset($_POST["delete_image"])){
                 // Si on coche la case suppression de l'image, on supprime
-                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$_POST["image3"]);
+                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$car["image3"]);
 
             }else{
-                $fileName1 = $_POST["image3"];
+                $fileName3 = $car["image3"];
             }
         }
     }
@@ -126,10 +126,10 @@ if(isset($_POST["add-car"])){
         if(isset($_GET["id"])){
             if(isset($_POST["delete_image"])){
                 // Si on coche la case suppression de l'image, on supprime
-                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$_POST["image4"]);
+                unlink(dirname(__DIR__)._CAR_IMAGE_PATH_.$car["image4"]);
 
             }else{
-                $fileName1 = $_POST["image4"];
+                $fileName4 = $car["image4"];
             }
         }
     }
@@ -172,6 +172,8 @@ if(isset($_POST["add-car"])){
 ?>
 
 
+
+
     <?php 
     foreach ($messages as $message) { ?>
         <div class="alert alert-sucess"><?php $message; ?></div>
@@ -205,7 +207,7 @@ if(isset($_POST["add-car"])){
                     <img src="<?= _CAR_IMAGE_PATH_.$car["image1"] ?>" alt="<?= $car['name'] ?>" width="100">
                     <label for="delete_image">Supprimer l'image</label>
                     <input type="checkbox" name="delete_image" id="delete_image">
-                    <input type="hidden" name="image" value="<?= $car['image1']; ?>">
+                    <input type="hidden" name="image1" value="<?= $car['image1']; ?>">
                     </p>
                 <?php } ?>
 
@@ -216,7 +218,7 @@ if(isset($_POST["add-car"])){
                     <img src="<?= _CAR_IMAGE_PATH_ . $car["image2"] ?>" alt="<?= $car['name'] ?>" width="100">
                     <label for="delete_image">Supprimer l'image</label>
                     <input type="checkbox" name="delete_image" id="delete_image">
-                    <input type="hidden" name="image" value="<?= $car['image1']; ?>">
+                    <input type="hidden" name="image2" value="<?= $car['image1']; ?>">
                     </p>
                 <?php } ?>
                 
@@ -227,7 +229,7 @@ if(isset($_POST["add-car"])){
                     <img src="<?= _CAR_IMAGE_PATH_ . $car['image3'] ?>" alt="<?= $car['name'] ?>" width="100">
                     <label for="delete_image">Supprimer l'image</label>
                     <input type="checkbox" name="delete_image" id="delete_image">
-                    <input type="hidden" name="image" value="<?= $car['image1']; ?>">
+                    <input type="hidden" name="image3" value="<?= $car['image1']; ?>">
                     </p>
                 <?php } ?>
                 
@@ -238,7 +240,7 @@ if(isset($_POST["add-car"])){
                     <img src="<?= _CAR_IMAGE_PATH_ . $car['image4'] ?>" alt="<?= $car['name'] ?>" width="100">
                     <label for="delete_image">Supprimer l'image</label>
                     <input type="checkbox" name="delete_image" id="delete_image">
-                    <input type="hidden" name="image" value="<?= $car['image1']; ?>">
+                    <input type="hidden" name="image4" value="<?= $car['image1']; ?>">
                     </p>
                 <?php } ?>
                 
@@ -251,3 +253,5 @@ if(isset($_POST["add-car"])){
             </fieldset>
         </form>
     <?php } ?>
+
+    

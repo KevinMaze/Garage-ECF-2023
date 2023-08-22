@@ -1,5 +1,14 @@
 <?php 
 
+// récupération d'un post aservice avec id
+function getServiceById(PDO $pdo, int $id):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM services WHERE service_id = :id");
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
 // récupération de la table services
 function getServices(PDO $pdo, int $limit = null, int $page = null):array
 {
@@ -40,20 +49,36 @@ function getTotalPageService(PDO $pdo):int
 }
 
 // Requète insertion service
-function addService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $id = null):bool
+function addService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id = null):bool
 {
     if($id === null){
-        $query = $pdo->prepare("INSERT INTO services (name_service, description, image_service) VALUES (:name_service, :description, :image_service)");
+        
+        $query = $pdo->prepare("INSERT INTO 'services' ('name_service', 'description', 'image_service', 'user_id') VALUES (':name_service', ':description', ':image_service', ':user_id')");
     }else{
-        $query = $pdo->prepare("UPDATE 'service' SET 'name_service' = ':name_service' , 'description' = ':description', 'image_service' = ':image_service', ''id' = ':id'");
+        $query = $pdo->prepare("UPDATE 'service' SET 'name_service' = ':name_service' , 'description' = ':description', 'image_service' = ':image_service', 'user_id' = ':user_id' ''id' = ':id'");
         $query->bindValue(':id',$id, $pdo::PARAM_INT);
     }
 
     $query->bindValue(":name_service", $name_service, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":image_service", $image_service, PDO::PARAM_STR);
+    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
     return $query->execute();
+}
+
+// Suppression du post service avec id
+function deleteService(PDO $pdo, int $id):bool 
+{
+    $query = $pdo->prepare("DELETE FROM services WHERE service_id = :id");
+    $query-> bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+
+    if($query->rowCount() > 0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 

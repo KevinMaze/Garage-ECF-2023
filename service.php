@@ -20,7 +20,7 @@ $services = getServices($pdo);
     <?php  foreach ($services as $key => $service) {?>
         <div class="service-php ">
             <div class="service-img">
-                <img src=<?= _SERVICE_IMG_PATH_.$service["image_service"]?> alt="">
+                <img src=<?= _SERVICE_IMG_PATH_.$service["image_service"]; var_dump($res)?> alt=<?= $service["name_service"] ?>>
                 <h3> <?= $service["name_service"]?> </h3>
             </div>
             <div class="description-service">

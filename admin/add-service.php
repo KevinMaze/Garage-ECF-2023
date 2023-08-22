@@ -39,7 +39,7 @@ if(isset($_POST['add-service'])){
         }
 
         // on passe les données addService
-        $result = addService($pdo, $_POST["name_service"], $_POST["description"], $fileName, $id);
+        $result = addService($pdo, $_POST["name_service"], $_POST["description"], $_POST["user_id"], $fileName, $id);
         if($result) {
             $messages[] = "Enregistrement effectué";
             // on efface le tableau
@@ -78,6 +78,8 @@ var_dump($_FILES);
             <label for="name-service"><input type="text" id="name_service" name="name_service" placeholder="Nom" required class="form-input"></label>
             
             <textarea type="textarea" id="description" name="description" placeholder="Description" class="form-textarea"></textarea>
+            
+            <label for="user_id"><input type="text" id="user_id" name="user_id" value="<?=$_SESSION["user"]["user_id"] ?>" required class="form-input"></label>
 
             <p class="para-select-image">Veuiller selectionner 1 image</p>
 

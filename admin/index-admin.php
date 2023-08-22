@@ -6,7 +6,10 @@ require_once ("../lib/pdo.php");
 require_once ("../lib/user.php");
 require_once ("../lib/car.php");
 require_once ("../lib/services.php");
+require_once ("../lib/hourly.php");
 require_once ('template-admin/header-admin.php');
+
+// var_dump($_SESSION);
 
 
     if (isset($_GET["page"])) {
@@ -24,6 +27,9 @@ require_once ('template-admin/header-admin.php');
     $serviceArticles = getServices($pdo, _ADMIN_SERVICE_PER_PAGE_, $page);
     $totalService = getTotalPageService($pdo);
     $totalPageService = ceil($totalService / _ADMIN_SERVICE_PER_PAGE_);
+
+    // recupération des horaires
+    $hourlys = getHourly($pdo);
 ?>
 
 
@@ -74,7 +80,7 @@ require_once ('template-admin/header-admin.php');
 
                 <div class="section-admin__crud__title">
                     <h2 class="title-h2"  id="horaires">Horaires</h2>
-                    <div class="custom-button"><a href="#">Ajouter une horaire</a></div>
+                    <div class="custom-button"><a href="./add-hourly.php">Ajouter une horaire</a></div>
                 </div>
 
                 <div class="line-style"></div>
@@ -85,16 +91,20 @@ require_once ('template-admin/header-admin.php');
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
+                                <th scope="col">Matin</th>
+                                <th scope="col">Après-midi</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php foreach ($serviceArticles as $key => $serviceArticle) {?>
+                            <?php foreach ($hourlys as $key => $hourly) {?>
 
                                 <tr>
-                                <th scope="row"><?= $serviceArticle["service_id"] ?></th>
-                                    <td><?= $serviceArticle["name_service"] ?></td>
+                                <th scope="row"><?= $hourly["hourly_id"] ?></th>
+                                    <td><?= $hourly["name_day"] ?></td>
+                                    <td><?= $hourly["hourly_am"] ?></td>
+                                    <td><?= $hourly["hourly_pm"] ?></td>
                                     <td>Modifier | Supprimer</td>
                                 </tr>
                                 
@@ -130,7 +140,7 @@ require_once ('template-admin/header-admin.php');
                                 <tr>
                                 <th scope="row"><?= $serviceArticle["service_id"] ?></th>
                                     <td><?= $serviceArticle["name_service"] ?></td>
-                                    <td>Modifier | Supprimer</td>
+                                    <td>Modifier | <a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>">Supprimer</a></td>
                                 </tr>
                                 
                             <?php }  ?>
