@@ -48,21 +48,20 @@ function getTotalPageService(PDO $pdo):int
     return $nbPageService["0"]["COUNT(*)"];
 }
 
-// Requète insertion service
+// Requète insertion et de modification de service
 function addService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id = null):bool
 {
     if($id === null){
-        
-        $query = $pdo->prepare("INSERT INTO 'services' ('name_service', 'description', 'image_service', 'user_id') VALUES (':name_service', ':description', ':image_service', ':user_id')");
+        $query = $pdo->prepare("INSERT INTO services (name_service, description, image_service, user_id) VALUES (:name_service, :description, :image_service, :user_id)");
     }else{
-        $query = $pdo->prepare("UPDATE 'service' SET 'name_service' = ':name_service' , 'description' = ':description', 'image_service' = ':image_service', 'user_id' = ':user_id' ''id' = ':id'");
-        $query->bindValue(':id',$id, $pdo::PARAM_INT);
+        $query = $pdo->prepare("UPDATE services SET name_service = :name_service, description = :description, image_service = :image_service, id = :id");
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
     }
 
     $query->bindValue(":name_service", $name_service, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":image_service", $image_service, PDO::PARAM_STR);
-    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    $query->bindValue(":user_id", $user_id, PDO::PARAM_STR);
 
     return $query->execute();
 }

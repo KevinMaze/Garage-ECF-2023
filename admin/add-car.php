@@ -23,7 +23,6 @@ if(isset($_GET["id"])){
         $errors[] = "L'article demandé n\'existe pas !";
     }
     $pagetitle = "Formulaire de modification";
-    var_dump($car);
 }else{
     $pagetitle = "Formualire d'ajout de voiture";
 }
@@ -174,17 +173,17 @@ if(isset($_POST["add-car"])){
 
 
 
-    <?php 
-    foreach ($messages as $message) { ?>
-        <div class="alert alert-sucess"><?php $message; ?></div>
-        <?php }?>
-    <?php 
-    foreach ($errors as $error) { ?>
-        <div class="alert alert-danger"><?php $error; ?></div>
-        <?php }?>
-        
-    <?php if($car !== false) {?>
-        <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
+
+<?php if($car !== false) {?>
+    <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
+            <?php 
+            foreach ($messages as $message) { ?>
+                <div class="alert alert-sucess"><?php $message; ?></div>
+                <?php }?>
+            <?php 
+            foreach ($errors as $error) { ?>
+                <div class="alert alert-danger"><?php $error; ?></div>
+                <?php }?>
             <fieldset class="form-style">
                 <legend class="form-legend"><?= $pagetitle ?></legend>
                 

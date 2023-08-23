@@ -19,7 +19,6 @@ if(isset($_GET["id"])){
         $errors[] = "L'article demandé n\'existe pas !";
     }
     $pagetitle = "Formulaire de modification";
-    var_dump($hourly);
 }else{
     $pagetitle = "Formualaire d'ajout d'horaire";
 }
@@ -32,8 +31,6 @@ if(isset($_POST["add_hourly"])){
         $errors[] = "Problème survenu !";
     }
 };
-
-var_dump($_POST);
 ?>
 
 <section class="flux">

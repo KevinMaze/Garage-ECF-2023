@@ -12,6 +12,18 @@ $messages = [];
 $errors = [];
 $hourlys = getHourly($pdo);
 
+// Récupération des données car pour modification (requête de récupération)
+if(isset($_GET["id"])){
+    $hourly = getHourlyById($pdo, $_GET["id"]);
+    if($hourly === false){
+        $errors[] = "L'article demandé n\'existe pas !";
+    }
+    $pagetitle = "Formulaire de modification";
+}else{
+    $pagetitle = "Formualaire d'ajout d'horaire";
+}
+
+// Requète d'ajout
 if(isset($_POST["add_hourly"])){
     $result = addHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"]);
     if($result) {
@@ -21,7 +33,6 @@ if(isset($_POST["add_hourly"])){
     }
 };
 
-var_dump($_POST);
 ?>
 
 <section class="flux">
@@ -67,7 +78,7 @@ var_dump($_POST);
         <?php }?>
 	<form method="POST" enctype="multipart/form-data">
 		<fieldset class="form-style">
-			<legend class="form-legend">Changement des horaires</legend>
+			<legend class="form-legend"><?= $pagetitle ?></legend>
 		
 			<label for="lundi"><input type="text" id="lundi" name="name_day" placeholder="Jour" class="form-input"></label>
 

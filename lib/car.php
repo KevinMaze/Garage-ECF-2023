@@ -65,7 +65,7 @@ function getTotalPageCar(PDO $pdo):int
     return $nbPageCar["0"]["COUNT(*)"];
 }
 
-// ajouter un article car (requète d'insertion)
+// ajouter un article car (requète d'insertion et de modification)
 function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, string|null $image1, string|null $image2, string|null $image3, string|null $image4, int $id = null):bool
 {
     if ($id === null) {

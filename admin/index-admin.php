@@ -105,7 +105,7 @@ require_once ('template-admin/header-admin.php');
                                     <td><?= $hourly["name_day"] ?></td>
                                     <td><?= $hourly["hourly_am"] ?></td>
                                     <td><?= $hourly["hourly_pm"] ?></td>
-                                    <td><a href="modification-hourly.php?id=<?= $hourly["hourly_id"] ?>">Modifier</a> | Supprimer</td>
+                                    <td><a href="modification-hourly.php?id=<?= $hourly["hourly_id"] ?>">Modifier</a></td>
                                 </tr>
                                 
                             <?php }  ?>
@@ -140,7 +140,7 @@ require_once ('template-admin/header-admin.php');
                                 <tr>
                                 <th scope="row"><?= $serviceArticle["service_id"] ?></th>
                                     <td><?= $serviceArticle["name_service"] ?></td>
-                                    <td>Modifier | <a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>">Supprimer</a></td>
+                                    <td><a href="add-service.php?id=<?= $serviceArticle["service_id"] ?>">Modifier</a> | <a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>">Supprimer</a></td>
                                 </tr>
                                 
                             <?php }  ?>
