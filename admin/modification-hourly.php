@@ -12,8 +12,20 @@ $messages = [];
 $errors = [];
 $hourlys = getHourly($pdo);
 
+// Récupération des données car pour modification (requête de récupération)
+if(isset($_GET["id"])){
+    $hourly = getHourlyById($pdo, $_GET["id"]);
+    if($hourly === false){
+        $errors[] = "L'article demandé n\'existe pas !";
+    }
+    $pagetitle = "Formulaire de modification";
+    var_dump($hourly);
+}else{
+    $pagetitle = "Formualaire d'ajout d'horaire";
+}
+
 if(isset($_POST["add_hourly"])){
-    $result = addHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"]);
+    $result = changeHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"]);
     if($result) {
         $messages[] = "Enregistrement réussi";
     }else{
@@ -67,13 +79,13 @@ var_dump($_POST);
         <?php }?>
 	<form method="POST" enctype="multipart/form-data">
 		<fieldset class="form-style">
-			<legend class="form-legend">Changement des horaires</legend>
+			<legend class="form-legend"><?= $pagetitle ?></legend>
 		
-			<label for="lundi"><input type="text" id="lundi" name="name_day" placeholder="Jour" class="form-input"></label>
+			<label for="lundi"><input type="text" id="lundi" name="name_day" value="<?= $hourly["name_day"] ?>" class="form-input"></label>
 
-			<label for="hourly_am"><input type="text" id="hourly_am" name="hourly_am" placeholder="Horaires matin" class="form-input"></label>
+			<label for="hourly_am"><input type="text" id="hourly_am" name="hourly_am" value="<?= $hourly["hourly_am"] ?>" class="form-input"></label>
 
-			<label for="hourly_pm"><input type="text" id="hourly_pm" name="hourly_pm" placeholder="Horaires après_midi" class="form-input"></label>
+			<label for="hourly_pm"><input type="text" id="hourly_pm" name="hourly_pm" value="<?= $hourly["hourly_pm"] ?>" class="form-input"></label>
 
 			<div class="form-button">
 				<input type="submit" value="Envoyer" name="add_hourly" class="custom-button">
@@ -81,8 +93,3 @@ var_dump($_POST);
 
 		</fieldset>
 	</form>
-
-    <div class="line-style flux"></div>
-
-</section>
-

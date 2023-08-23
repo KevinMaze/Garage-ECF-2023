@@ -3,13 +3,9 @@
                 <div class="footer-grid-div border-div">
                     <h3>Horaires</h3>
                     <ul>
-                        <li>Lun. : 08:45 - 12:00, 14:00 - 18h00</li>
-                        <li>Mar. : 08:45 - 12:00, 14:00 - 18h00</li>
-                        <li>Mer. : 08:45 - 12:00, 14:00 - 18h00</li>
-                        <li>Jeu. : 08:45 - 12:00, 14:00 - 18h00</li>
-                        <li>Ven. : 08:45 - 12:00, 14:00 - 18h00</li>
-                        <li>Sam. : 08:45 - 12:00</li>
-                        <li>Dim. : Fermé</li>
+                        <?php foreach ($hourlys as $key => $hourly) {?>
+                        <li><?= $hourly["name_day"] ?> : <?= $hourly["hourly_am"] ?>, <?= $hourly["hourly_pm"] ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div  class="footer-grid-div border-div">

@@ -105,7 +105,7 @@ require_once ('template-admin/header-admin.php');
                                     <td><?= $hourly["name_day"] ?></td>
                                     <td><?= $hourly["hourly_am"] ?></td>
                                     <td><?= $hourly["hourly_pm"] ?></td>
-                                    <td>Modifier | Supprimer</td>
+                                    <td><a href="modification-hourly.php?id=<?= $hourly["hourly_id"] ?>">Modifier</a> | Supprimer</td>
                                 </tr>
                                 
                             <?php }  ?>
