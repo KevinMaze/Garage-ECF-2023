@@ -17,7 +17,7 @@ $service = [
 if(isset($_GET["id"])){
     $service = getServiceById($pdo, $_GET["id"]);
     if($service === false){
-        $errors[] = "Le service n\'existe pas !";
+        $errors[] = "Le service n'existe pas !";
     }
     $pageTitle = "Formulaire de modification";
 }else{
@@ -38,6 +38,14 @@ if(isset($_POST['add-service'])){
         }else{
             // problème image upload
             $errors[] = "Fichier non conforme";
+        }
+    }else{
+        if(isset($_GET["id"])){
+            if(isset($_POST["delete_image"])){
+                unlink(dirname(__DIR__)._SERVICE_IMG_PATH_.$_POST["file"]);
+            }else{
+                $fileName = $_POST["file"];
+            }
         }
     }
 
@@ -66,48 +74,50 @@ if(isset($_POST['add-service'])){
                 ];
             }
         }else{
-                $errors[] = "Une erreur s'est produite !";
+            $errors[] = "Une erreur s'est produite !";
         }
     }
 }
 ?>
 
 
-<?php if($service !== false) {?>
-    <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
-        <?php foreach ($messages as $message) { ?>
-                <div class="alert alert-sucess"><?php $message; ?></div>
-        <?php }?>
-        <?php foreach ($errors as $error) { ?>
-                <div class="alert alert-danger"><?php $error; ?></div>
-        <?php }?>
-        
-        <fieldset class="form-style">
-            <legend class="form-legend"><?php $pageTitle; ?></legend>
+    <?php if($service !== false) {?>
+        <form method="POST" enctype="multipart/form-data" class="form-add-car">
+            <?php foreach ($messages as $message) { ?>
+                    <div class="alert alert-success"><?= $message; ?></div>
+            <?php }?>
+            <?php foreach ($errors as $error) { ?>
+                    <div class="alert alert-danger"><?= $error; ?></div>
+            <?php }?>
             
-            <div class="line-style"></div>
-            
-            <label for="name-service"><input type="text" id="name_service" name="name_service" required class="form-input"></label>
-            
-            <textarea type="textarea" id="description" name="description" class="form-textarea"></textarea>
+            <fieldset class="form-style">
+                <legend class="form-legend"><?= $pageTitle ?></legend>
+                
+                <div class="line-style"></div>
+                
+                <label for="name-service"><input type="text" id="name_service" name="name_service" class="form-input" value="<?= $service["name_service"] ?>"></label>
+                
+                <textarea type="textarea" id="description" name="description" class="form-textarea" value="<?= $service["description"]?>"></textarea>
 
-            <p class="para-select-image">Veuiller selectionner 1 image</p>
-            
-            <?php if (isset($_GET['id']) && isset($service["image_service"])) { ?>
-                <p>
-                <img src="<?= dirname(__DIR__)._SERVICE_IMG_PATH_.$service["image_service"]; ?>" alt="<?= $service['name_service'] ?>" width="100">
-                <label for="delete_image">Supprimer l'image</label>
-                <input type="checkbox" name="delete_image" id="delete_image">
-                <input type="hidden" name="file" value="<?= $service['image_service']; ?>">
-                </p>
-            <?php } ?>
-            <input type="hidden" name="MAX_FILE_SIZE" value="104857600" />
-            <input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg" class="form-file">
+                <p class="para-select-image">Veuiller selectionner 1 image (2.5mo max.)</p>
+                
+                <?php if (isset($_GET['id']) && isset($service["image_service"])) { ?>
+                    <div>
+                        <img src=<?=_SERVICE_IMG_PATH_.$service["image_service"]; ?> alt="<?= $service['name_service'] ?>" width="100">
+                        <label for="delete_image"><input type="checkbox" name="delete_image" id="delete_image">Supprimer l'image</label>
+                        <input type="hidden" name="file" value="<?= $service['image_service']; ?>">
+                    </div>
+                <?php } ?>
 
-            <div class="form-button">
-                <input type="submit" name="add-service" value="Envoyer" class="custom-button">
-            </div>
+                <input type="hidden" name="MAX_FILE_SIZE" value="2621440" />
+                <input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg" class="form-file">
 
-        </fieldset>
-    </form>
-<?php }?>
+                <div class="form-button">
+                    <input type="submit" name="add-service" value="Envoyer" class="custom-button">
+                </div>
+
+            </fieldset>
+        </form>
+    <?php }?>
+
+<?php require_once ("template-admin/footer-admin.php") ?>

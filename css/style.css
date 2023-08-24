@@ -40,8 +40,7 @@
 
 /* BODY */
 body{
-    background: rgb(86,82,100);
-    background: linear-gradient(149deg, rgba(86,82,100,1) 48%, rgba(131,125,152,1) 100%);
+    background: var(--davys-gray);
 }
 
 /* HEADER */

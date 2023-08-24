@@ -4,7 +4,7 @@
                     <h3>Horaires</h3>
                     <ul>
                         <?php foreach ($hourlys as $key => $hourly) {?>
-                        <li><?= $hourly["name_day"] ?> : <?= $hourly["hourly_am"] ?>, <?= $hourly["hourly_pm"] ?></li>
+                        <li><?= $hourly["name_day"] ?> : <?= $hourly["hourly_am"] ?> | <?= $hourly["hourly_pm"] ?></li>
                         <?php } ?>
                     </ul>
                 </div>

@@ -53,7 +53,7 @@
                     <img src="../assets/logo_VP.png" alt="#" class="witdh-logo">
                     <p> <?= $_SESSION["user"]["lastname"]." ".$_SESSION["user"]["firstname"]?> </p>
                     <div class="">
-                        <button type="button" class="dropdown-toggle dropdown-toggle-split button-group-admin" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="dropdown-toggle dropdown-toggle-split button-group-admin" data-bs-toggle="dropdown">
                         </button>
                         <ul class="dropdown-menu button-group-admin__menu">
                             <li><a href="../index.php">Retour à l'accueil</a></li>

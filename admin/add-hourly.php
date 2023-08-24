@@ -93,7 +93,9 @@ if(isset($_POST["add_hourly"])){
 		</fieldset>
 	</form>
 
-    <div class="line-style flux"></div>
-
 </section>
+
+<?php require_once ("template-admin/footer-admin.php") ?>
+
+
 

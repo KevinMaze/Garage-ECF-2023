@@ -23,13 +23,18 @@
     }
 ?>
 
-<!-- <div class="line-style"></div> -->
-<?php 
-    foreach ($messages as $message) { ?>
-        <div class="alert alert-sucess" role="alert"><?php $message; ?></div>
-<?php }?>
-<?php 
-    foreach ($errors as $error) { ?>
-        <div class="alert alert-danger" role="alert"><?php $error; ?></div>
-<?php }?>
-<div class="line-style"></div>
+<section class="flux">
+    <div class="line-style"></div>
+    <?php 
+        foreach ($messages as $message) { ?>
+            <div class="alert alert-success" role="alert"><?= $message; ?></div>
+    <?php }?>
+    <?php 
+        foreach ($errors as $error) { ?>
+            <div class="alert alert-danger" role="alert"><?= $error; ?></div>
+    <?php }?>
+    <div class="line-style"></div>
+
+</section>
+
+<?php require_once ("template-admin/footer-admin.php") ?>

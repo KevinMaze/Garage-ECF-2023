@@ -11,25 +11,36 @@
 
     if(isset($_GET["id"])){
         $carArticle = getCarById($pdo, (int)$_GET["id"]);
-    }
-    if($carArticle){
-        if(deleteCar($pdo, $_GET["id"])){
-            $messages[] = "L'article a bien été supprimé";
+        if($carArticle){
+            if(deleteCar($pdo, $_GET["id"])){
+                $messages[] = "L'article a bien été supprimé";
+            }else{
+                $errors[] = "Une erreur s'est produite !";
+            }
         }else{
-            $errors[] = "Une erreur s'est produite !";
+            $errors[] = "L'article n'existe pas !";
         }
-    }else{
-        $errors[] = "L'article n'existe pas !";
     }
 ?>
 
-<!-- <div class="line-style"></div> -->
-<?php 
-    foreach ($messages as $message) { ?>
-        <div class="alert alert-sucess" role="alert"><?php $message; ?></div>
-<?php }?>
-<?php 
-    foreach ($errors as $error) { ?>
-        <div class="alert alert-danger" role="alert"><?php $error; ?></div>
-<?php }?>
-<div class="line-style"></div>
+<section class="flux">
+
+    <div class="line-style"></div>
+
+    <?php foreach ($messages as $message) { ?>
+        <div class="alert alert-success">
+        <?= $message ?>
+        </div>
+    <?php }?>
+
+    <?php foreach ($errors as $error) { ?>
+        <div class="alert alert-danger">
+        <?= $error ?>
+        </div>
+    <?php }?>
+
+    <div class="line-style"></div>
+
+</section>
+
+<?php require_once ("template-admin/footer-admin.php") ?>

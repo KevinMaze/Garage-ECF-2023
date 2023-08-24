@@ -33,60 +33,63 @@ if(isset($_POST["add_hourly"])){
 };
 ?>
 
-<section class="flux">
-    <h2 class="title-h2">Horaires actuelles</h2>
+    <aside>
+        <h2 class="title-h2">Horaires actuelles</h2>
 
-    <div class="line-style"></div>
+        <div class="line-style"></div>
 
-    <div class="section-admin__crud__description">
-        <table class="table ">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Matin</th>
-                    <th scope="col">Après-midi</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php foreach ($hourlys as $key => $hourly) {?>
-
+        <div class="section-admin__crud__description">
+            <table class="table ">
+                <thead>
                     <tr>
-                    <th scope="row"><?= $hourly["hourly_id"] ?></th>
-                        <td><?= $hourly["name_day"] ?></td>
-                        <td><?= $hourly["hourly_am"] ?></td>
-                        <td><?= $hourly["hourly_pm"] ?></td>
-                        <td>Modifier | Supprimer</td>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Matin</th>
+                        <th scope="col">Après-midi</th>
+                        <th scope="col">Action</th>
                     </tr>
-                    
-                <?php }  ?>
+                </thead>
 
-            </tbody>
-        </table>
-    </div>
-    <?php 
-    foreach ($messages as $message) { ?>
-        <div class="alert alert-sucess"><?php $message; ?></div>
-        <?php }?>
-    <?php 
-    foreach ($errors as $error) { ?>
-        <div class="alert alert-danger"><?php $error; ?></div>
-        <?php }?>
-	<form method="POST" enctype="multipart/form-data">
-		<fieldset class="form-style">
-			<legend class="form-legend"><?= $pagetitle ?></legend>
-		
-			<label for="lundi"><input type="text" id="lundi" name="name_day" value="<?= $hourly["name_day"] ?>" class="form-input"></label>
+                <tbody>
+                    <?php foreach ($hourlys as $key => $hourly) {?>
 
-			<label for="hourly_am"><input type="text" id="hourly_am" name="hourly_am" value="<?= $hourly["hourly_am"] ?>" class="form-input"></label>
+                        <tr>
+                        <th scope="row"><?= $hourly["hourly_id"] ?></th>
+                            <td><?= $hourly["name_day"] ?></td>
+                            <td><?= $hourly["hourly_am"] ?></td>
+                            <td><?= $hourly["hourly_pm"] ?></td>
+                            <td>Modifier | Supprimer</td>
+                        </tr>
+                        
+                    <?php }  ?>
 
-			<label for="hourly_pm"><input type="text" id="hourly_pm" name="hourly_pm" value="<?= $hourly["hourly_pm"] ?>" class="form-input"></label>
+                </tbody>
+            </table>
+        </div>
+        <?php 
+        foreach ($messages as $message) { ?>
+            <div class="alert alert-sucess"><?php $message; ?></div>
+            <?php }?>
+        <?php 
+        foreach ($errors as $error) { ?>
+            <div class="alert alert-danger"><?php $error; ?></div>
+            <?php }?>
+        <form method="POST" enctype="multipart/form-data">
+            <fieldset class="form-style">
+                <legend class="form-legend"><?= $pagetitle ?></legend>
+            
+                <label for="lundi"><input type="text" id="lundi" name="name_day" value="<?= $hourly["name_day"] ?>" class="form-input"></label>
 
-			<div class="form-button">
-				<input type="submit" value="Envoyer" name="add_hourly" class="custom-button">
-			</div>
+                <label for="hourly_am"><input type="text" id="hourly_am" name="hourly_am" value="<?= $hourly["hourly_am"] ?>" class="form-input"></label>
 
-		</fieldset>
-	</form>
+                <label for="hourly_pm"><input type="text" id="hourly_pm" name="hourly_pm" value="<?= $hourly["hourly_pm"] ?>" class="form-input"></label>
+
+                <div class="form-button">
+                    <input type="submit" value="Envoyer" name="add_hourly" class="custom-button">
+                </div>
+
+            </fieldset>
+        </form>
+    </aside>
+
+<?php require_once ("template-admin/footer-admin.php") ?>

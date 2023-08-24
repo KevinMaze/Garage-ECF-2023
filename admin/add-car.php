@@ -20,7 +20,7 @@ $car = [
 if(isset($_GET["id"])){
     $car = getCarById($pdo, $_GET["id"]);
     if($car === false){
-        $errors[] = "L'article demandé n\'existe pas !";
+        $errors[] = "L'article demandé n'existe pas !";
     }
     $pagetitle = "Formulaire de modification";
 }else{
@@ -173,16 +173,15 @@ if(isset($_POST["add-car"])){
 
 
 
-
-<?php if($car !== false) {?>
-    <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
+    <?php if($car !== false) {?>
+        <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
             <?php 
             foreach ($messages as $message) { ?>
-                <div class="alert alert-sucess"><?php $message; ?></div>
+                <div class="alert alert-sucess"><?= $message ?></div>
                 <?php }?>
             <?php 
             foreach ($errors as $error) { ?>
-                <div class="alert alert-danger"><?php $error; ?></div>
+                <div class="alert alert-danger"><?= $error ?></div>
                 <?php }?>
             <fieldset class="form-style">
                 <legend class="form-legend"><?= $pagetitle ?></legend>
@@ -252,5 +251,7 @@ if(isset($_POST["add-car"])){
             </fieldset>
         </form>
     <?php } ?>
+
+<?php require_once ("template-admin/footer-admin.php") ?>
 
     
