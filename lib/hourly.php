@@ -38,12 +38,13 @@ function addHourly(PDO $pdo, string $name_day, string $hourly_am, string $hourly
 }
 
 // Requète de changement d'horaire
-function changeHourly(PDO $pdo, string $name_day, string $hourly_am, string $hourly_pm):bool
+function changeHourly(PDO $pdo, string $name_day, string $hourly_am, string $hourly_pm, int $id):bool
 {
-    $query = $pdo->prepare("UPDATE hourly SET name_day = :name_day, hourly_am = :hourly_am, hourly_pm = :hourly_pm"); 
+    $query = $pdo->prepare("UPDATE hourly SET name_day = :name_day, hourly_am = :hourly_am, hourly_pm = :hourly_pm WHERE hourly_id = :id"); 
     $query->bindValue(':name_day', $name_day, PDO::PARAM_STR);
     $query->bindValue(':hourly_am', $hourly_am, PDO::PARAM_STR);
     $query->bindValue(':hourly_pm', $hourly_pm, PDO::PARAM_STR);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
 
     return $query->execute();
 }

@@ -7,24 +7,20 @@ require_once ("../lib/user.php");
 require_once ("../lib/hourly.php");
 require_once ('template-admin/header-admin.php');
 
-// recupération des horaires
 $messages = [];
 $errors = [];
-$hourlys = getHourly($pdo);
 
 // Récupération des données car pour modification (requête de récupération)
 if(isset($_GET["id"])){
-    $hourly = getHourlyById($pdo, $_GET["id"]);
+    $hourly = getHourlyById($pdo, (int)$_GET["id"]);
     if($hourly === false){
         $errors[] = "L'article demandé n\'existe pas !";
     }
     $pagetitle = "Formulaire de modification";
-}else{
-    $pagetitle = "Formualaire d'ajout d'horaire";
 }
 
 if(isset($_POST["add_hourly"])){
-    $result = changeHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"]);
+    $result = changeHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"], $_GET["id"]);
     if($result) {
         $messages[] = "Enregistrement réussi";
     }else{
@@ -33,7 +29,7 @@ if(isset($_POST["add_hourly"])){
 };
 ?>
 
-    <aside>
+    <section class="flux">
         <h2 class="title-h2">Horaires actuelles</h2>
 
         <div class="line-style"></div>
@@ -51,8 +47,6 @@ if(isset($_POST["add_hourly"])){
                 </thead>
 
                 <tbody>
-                    <?php foreach ($hourlys as $key => $hourly) {?>
-
                         <tr>
                         <th scope="row"><?= $hourly["hourly_id"] ?></th>
                             <td><?= $hourly["name_day"] ?></td>
@@ -60,22 +54,21 @@ if(isset($_POST["add_hourly"])){
                             <td><?= $hourly["hourly_pm"] ?></td>
                             <td>Modifier | Supprimer</td>
                         </tr>
-                        
-                    <?php }  ?>
 
                 </tbody>
             </table>
         </div>
-        <?php 
-        foreach ($messages as $message) { ?>
-            <div class="alert alert-sucess"><?php $message; ?></div>
-            <?php }?>
-        <?php 
-        foreach ($errors as $error) { ?>
-            <div class="alert alert-danger"><?php $error; ?></div>
-            <?php }?>
+
         <form method="POST" enctype="multipart/form-data">
             <fieldset class="form-style">
+                <?php 
+                foreach ($messages as $message) { ?>
+                    <div class="alert alert-success"><?= $message; ?></div>
+                    <?php }?>
+                <?php 
+                foreach ($errors as $error) { ?>
+                    <div class="alert alert-danger"><?= $error; ?></div>
+                    <?php }?>
                 <legend class="form-legend"><?= $pagetitle ?></legend>
             
                 <label for="lundi"><input type="text" id="lundi" name="name_day" value="<?= $hourly["name_day"] ?>" class="form-input"></label>
@@ -90,6 +83,6 @@ if(isset($_POST["add_hourly"])){
 
             </fieldset>
         </form>
-    </aside>
+    </section>
 
 <?php require_once ("template-admin/footer-admin.php") ?>

@@ -49,19 +49,29 @@ function getTotalPageService(PDO $pdo):int
 }
 
 // Requète insertion et de modification de service
-function addService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id = null):bool
+function addService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id):bool
 {
-    if($id === null){
-        $query = $pdo->prepare("INSERT INTO services (name_service, description, image_service, user_id) VALUES (:name_service, :description, :image_service, :user_id)");
-    }else{
-        $query = $pdo->prepare("UPDATE services SET name_service = :name_service, description = :description, image_service = :image_service, id = :id");
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-    }
+    $query = $pdo->prepare("INSERT INTO services (name_service, description, image_service, user_id) VALUES (:name_service, :description, :image_service, :user_id)");
+
 
     $query->bindValue(":name_service", $name_service, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":image_service", $image_service, PDO::PARAM_STR);
     $query->bindValue(":user_id", $user_id, PDO::PARAM_STR);
+
+    return $query->execute();
+}
+
+// Requète de modification des services
+function changeService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id):bool
+{
+    $query = $pdo->prepare("UPDATE services SET name_service = :name_service, description = :description, image_service = :image_service, user_id = :user_id WHERE service_id = :id");
+
+    $query->bindValue(':name_service', $name_service, PDO::PARAM_STR);
+    $query->bindValue(':description', $description, PDO::PARAM_STR);
+    $query->bindValue(':image_service', $image_service, PDO::PARAM_STR);
+    $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
 
     return $query->execute();
 }
