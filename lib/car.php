@@ -38,22 +38,6 @@ function getCars(PDO $pdo, int $limit = null, int $page = null):array
     return $cars;
 }
 
-
-// récupération d'une voiture avec son id
-function getCar(PDO $pdo, int $id):array|bool
-{
-    
-    $sql = "SELECT * FROM car WHERE car_id = :id";
-    $query = $pdo->prepare($sql);
-
-    $query->bindValue(":id", $id, PDO::PARAM_INT);
-
-    $query->execute();
-    $car = $query->fetch(PDO::FETCH_ASSOC);
-
-    return $car;
-}
-
 // Récupération nb de page car
 function getTotalPageCar(PDO $pdo):int
 {

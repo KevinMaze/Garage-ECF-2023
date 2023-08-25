@@ -57,13 +57,13 @@ function addService (PDO $pdo, string $name_service, string $description, string
     $query->bindValue(":name_service", $name_service, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":image_service", $image_service, PDO::PARAM_STR);
-    $query->bindValue(":user_id", $user_id, PDO::PARAM_STR);
+    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
     return $query->execute();
 }
 
 // Requète de modification des services
-function changeService (PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id):bool
+function changeService(PDO $pdo, string $name_service, string $description, string|null $image_service, int $user_id, int $id):bool
 {
     $query = $pdo->prepare("UPDATE services SET name_service = :name_service, description = :description, image_service = :image_service, user_id = :user_id WHERE service_id = :id");
 

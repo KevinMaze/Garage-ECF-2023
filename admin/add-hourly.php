@@ -48,7 +48,6 @@ if(isset($_POST["add_hourly"])){
                     <th scope="col">Nom</th>
                     <th scope="col">Matin</th>
                     <th scope="col">Après-midi</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
 
@@ -60,7 +59,6 @@ if(isset($_POST["add_hourly"])){
                         <td><?= $hourly["name_day"] ?></td>
                         <td><?= $hourly["hourly_am"] ?></td>
                         <td><?= $hourly["hourly_pm"] ?></td>
-                        <td>Modifier | Supprimer</td>
                     </tr>
                     
                 <?php }  ?>

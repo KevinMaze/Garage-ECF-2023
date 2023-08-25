@@ -6,15 +6,15 @@
 
 // fonction a integrer
 - requete de suppression images add car
-- requete de suppresion d'article service, add service
+<!-- - requete de suppresion d'article service, add service -->
 
 
 
 // bug a corriger 
 <!-- - tout les chemins des images -->
-- messages [] et errors [] dans add service/ add car et delete car (div bugger)
+<!-- - messages [] et errors [] dans add service/ add car et delete car (div bugger) -->
 - image qui ne s'enregistre pas en bdd sur add car
-- voir page de modification services
+<!-- - voir page de modification services -->
 - voir page de modification voitures
 - image carrousel bug
 

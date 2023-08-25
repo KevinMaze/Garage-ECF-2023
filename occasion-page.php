@@ -7,7 +7,7 @@
 
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
-        $car = getCar($pdo, $id);
+        $car = getCarById($pdo, $id);
         $arrayImages = [$car["image1"], $car["image2"], $car["image3"], $car["image4"]];
         if (!$car){
             $error = true;

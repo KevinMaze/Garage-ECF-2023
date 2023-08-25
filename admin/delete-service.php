@@ -25,6 +25,7 @@
 
 <section class="flux">
     <div class="line-style"></div>
+    <h2 class="title-h2">Suppression de fichiers</h2>
     <?php 
         foreach ($messages as $message) { ?>
             <div class="alert alert-success" role="alert"><?= $message; ?></div>
