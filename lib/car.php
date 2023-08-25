@@ -49,15 +49,10 @@ function getTotalPageCar(PDO $pdo):int
     return $nbPageCar["0"]["COUNT(*)"];
 }
 
-// ajouter un article car (requète d'insertion et de modification)
-function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, string|null $image1, string|null $image2, string|null $image3, string|null $image4, int $id = null):bool
+// ajouter un article car (requète d'insertion)
+function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, string|null $image1, string|null $image2, string|null $image3, string|null $image4):bool
 {
-    if ($id === null) {
-        $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year, image1, image2, image3, image4) VALUES (:name, :description, :price, :mileage, :year, :image1 ,:image2, :image3, :image4)");
-    }else{
-        $query = $pdo->prepare("UPDATE 'car' SET 'name' = ':name', 'description' = ':description', 'price' = ':price', 'mileage' = ':mileage', 'year' = ':year', 'image1' = ':image1', 'image2' = ':image2', 'image3' = ':image3', 'image4' = ':image4', 'id' = ':id'");
-        $query->bindValue(':id', $id, $pdo::PARAM_INT);
-    }
+    $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year, image1, image2, image3, image4) VALUES (:name, :description, :price, :mileage, :year, :image1 ,:image2, :image3, :image4)");
 
     $query->bindValue(":name", $name, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);

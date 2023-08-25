@@ -17,6 +17,7 @@
 <!-- - voir page de modification services -->
 - voir page de modification voitures
 - image carrousel bug
+- regarder la taille des fichier envoyer
 
 
 

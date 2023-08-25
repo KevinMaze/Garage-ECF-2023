@@ -27,6 +27,7 @@
 
     <div class="line-style"></div>
 
+    <h2 class="title-h2">Suppression de l'article</h2>
     <?php foreach ($messages as $message) { ?>
         <div class="alert alert-success">
         <?= $message ?>
