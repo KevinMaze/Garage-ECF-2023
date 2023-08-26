@@ -50,22 +50,39 @@ function getTotalPageCar(PDO $pdo):int
 }
 
 // ajouter un article car (requète d'insertion)
-function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, string|null $image1, string|null $image2, string|null $image3, string|null $image4):bool
+function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year):bool|int
 {
-    $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year, image1, image2, image3, image4) VALUES (:name, :description, :price, :mileage, :year, :image1 ,:image2, :image3, :image4)");
+    $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year) VALUES (:name, :description, :price, :mileage, :year)");
 
     $query->bindValue(":name", $name, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":price", $price, PDO::PARAM_INT);
     $query->bindValue(":mileage", $mileage, PDO::PARAM_INT);
     $query->bindValue(":year", $year, PDO::PARAM_INT);
-    $query->bindValue(":image1", $image1, PDO::PARAM_STR);
-    $query->bindValue(":image2", $image2, PDO::PARAM_STR);
-    $query->bindValue(":image3", $image3, PDO::PARAM_STR);
-    $query->bindValue(":image4", $image4, PDO::PARAM_STR);
+    $query->execute();
+    $car_id = $pdo->lastInsertId();
+
+    return $car_id;
+    
+}
+
+// Requète ajout image avec car_id
+function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
+{
+    $query = $pdo->prepare("INSERT INTO image_car (name_image, car_id) VALUES (:name_image, :car_id)");
+
+    $query->bindValue(":name_image", $name_image, PDO::PARAM_STR);
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
 
     return $query->execute();
+}
 
+// Selection des images de la table image_car avec car_id
+function selectImageCar(PDO $pdo):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM image_car INNER JOIN car ON image_car.card_id = car.car_id");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // Suppression de l'article car

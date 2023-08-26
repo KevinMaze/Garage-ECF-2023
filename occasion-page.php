@@ -8,7 +8,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCarById($pdo, $id);
-        $arrayImages = [$car["image1"], $car["image2"], $car["image3"], $car["image4"]];
+        $arrayImages = selectImageCar($pdo, $_GET["id"]);
         if (!$car){
             $error = true;
         }
@@ -26,6 +26,7 @@
 <?php  if (!$error) {?>
 
     <section class="flux">
+        <?php var_dump($arrayImages) ?>
 
         <div class="section-occasion-page">
             <h2 class="title-h2"><?= $car["name"]?></h2>

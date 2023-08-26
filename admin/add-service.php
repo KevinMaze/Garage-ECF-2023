@@ -36,28 +36,19 @@ if(isset($_POST['add-service'])){
         "name" => $_POST["name_service"],
         "description" => $_POST["description"],
     ];
-
-    if(!$errors){
-        if(isset($_GET["id"])){
-            $id = (int)$_GET["id"];
-        }else{
-            $id = null;
+    // on passe les données addService
+    $result = addService($pdo, $_POST["name_service"], $_POST["description"], $fileName, $user_id);
+    if($result) {
+        $messages[] = "Enregistrement effectué";
+        // on efface le tableau
+        if(!isset($_GET["id"])){
+            $service = [
+                "name" => "",
+                "description" => "",
+            ];
         }
-
-        // on passe les données addService
-        $result = addService($pdo, $_POST["name_service"], $_POST["description"], $fileName, $user_id);
-        if($result) {
-            $messages[] = "Enregistrement effectué";
-            // on efface le tableau
-            if(!isset($_GET["id"])){
-                $service = [
-                    "name" => "",
-                    "description" => "",
-                ];
-            }
-        }else{
-            $errors[] = "Une erreur s'est produite !";
-        }
+    }else{
+        $errors[] = "Une erreur s'est produite !";
     }
 }
 ?>
