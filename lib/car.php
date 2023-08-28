@@ -80,9 +80,23 @@ function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
 // Selection des images de la table image_car avec car_id
 function selectImageCar(PDO $pdo):array|bool
 {
-    $query = $pdo->prepare("SELECT * FROM image_car INNER JOIN car ON image_car.card_id = car.car_id");
+    $query = $pdo->prepare("SELECT image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car WHERE image_car.car_id = car.car_id");
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+//Suppression des image_car
+function deleteImageCar(PDO $pdo, int $car_id):bool
+{
+    $query = $pdo->prepare("DELETE FROM image_car WHERE car_id = :id");
+    $query->bindValue(':id', $car_id, PDO::PARAM_INT);
+    $query->execute();
+
+    if($query->rowCount() > 0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 // Suppression de l'article car
@@ -91,7 +105,7 @@ function deleteCar(PDO $pdo, int $id):bool
     $query = $pdo->prepare("DELETE FROM car WHERE car_id = :id");
     $query-> bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
-
+    // si le nombre de ligne est sup a 0 
     if($query->rowCount() > 0){
         return true;
     }else{

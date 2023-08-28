@@ -30,7 +30,6 @@ if(isset($_POST["add-car"])){
     
     // On passe les données a addCar
     $result = addCar($pdo, $_POST["name"], $_POST["description"], $_POST["price"], $_POST["mileage"], $_POST["year"]);
-    var_dump($result);
     // Si un fichier est envoyé
     if ($result) {
         $fileName1 = null;
@@ -43,6 +42,51 @@ if(isset($_POST["add-car"])){
                 // On déplace le fichier dans upload/car
                 move_uploaded_file($_FILES["file1"]["tmp_name"], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName1);
                 $imageCar = addImageCar($pdo, $fileName1, $result);
+            }else { 
+                //sinon
+                $errors[] = "Fichier non conforme";
+            }
+        }
+        $fileName2 = null;
+        if (isset($_FILES["file2"]["tmp_name"]) && ($_FILES["file2"]["tmp_name"] != "")){
+            $checkImage = getimagesize($_FILES["file2"]["tmp_name"]);
+            // si image alors ok
+            if ($checkImage != false) {
+                $fileName2 = slugify(basename($_FILES["file2"]["name"]));
+                $fileName2 = uniqid()."-".$fileName2;
+                // On déplace le fichier dans upload/car
+                move_uploaded_file($_FILES["file2"]["tmp_name"], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName2);
+                $imageCar = addImageCar($pdo, $fileName2, $result);
+            }else { 
+                //sinon
+                $errors[] = "Fichier non conforme";
+            }
+        }
+        $fileName3 = null;
+        if (isset($_FILES["file3"]["tmp_name"]) && ($_FILES["file3"]["tmp_name"] != "")){
+            $checkImage = getimagesize($_FILES["file3"]["tmp_name"]);
+            // si image alors ok
+            if ($checkImage != false) {
+                $fileName3 = slugify(basename($_FILES["file3"]["name"]));
+                $fileName3 = uniqid()."-".$fileName3;
+                // On déplace le fichier dans upload/car
+                move_uploaded_file($_FILES["file3"]["tmp_name"], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName3);
+                $imageCar = addImageCar($pdo, $fileName3, $result);
+            }else { 
+                //sinon
+                $errors[] = "Fichier non conforme";
+            }
+        }
+        $fileName4 = null;
+        if (isset($_FILES["file4"]["tmp_name"]) && ($_FILES["file4"]["tmp_name"] != "")){
+            $checkImage = getimagesize($_FILES["file4"]["tmp_name"]);
+            // si image alors ok
+            if ($checkImage != false) {
+                $fileName4 = slugify(basename($_FILES["file4"]["name"]));
+                $fileName4 = uniqid()."-".$fileName4;
+                // On déplace le fichier dans upload/car
+                move_uploaded_file($_FILES["file4"]["tmp_name"], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName4);
+                $imageCar = addImageCar($pdo, $fileName4, $result);
             }else { 
                 //sinon
                 $errors[] = "Fichier non conforme";

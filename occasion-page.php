@@ -26,7 +26,7 @@
 <?php  if (!$error) {?>
 
     <section class="flux">
-        <?php var_dump($arrayImages) ?>
+
 
         <div class="section-occasion-page">
             <h2 class="title-h2"><?= $car["name"]?></h2>
@@ -38,7 +38,7 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
 
                 <div class="carousel-inner flux border-shadow">
@@ -46,7 +46,7 @@
                         foreach ($arrayImages as $key => $arrayImage){ 
                             if ($arrayImage != null ) {?> 
                             <div class="carousel-item active">
-                                <img src="<?= _CAR_IMAGE_PATH_.$arrayImage ?>" class="d-block w-100" alt="...">
+                                <img src=<?=_CAR_IMAGE_PATH_.$arrayImage["name_image"]?> class="d-block w-100" alt=<?=$arrayImage["name_image"]?>>
                             </div> 
                             <?php }?>
                         <?php } ?>

@@ -38,7 +38,9 @@ CREATE TABLE image_car (
 -- # Création table equipment
 CREATE TABLE equipment (
     equipment_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    car_id INT,
+    FOREIGN KEY (car_id) REFERENCES car (car_id)
 )
 
 -- # Création table relation equipment car

@@ -5,6 +5,7 @@
     require_once  ("../lib/car.php");
     require_once  ("../admin/template-admin/header-admin.php");
 
+    $imageCar = false;
     $carArticle = false;
     $errors = [];
     $messages = [];
@@ -12,11 +13,13 @@
     if(isset($_GET["id"])){
         $carArticle = getCarById($pdo, (int)$_GET["id"]);
         if($carArticle){
-            if(deleteCar($pdo, $_GET["id"])){
-                $messages[] = "L'article a bien été supprimé";
-            }else{
-                $errors[] = "Une erreur s'est produite !";
-            }
+            if(deleteImageCar($pdo, $_GET["id"])){
+                if(deleteCar($pdo, $_GET["id"])){
+                    $messages[] = "L'article a bien été supprimé";
+                }else{
+                    $errors[] = "Une erreur s'est produite !";
+                }
+            };
         }else{
             $errors[] = "L'article n'existe pas !";
         }
