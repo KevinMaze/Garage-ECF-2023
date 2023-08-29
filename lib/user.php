@@ -60,4 +60,37 @@ function getUser(PDO $pdo, int $limit = null, int $page = null):array|bool
     $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return $users;
-}   
+}
+
+// recupération avec id
+function getUserById(PDO $pdo, int $id):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM user WHERE user_id = :id");
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+//récupération user total
+function getTotalPageUser(PDO $pdo):int
+{
+    $sql = "SELECT COUNT(*) FROM user";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $nbPageUser = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $nbPageUser["0"]["COUNT(*)"];
+}
+
+//delete user
+function deleteUser(PDO $pdo, int $id):bool
+{
+    $query = $pdo->prepare("DELETE FROM user WHERE user_id = :id");
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+
+    if($query->rowCount() > 0){
+        return true;
+    }else{
+        return false;
+    }
+}

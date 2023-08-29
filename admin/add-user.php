@@ -5,9 +5,21 @@
     require_once ("../lib/user.php");
     require_once ('template-admin/header-admin.php');
 
+    if (isset($_GET["page"])) {
+        $page = (int)$_GET["page"];
+    }else {
+        $page = 1;
+    }
+    
+    // total pages user
+    $users = getUser($pdo, _ADMIN_CAR_PER_PAGE_, $page);
+    $totalUsers = getTotalPageUser($pdo);
+    $totalPageUsers = ceil($totalUsers / _ADMIN_CAR_PER_PAGE_);
+    //tableau des messages
     $messages = [];
     $errors = [];
 
+    // requete ajout
     if(isset($_POST["add-user"])){
         $result = addUser($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["password"], $_POST["role"]);
         if($result){
@@ -19,6 +31,42 @@
 ?>
 
 <section class="flux">
+
+    <h2 class="title-h2">Utilisateurs actuel</h2>
+
+    <div class="line-style"></div>
+
+    <div class="section-admin__crud__description">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($users as $key => $user) {?>
+
+                    <tr>
+                    <th scope="row"><?= $user["user_id"] ?></th>
+                        <td><?= $user["lastname"] ?></td>
+                        <td><?= $user["firstname"] ?></td>
+                        <td><?= $user["role"] ?></td>
+                        <td><a href="modification-user.php?id=<?= $user["user_id"] ?>">Modifier</a> | <a href="delete-user.php?id=<?= $user["user_id"] ?>">Supprimer</a></td>
+                    </tr>
+                    
+                <?php }  ?>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="line-style flux"></div>
+
 	<form method="POST">
         <?php foreach ($messages as $message) { ?>
                 <div class="alert alert-success"><?= $message ?></div>

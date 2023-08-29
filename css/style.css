@@ -539,13 +539,6 @@ body{
     text-decoration: underline;
 }
 
-.section-admin__crud__title{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 /* NAVIGATION PAGE ADMIN */
 .navigation-page{
     display: flex;
