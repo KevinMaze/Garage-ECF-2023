@@ -18,9 +18,6 @@ if(isset($_GET["id"])){
     if($hourly === false){
         $errors[] = "L'article demandé n\'existe pas !";
     }
-    $pagetitle = "Formulaire de modification";
-}else{
-    $pagetitle = "Formualaire d'ajout d'horaire";
 }
 
 // Requète d'ajout
@@ -36,6 +33,7 @@ if(isset($_POST["add_hourly"])){
 ?>
 
 <section class="flux">
+    
     <h2 class="title-h2">Horaires actuelles</h2>
 
     <div class="line-style"></div>
@@ -48,6 +46,7 @@ if(isset($_POST["add_hourly"])){
                     <th scope="col">Nom</th>
                     <th scope="col">Matin</th>
                     <th scope="col">Après-midi</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
 
@@ -59,6 +58,7 @@ if(isset($_POST["add_hourly"])){
                         <td><?= $hourly["name_day"] ?></td>
                         <td><?= $hourly["hourly_am"] ?></td>
                         <td><?= $hourly["hourly_pm"] ?></td>
+                        <td><a href="modification-hourly.php?id=<?= $hourly["hourly_id"] ?>">Modifier</a></td>
                     </tr>
                     
                 <?php }  ?>
@@ -66,17 +66,22 @@ if(isset($_POST["add_hourly"])){
             </tbody>
         </table>
     </div>
-    <?php 
-    foreach ($messages as $message) { ?>
-        <div class="alert alert-sucess"><?php $message; ?></div>
-        <?php }?>
-    <?php 
-    foreach ($errors as $error) { ?>
-        <div class="alert alert-danger"><?php $error; ?></div>
-        <?php }?>
+    
+    <div class="line-style"></div>
+
 	<form method="POST" enctype="multipart/form-data">
-		<fieldset class="form-style">
-			<legend class="form-legend"><?= $pagetitle ?></legend>
+        <fieldset class="form-style">
+            <?php 
+            foreach ($messages as $message) { ?>
+                <div class="alert alert-sucess"><?php $message; ?></div>
+                <?php }?>
+            <?php 
+            foreach ($errors as $error) { ?>
+                <div class="alert alert-danger"><?php $error; ?></div>
+                <?php }?>
+			<legend class="form-legend">Formulaire d'ajout d'horaires</legend>
+
+            <div class="line-style"></div>
 		
 			<label for="lundi"><input type="text" id="lundi" name="name_day" placeholder="Jour" class="form-input"></label>
 

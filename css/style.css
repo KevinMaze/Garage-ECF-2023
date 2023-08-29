@@ -365,6 +365,20 @@ body{
     margin-left: 2em;
 }
 
+/* FORM ADD USER ADMIN */
+.form-select__add-user{
+    font-family: var(--font-paragraphe);
+    background-color: var(--timberwolf);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-box);
+    border-radius: 10px;
+    height: 3em;
+}
+
+.form-select__add-user__label{
+    margin: 15px;
+}
+
 /* CONNECTION */
 .header__description__connection{
     display: flex;

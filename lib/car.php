@@ -80,7 +80,7 @@ function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
 // Selection des images de la table image_car avec car_id
 function selectImageCar(PDO $pdo):array|bool
 {
-    $query = $pdo->prepare("SELECT image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car WHERE image_car.car_id = car.car_id");
+    $query = $pdo->prepare("SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car WHERE image_car.car_id = car.car_id");
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -112,3 +112,21 @@ function deleteCar(PDO $pdo, int $id):bool
         return false;
     }
 }
+
+// Requète de modification des cars
+function changeCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, int $id):bool
+{
+    $query = $pdo->prepare("UPDATE car SET name = :name, description = :description, price = :price, mileage = :mileage, year = :year WHERE car_id = :id");
+
+    $query->bindValue(":name", $name, PDO::PARAM_STR);
+    $query->bindValue(":description", $description, PDO::PARAM_STR);
+    $query->bindValue(":price", $price, PDO::PARAM_INT);
+    $query->bindValue(":mileage", $mileage, PDO::PARAM_INT);
+    $query->bindValue(":year", $year, PDO::PARAM_INT);
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+
+    return $query->execute();
+}
+
+// Modification des image_car
+// function changeImageCar(PDo $pdo, string $name_image)

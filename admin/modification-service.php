@@ -50,9 +50,6 @@ if(isset($_POST["add_service"])){
     }
 }
 
-
-
-
 ?>
 
     <section class="flux">
@@ -103,7 +100,6 @@ if(isset($_POST["add_service"])){
                     <input type="hidden" name="file" value="<?= $service['image_service']; ?>">
                 </div>
 
-                
                 <input type="hidden" name="MAX_FILE_SIZE" value="2621440" />
                 <input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg" class="form-file">
 

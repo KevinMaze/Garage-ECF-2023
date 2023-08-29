@@ -6,8 +6,20 @@ require_once  ("../lib/pdo.php");
 require_once ("../lib/car.php");
 require_once ("template-admin/header-admin.php");
 
+if (isset($_GET["page"])) {
+    $page = (int)$_GET["page"];
+}else {
+    $page = 1;
+}
+
+// total pages car
+$carArticles = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
+$totalArticleCar = getTotalPageCar($pdo);
+$totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
+// tableau des messages
 $errors = [];
 $messages = [];
+// valeurs vide
 $car = [
     'name' => '',
     'description' => '',
@@ -112,6 +124,45 @@ if(isset($_POST["add-car"])){
 ?>
 
 <section class="flux">
+
+    <h2 class="title-h2"  id="articles">Articles</h2>
+    
+    <div class="line-style"></div>
+
+    <div class="section-admin__crud__description" id="article-car">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($carArticles as $key => $carArticle) {?>
+
+                    <tr>
+                    <th scope="row"><?= $carArticle["car_id"] ?></th>
+                        <td><?= $carArticle["name"] ?></td>
+                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href="delete-car.php?id=<?=$carArticle["car_id"] ?>" id="delete">Supprimer</a></td>
+                    </tr>
+                <?php }  ?>
+            </tbody>
+        </table>
+        <?php if ($totalPageCar) {?>
+                <nav>
+                    <ul class="navigation-page">
+                        <?php for ($i = 1; $i <= $totalPageCar; $i++) { ?>
+                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php }  ?>
+                    </ul>
+                </nav>
+        <?php }?>
+    </div>
+
+    <div class="line-style"></div>
+
     <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
         <?php 
         foreach ($messages as $message) { ?>

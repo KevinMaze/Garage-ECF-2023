@@ -6,6 +6,7 @@
 
 	define("_ADMIN_CAR_PER_PAGE_", 9);
 	define("_ADMIN_SERVICE_PER_PAGE_", 10);
+	define("_LIMIT_USER_PER_PAGE_", 5);
 
 	define('_DB_NAME_PATH_', 'maze_ecf_garage_2023');
 	define('_DB_SERVER_', 'mysql-maze.alwaysdata.net');

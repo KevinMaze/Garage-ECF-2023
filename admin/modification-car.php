@@ -1,8 +1,97 @@
-<!-- <?php if (isset($_GET['id']) && isset($car["image1"])) { ?>
-                    <p>
-                    <img src="<?= _CAR_IMAGE_PATH_.$car["image1"] ?>" alt="<?= $car['name'] ?>" width="100">
-                    <label for="delete_image">Supprimer l'image</label>
-                    <input type="checkbox" name="delete_image" id="delete_image">
-                    <input type="hidden" name="image1" value="<?= $car['image1']; ?>">
-                    </p>
-                <?php } ?> -->
+<?php  
+
+require_once ("../lib/session.php");
+require_once ("../lib/config.php");
+require_once ("../lib/pdo.php");
+require_once ("../lib/tools.php");
+require_once ("../lib/user.php");
+require_once ("../lib/car.php");
+require_once ('template-admin/header-admin.php');
+
+$messages = [];
+$errors = [];
+
+if(isset($_GET["id"])){
+    $car = getCarById($pdo, (int)$_GET["id"]);
+    $imagesCar = selectImageCar($pdo, $_GET["id"]);
+    if($car === false){
+        $errors[]="L'article n'hexiste pas";
+    }
+}
+
+if(isset($_POST["add-car"])){
+    $result = changeCar($pdo, $_POST["name"], $_POST["description"], $_POST["price"], $_POST["mileage"], $_POST["year"], $_GET["id"]);
+    if($result){
+        $messages[] = "Modification effectué";
+    }else{
+        $errors[] = "Une erreur s'est produite";
+    }
+    foreach ($imagesCar as $key => $imageCar) {
+        if(isset($_POST["delete_image"])){
+            if(file_exists($imageCar["image_id"])){
+                unlink(_CAR_IMAGE_PATH_.$imagesCar["name_image"]);
+            }else{
+                $errors[] = "Le fichier n'existe plus";
+            }
+        }else{
+            $errors[] = "Une erreur s'est produit";
+        }
+    }
+}
+
+?>
+<section class="flux">
+    <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
+        <?php 
+        foreach ($messages as $message) { ?>
+            <div class="alert alert-success"><?= $message ?></div>
+            <?php }?>
+        <?php 
+        foreach ($errors as $error) { ?>
+            <div class="alert alert-danger"><?= $error ?></div>
+            <?php }?>
+        <fieldset class="form-style">
+            <legend class="form-legend">Formulaire de modification</legend>
+            
+            <div class="line-style"></div>
+            
+            <label for="name"><input type="text" id="name" name="name" value=<?= $car["name"] ?>  class="form-input"></label>
+            
+            <textarea type="textarea" id="description" name="description" class="form-textarea"><?=$car["description"]?></textarea>
+            
+            <label for="price"><input type="text" id="price" name="price" value=<?= $car["price"]?> class="form-input"></label>
+                
+            <label for="mileage"><input type="text" id="mileage" name="mileage" value=<?= $car["mileage"]?> class="form-input"></label>
+
+            <label for="year"><input type="text" id="year" name="year" value=<?= $car["year"]?> class="form-input"></label>
+
+            <p class="para-select-image">Veuiller selectionner jusqu'à 4 images du véhicule (2.5 mo max)</p>
+
+            <?php foreach ($imagesCar as $key => $imageCar) {?>
+                <div>
+                    <div>
+                        <label for="delete_image" class="form-file"><input type="checkbox" name="delete_image" id="delete_image">Supprimer l'image précédente</label>
+                        <input type="hidden" name="delete_image" value="<?= $imageCar['image_id']; ?>">
+                    </div>
+                    <input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg" class="form-file">
+                </div>
+            <?php } ?>
+<!--             
+            <input type="file" id="file2" name="file2" accept="image/png, image/jpg, image/jpeg" class="form-file">
+            
+            <input type="file" id="file3" name="file3" accept="image/png, image/jpg, image/jpeg" class="form-file">
+            
+            <input type="file" id="file4" name="file4" accept="image/png, image/jpg, image/jpeg" class="form-file"> -->
+            
+            <div class="form-button">
+                <input type="submit" name="add-car" value="Envoyer" class="custom-button">
+            </div>
+            
+        </fieldset>
+    </form>
+</section>
+
+
+<?php require_once ("template-admin/footer-admin.php") ?>
+
+
