@@ -94,3 +94,18 @@ function deleteUser(PDO $pdo, int $id):bool
         return false;
     }
 }
+
+// modification user
+function changeUser(PDO $pdo, string $lastname, string $firstname, string $email, string $password, string $role, int $id):bool
+{
+    $query = $pdo->prepare("UPDATE user SET lastname = :lastname, firstname = :firstname, email = :email, password = :password, role = :role WHERE user_id = :id");
+
+    $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+    $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+    $query->bindValue(":email", $email, PDO::PARAM_STR);
+    $query->bindValue(":password", $password, PDO::PARAM_STR);
+    $query->bindValue(":role", $role, PDO::PARAM_STR);
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+
+    return $query->execute();
+}

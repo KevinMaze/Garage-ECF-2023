@@ -16,7 +16,6 @@ if(isset($_GET["id"])){
     if($service === false){
         $errors[]="L'article n'hexiste pas";
     }
-    $pageTitle = "Formulaire de modification";
 }
 
 if(isset($_POST["add_service"])){
@@ -76,6 +75,8 @@ if(isset($_POST["add_service"])){
             </table>
         </div>
 
+        <div class="line-style"></div>
+
         <form method="POST" enctype="multipart/form-data" class="form-add-car">
             <?php foreach ($messages as $message) { ?>
                     <div class="alert alert-success"><?= $message; ?></div>
@@ -85,7 +86,7 @@ if(isset($_POST["add_service"])){
             <?php }?>
             
             <fieldset class="form-style">
-                <legend class="form-legend"><?= $pageTitle ?></legend>
+                <legend class="form-legend">Formulaire de modification service</legend>
                 
                 <div class="line-style"></div>
                 

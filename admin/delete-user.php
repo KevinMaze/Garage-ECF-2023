@@ -11,7 +11,7 @@
     $messages = [];
 
     if(isset($_GET["id"])){
-        $user = getUserById($pdo, $_GET["id"]);
+        $user = getUserById($pdo, (int)$_GET["id"]);
         if($user){
             if(deleteUser($pdo, $_GET["id"])){
                 $messages[] = "L'utilisateur a bien été supprimé";
