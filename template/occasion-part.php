@@ -1,14 +1,16 @@
 <?php
-    if ($car['image1'] === null) {
-        $imagePath = "assets/default.jpg";
+    $image_car = selectOneImage($pdo, $car["car_id"], 1);
+    
+    if ($image_car == "") {
+        $imagePath = "./assets/default.jpg";
     }
     else {
-        $imagePath = _CAR_IMAGE_PATH_.$car["image1"];
+        $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
     }
 ?>
 
 <div class="section-occasion-card">
-    <img src="<?=$imagePath?>" alt="#>">
+    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
     <div class="section-occasion__div">
         <h2 class="title-h2"><?= htmlentities($car["name"])?> | <?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?></h2>
         <p class="occasion-para"><?= htmlentities($car["description"])?>.</p>

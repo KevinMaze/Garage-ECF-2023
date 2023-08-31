@@ -1,3 +1,5 @@
+
+// defilement vers le haut avec flèche
 const btn = document.querySelector('.button-up')
 
 btn.addEventListener('click', () => {
@@ -13,4 +15,14 @@ const btnDelete = document.querySelector("#delete")
 
 btnDelete.addEventListener('click', ()=> {
     return confirm ('Êtes-vous sûr de vouloir supprimer cet article ?')
+})
+
+// afficher le mot de passe
+let pass = document.getElementById("password");
+let btnEye = document.getElementById("eye");
+
+btn.addEventListener("click", () => {
+    if(Input.type === "password"){
+        input.type = "text"
+    }
 })

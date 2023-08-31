@@ -63,6 +63,15 @@
 
             </tbody>
         </table>
+        <?php if ($totalPageUsers) {?>
+            <nav>
+                <ul class="navigation-page">
+                    <?php for ($i = 1; $i <= $totalPageUsers; $i++) { ?>
+                        <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                    <?php }  ?>
+                </ul>
+            </nav>
+            <?php }?>
     </div>
 
     <div class="line-style flux"></div>

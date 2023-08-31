@@ -113,12 +113,18 @@
             <?php } ?>
 
             <form action="" method="post" class="form-style-connection flux">
-            
-                <label for="email" class="label-connection"> Login</label>
-                <input type="text" id="email" name="email"  class="form-input" required>
+                
+                <label for="email" class="label-connection">Email</label>
+                <input type="text" id="email" name="email" class="form-input" placeholder="Email">
 
-                <label for="password" class="label-connection"> Mot de passe</label>
-                <input type="password" id="password" name="password" class="form-input" required>
+                <div>
+                    <label for="password" class="label-connection">Mot de passe </label>
+                    <img src="./assets/masque.png" alt="icone masqué" class="icone-password" id="eye">
+                </div>
+                <input type="password" id="password" name="password" class="form-input" placeholder="Mot de passe" required>
+                
+
+                
 
                 <div class="form-button">
                     <input type="submit" value="Connection" name="loginUser" class="custom-button">
@@ -130,8 +136,8 @@
             </form>
                     
         </header>
-
-        <!-- <script src="./js/script.js"></script> -->
+        
+        <script src="./js/script.js"></script>
         <script src="./js/lib/nav.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -11,10 +11,10 @@
         $page = 1;
     }
 
-
     $cars = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
     $totalArticleCar = getTotalPageCar($pdo);
     $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
+    
 
 ?>
 
@@ -68,7 +68,7 @@
 
 <section class="section-occasion flux">
 
-    <?php foreach ($cars as $key => $car) {?>
+    <?php foreach ($cars as $key => $car){?>
 
         <?php include ("template/occasion-part.php") ?>
         

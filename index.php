@@ -3,11 +3,13 @@
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
     require_once ('lib/services.php');
+    require_once ('lib/opinion.php');
     require_once ('lib/main_menu.php');
     require_once ("template/header.php");
 
     $cars = getCars($pdo, 3);
     $services = getServices($pdo);
+    $opinions = getOpinions($pdo);
 ?>
 
         <div class="line-style flux"></div>
@@ -19,7 +21,7 @@
 
                     <div class="card-service">
                         <div class="section__service__img">
-                            <img src=<?= _SERVICE_IMG_PATH_.$service['image_service']?> alt="#">
+                            <img src=".<?=_SERVICE_IMG_PATH_.$service['image_service']?>" alt="<?=$service['image_service']?>">
                         </div>
                         <p><?= $service['name_service'] ?></p>
                     </div>
@@ -71,12 +73,14 @@
 
         <section class="section__opinion flux">
             <h2 class="title-h2">Dernier avis</h2>
-            <div class="section__last-opinion border-shadow">
-                <h3>Name</h3>
-                <div class="line-inside-div-style flux"></div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem voluptatum dolores iusto assumenda quibusdam repellendus rerum explicabo atque ipsum maxime incidunt aliquam tempore nulla dolor debitis similique vitae quae accusamus voluptate doloribus, omnis, optio alias quam quia. Fugit, incidunt consequatur.</p>
-                <p class="section__opinion__note">Note : 5/5</p>
-            </div>
+            <?php foreach ($opinions as $key => $opinion) {?>
+                <div class="section__last-opinion border-shadow">
+                    <h3><?= $opinion["name"] ?></h3>
+                    <div class="line-inside-div-style flux"></div>
+                    <p><?= $opinion["opinion_text"] ?>.</p>
+                    <p class="section__opinion__note">Note : <?= $opinion["note"] ?> / 5</p>
+                </div>
+            <?php } ?>
         </section>
 
         <div class="line-style flux"></div>

@@ -10,6 +10,7 @@
 <!-- - requete de suppresion d'article service, add service -->
 - Formulaire de contact
 - ajouter photo de profil ?
+- afficher/cacher les mots de passe
 
 
 

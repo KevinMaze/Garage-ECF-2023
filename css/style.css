@@ -272,6 +272,18 @@ body{
     font-size: 1.2em;
 }
 
+.image-grid__occasion-page{
+    /* margin-left: 10px; */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.img-occasion-page{
+    width: 20em;
+    justify-self: center;
+}
+
 /*  SECTION OPINION */
 .section__opinion{
     margin-bottom: 100px;
@@ -326,6 +338,7 @@ body{
     border: 2px solid var(--border-color);
     border-radius: 10px;
     box-shadow: var(--shadow-box);
+    font-size: 1.2em;
 }
 
 .form-style{
@@ -342,6 +355,7 @@ body{
     margin: 15px;
     height: 3em;
     width: 90%;
+    font-size: 1.5em;
 }
 
 .form-opinion{
@@ -408,6 +422,11 @@ body{
     font-family: var(--font-paragraphe);
     color: var(--timberwolf);
     text-align: center;
+}
+
+.icone-password{
+    width: 30px;
+    background-color: var(--timberwolf);
 }
 
 
@@ -643,6 +662,14 @@ body{
         font-size: 1.5em;
     }
 
+    .image-grid__occasion-page{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .img-occasion-page{
+        width: 21em;
+    }
+
     /**OPINION**/
     .section__last-opinion h3{
         font-size: 2em;
@@ -754,6 +781,10 @@ body{
     }
     .section-occasion-page__description__equipment{
         font-size: 1.8em;
+    }
+
+    .img-occasion-page{
+        width: 30em;
     }
 
 
