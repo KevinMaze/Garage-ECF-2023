@@ -44,12 +44,14 @@ function deleteOpinion(PDO $pdo, int $opinion_id):bool
 }
 
 // ajout d'un avis vérifié
-function addVerifyOpinion(PDO $pdo, string $name_verify, string $opinion_text_verify, int $note_verify, int $user_id):bool
+function addVerifyOpinion(PDO $pdo, string $name_verify, string $opinion_text_verify, int $note_verify, string $verify):bool
 {
-    $query = $pdo->prepare("INSERT INTO verify_opinion (name_verify, opinion_text_verify, note_verify, user_id) VALUES (:name_verify, :opinion_text_verify :note_verify, :user_id)");
-    $query->bindValue(":name_verify", $name_verify, PDO::PARAM_STR);
-    $query->bindValue(":opinion_text_verify", $opinion_text_verify, PDO::PARAM_STR);
-    $query->bindValue(":note_verify", $note_verify, PDO::PARAM_STR);
-    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    $query = $pdo->prepare("UPDATE opinion (name, opinion_text, note, verify) VALUES (:name_verify, :opinion_text :note, :verify)");
+    $query->bindValue(":name", $name_verify, PDO::PARAM_STR);
+    $query->bindValue(":opinion_text", $opinion_text_verify, PDO::PARAM_STR);
+    $query->bindValue(":note", $note_verify, PDO::PARAM_STR);
+    $query->bindValue(":verify", $verify, PDO::PARAM_INT);
     return $query->execute();
 }
+
+// récupération avis vérifié

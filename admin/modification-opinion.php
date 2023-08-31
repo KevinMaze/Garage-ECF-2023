@@ -17,17 +17,13 @@ if(isset($_GET["id"])){
 }
 
 if(isset($POST["add_opinion_verify"])){
-    $user_id = intval($_SESSION["user"]["user_id"]);
-    $opinionVerify = addVerifyOpinion($pdo, $_POST["name_verify"], $_POST["opinion_text_verify"], $_POST["note_verify"], $user_id);
+    $opinionVerify = addVerifyOpinion($pdo, $_POST["name"], $_POST["opinion_text"], $_POST["note"], $_POST["verify"]);
     if($opinionVerify) {
-        var_dump($opinionVerify);
         $messages[] = "Vérification effectué et envoyé";
     }else{
         $errors[] = "Une erreur s'est produite !";
     }
 }
-
-
 ?>
 
 <section class="flux">
@@ -61,6 +57,8 @@ if(isset($POST["add_opinion_verify"])){
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select></label>
+
+            <label for="verify"><input name="verify" type="text" id="name" class="form-input" placeholder="Taper 'yes' pour valider l'avis"></label>
 
             <div class="form-button">
                 <input name="add_opinion_verify" type="submit" value="Envoyer" class="custom-button">

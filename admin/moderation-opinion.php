@@ -6,6 +6,7 @@ require_once  ("../lib/opinion.php");
 require_once ("template-admin/header-admin.php");
 
 $opinions = getOpinions($pdo);
+
 ?>
 
 <section class="flux">
@@ -22,21 +23,26 @@ $opinions = getOpinions($pdo);
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Vérifié</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
     
             <tbody>
-                <?php foreach ($opinions as $key => $opinion) {?>
-    
+                <?php foreach ($opinions as $key => $opinion) {
+                    if($opinion["verify"] == null){?>
                     <tr>
-                    <th scope="row"><?= $opinion["name"] ?></th>
+                    <th scope="row"><?= $opinion["opinion_id"] ?></th>
+                        <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
+                        <td><?= $opinion["note"] ?></td>
+                        <td><?= $opinion["verify"] ?></td>
                         <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
-                    
-                <?php }  ?>
-    
+                    <?php } ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
@@ -53,19 +59,23 @@ $opinions = getOpinions($pdo);
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Note</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php foreach ($opinions as $key => $opinion) {?>
-
+                <?php foreach ($opinions as $key => $opinion) {
+                    if($opinion["verify"] == "yes"){?>
                     <tr>
-                    <th scope="row"><?= $opinion["name"] ?></th>
+                    <th scope="row"><?= $opinion["opinion_id"] ?></th>
+                        <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
-                        <td>Modifier | Supprimer</td>
+                        <td><?= $opinion["note"] ?></td>
+                        <td> Supprimer</td>
                     </tr>
-                    
+                    <?php }?>
                 <?php }  ?>
 
             </tbody>

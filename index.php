@@ -73,13 +73,15 @@
 
         <section class="section__opinion flux">
             <h2 class="title-h2">Dernier avis</h2>
-            <?php foreach ($opinions as $key => $opinion) {?>
-                <div class="section__last-opinion border-shadow">
-                    <h3><?= $opinion["name"] ?></h3>
-                    <div class="line-inside-div-style flux"></div>
-                    <p><?= $opinion["opinion_text"] ?>.</p>
-                    <p class="section__opinion__note">Note : <?= $opinion["note"] ?> / 5</p>
-                </div>
+            <?php foreach ($opinions as $key => $opinion)  {
+                    if($opinion["verify"] == "yes") {?>  
+                    <div class="section__last-opinion border-shadow">
+                        <h3><?= $opinion["name"] ?></h3>
+                        <div class="line-inside-div-style flux"></div>
+                        <p><?= $opinion["opinion_text"] ?>.</p>
+                        <p class="section__opinion__note">Note : <?= $opinion["note"] ?> / 5</p>
+                    </div>
+                    <?php } ?>
             <?php } ?>
         </section>
 

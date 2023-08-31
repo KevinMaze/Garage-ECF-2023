@@ -1,16 +1,18 @@
 // pages à faire :
 <!-- - horaires + bdd horaires -> requete et changement dans back office -->
-- avis clients + bdd avis + page delete avis -> validation en back office, création note avis client en étoile /5 ?, 
+<!-- - avis clients + bdd avis + page delete avis -> validation en back office, création note avis client en étoile /5 ?,  -->
 <!-- - page de création de compte employer et de suppression (table users deja créé)
 - affichage en fonction des admins -->
+- page admin de contact
 
 
 // fonction a integrer
 <!-- - requete de suppression images add car, suppriemr image table car -> requete table image_car -->
 <!-- - requete de suppresion d'article service, add service -->
-- Formulaire de contact
+<!-- - Formulaire de contact -->
 - ajouter photo de profil ?
 - afficher/cacher les mots de passe
+- ajouter champ "verify" dans bdd et faire un if pour afficher
 
 
 
