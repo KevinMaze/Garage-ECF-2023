@@ -145,7 +145,7 @@ if(isset($_POST["add-car"])){
                     <tr>
                     <th scope="row"><?= $carArticle["car_id"] ?></th>
                         <td><?= $carArticle["name"] ?></td>
-                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href="delete-car.php?id=<?=$carArticle["car_id"] ?>" id="delete">Supprimer</a></td>
+                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href="delete-page.php?id=<?=$carArticle["car_id"] ?>" id="delete">Supprimer</a></td>
                     </tr>
                 <?php }  ?>
             </tbody>

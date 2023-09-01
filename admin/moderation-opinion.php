@@ -5,7 +5,27 @@ require_once  ("../lib/pdo.php");
 require_once  ("../lib/opinion.php");
 require_once ("template-admin/header-admin.php");
 
-$opinions = getOpinions($pdo);
+if (isset($_GET["page"])) {
+    $page = (int)$_GET["page"];
+}else {
+    $page = 1;
+}
+
+$opinions = getOpinions($pdo, _LIMIT_OPINION_PER_PAGE_, $page);
+$totalOpinion = getTotalOpinion($pdo);
+$totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
+
+$messages = [];
+$errors = [];
+
+if(isset($_POST["add_opinion"])){
+    $opinionResult = addOpinion($pdo, $_POST["name"], $_POST["text"], $_POST["note"]);
+    if($opinionResult){
+        $messages[] = "Votre note a bien été enregistré, merci de votre avis";
+    }else{
+        $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
+    }
+}
 
 ?>
 
@@ -39,12 +59,21 @@ $opinions = getOpinions($pdo);
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
                         <td><?= $opinion["verify"] ?></td>
-                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
+                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-page.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php } ?>
                 <?php } ?>
             </tbody>
         </table>
+        <?php if ($totalPageOpinion) {?>
+                <nav>
+                    <ul class="navigation-page">
+                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
+                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php }  ?>
+                    </ul>
+                </nav>
+        <?php }?>
     </div>
 
     <div class="line-style"></div>
@@ -73,13 +102,22 @@ $opinions = getOpinions($pdo);
                         <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
-                        <td> Supprimer</td>
+                        <td><a href="./delete-page.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php }?>
                 <?php }  ?>
 
             </tbody>
         </table>
+        <?php if ($totalPageOpinion) {?>
+                <nav>
+                    <ul class="navigation-page">
+                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
+                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php }  ?>
+                    </ul>
+                </nav>
+        <?php }?>
     </div>
 
     <div class="line-style"></div>
@@ -91,6 +129,12 @@ $opinions = getOpinions($pdo);
     <div class="line-style"></div>
 
     <form method="POST">
+        <?php foreach ($messages as $message) { ?>
+                <div class="alert alert-success"><?= $message ?></div>
+        <?php }?>
+        <?php foreach ($errors as $error) { ?>
+                <div class="alert alert-danger"><?= $error ?></div>
+        <?php }?>
         <fieldset class="form-opinion">
         
             <label for="name"><input name="name" type="text" id="name" placeholder="Nom" class="form-input"></label>

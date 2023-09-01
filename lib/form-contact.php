@@ -14,3 +14,12 @@ function addContact(PDO $pdo, string $lastname, string $firstname, string $email
 
     return $query->execute();
 }
+
+// récupération des contacts
+function getContact(PDO $pdo):array|bool
+{
+    $sql = ("SELECT * FROM contact");
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}

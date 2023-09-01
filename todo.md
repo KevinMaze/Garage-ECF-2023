@@ -3,7 +3,8 @@
 <!-- - avis clients + bdd avis + page delete avis -> validation en back office, création note avis client en étoile /5 ?,  -->
 <!-- - page de création de compte employer et de suppression (table users deja créé)
 - affichage en fonction des admins -->
-- page admin de contact
+<!-- - page admin de contact -->
+- enlever page delete en trop
 
 
 // fonction a integrer
@@ -12,7 +13,7 @@
 <!-- - Formulaire de contact -->
 - ajouter photo de profil ?
 - afficher/cacher les mots de passe
-- ajouter champ "verify" dans bdd et faire un if pour afficher
+<!-- - ajouter champ "verify" dans bdd et faire un if pour afficher -->
 
 
 
@@ -25,8 +26,6 @@
 - image carrousel bug page principale
 - changement présentation image occasion_page
 - rajouter user_id dans car
-
-
 
 
 

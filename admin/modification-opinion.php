@@ -16,14 +16,15 @@ if(isset($_GET["id"])){
     }
 }
 
-if(isset($POST["add_opinion_verify"])){
-    $opinionVerify = addVerifyOpinion($pdo, $_POST["name"], $_POST["opinion_text"], $_POST["note"], $_POST["verify"]);
+if(isset($_POST["add_opinion_verify"])){
+    $opinionVerify = addVerifyOpinion($pdo, $_POST["name"], $_POST["opinion_text"], $_POST["note"], $_POST["verify"], $_GET["id"]);
     if($opinionVerify) {
         $messages[] = "Vérification effectué et envoyé";
     }else{
         $errors[] = "Une erreur s'est produite !";
     }
 }
+var_dump($_POST)
 ?>
 
 <section class="flux">
@@ -44,12 +45,12 @@ if(isset($POST["add_opinion_verify"])){
     <form method="POST">
         <fieldset class="form-opinion">
         
-            <label for="name_verify"><input name="name_verify" type="text" id="name" class="form-input" value="<?= $opinion["name"] ?>"></label>
+            <label for="name"><input name="name" type="text" id="name" class="form-input" value="<?= $opinion["name"] ?>"></label>
 
-            <textarea name="opinion_text_verify" type="textarea" id="ask" class="form-textarea"><?= $opinion["opinion_text"]?></textarea>
+            <textarea name="opinion_text" type="textarea" id="ask" class="form-textarea"><?= $opinion["opinion_text"]?></textarea>
 
-            <label for="note_verify" id="note">
-            <select name="note_verify" id="note-select" class="form-input">
+            <label for="note" id="note">
+            <select name="note" id="note-select" class="form-input">
                 <option value="<?= $opinion["note"]?>"><?= $opinion["note"]?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>

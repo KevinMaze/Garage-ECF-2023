@@ -37,11 +37,13 @@
                             <li><a href="../admin/add-hourly.php">Horaires</a></li>
                             <li><a href="../admin/add-service.php">Services</a></li>
                             <li><a href="../admin/moderation-opinion.php">Modération avis clients</a></li>
+                            <li><a href="../admin/contacts.php">Contacts</a></li>
                             <li><a href="../admin/add-user.php">Création de compte pro</a></li>
                         <?php }elseif ($_SESSION["user"]["role"] === "employe"){?>
                             <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
                             <li><a href="../admin/add-car.php">Articles</a></li>
                             <li><a href="../admin/moderation-opinion.php">Modération avis clients</a></li>
+                            <li><a href="../admin/contacts.php">Contacts</a></li>
                         <?php };?>
                     </ul>
                 </div>
