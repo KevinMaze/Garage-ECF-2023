@@ -425,6 +425,7 @@ body{
 .icone-password{
     width: 30px;
     background-color: var(--timberwolf);
+    cursor: pointer;
 }
 
 

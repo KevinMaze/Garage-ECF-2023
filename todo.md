@@ -25,10 +25,10 @@
 <!-- - messages [] et errors [] dans add service/ add car et delete car (div bugger) -->
 <!-- - image qui ne s'enregistre pas en bdd sur add car -->
 <!-- - voir page de modification services -->
-- voir page de modification voitures // images
-- image carrousel bug page principale
-- changement présentation image occasion_page
 - suppression page article car erreur
+- voir page de modification voitures // images
+<!-- - image carrousel bug page principale -->
+<!-- - changement présentation image occasion_page -->
 
 
 
