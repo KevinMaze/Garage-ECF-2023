@@ -285,9 +285,6 @@ body{
 }
 
 /*  SECTION OPINION */
-.section__opinion{
-    margin-bottom: 100px;
-}
 
 .section__last-opinion{
     width: 100%;
@@ -297,6 +294,7 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     padding: 25px;
+    margin: 20px;
 }
 
 .section__last-opinion h3{

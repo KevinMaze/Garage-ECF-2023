@@ -20,7 +20,7 @@ $contacts = getContact($pdo);
         <table class="table ">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Annonce</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
@@ -33,7 +33,7 @@ $contacts = getContact($pdo);
             <tbody>
                 <?php foreach ($contacts as $key => $contact) {?>
                     <tr>
-                    <th scope="row"><?= $contact["contact_id"] ?></th>
+                    <th scope="row"><?= $contact["car_id"] ?></th>
                         <td><?= $contact["lastname"] ?></td>
                         <td><?= $contact["firstname"] ?></td>
                         <td><?= $contact["email"] ?></td>

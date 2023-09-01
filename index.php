@@ -9,19 +9,20 @@
 
     $cars = getCars($pdo, 3);
     $services = getServices($pdo);
-    $opinions = getOpinions($pdo);
+    $opinions = getOpinions($pdo, 3);
 ?>
 
         <div class="line-style flux"></div>
 
         <section class="section__service flux">
             <h2 class="title-h2">Les services</h2>
+            <div class="line-style flux"></div>
             <div class="card-grid">
                 <?php foreach ($services as $key => $service) {?>
 
                     <div class="card-service">
                         <div class="section__service__img">
-                            <img src=".<?=_SERVICE_IMG_PATH_.$service['image_service']?>" alt="<?=$service['image_service']?>">
+                            <a href="./service.php#<?=$service["name_service"]?>"><img src=".<?=_SERVICE_IMG_PATH_.$service['image_service']?>" alt="<?=$service['image_service']?>"></a>
                         </div>
                         <p><?= $service['name_service'] ?></p>
                     </div>
@@ -31,8 +32,9 @@
 
         <div class="line-style flux"></div>
 
-        <section class="carrousel-last-occasion">
+        <section class="carrousel-last-occasion flux">
             <h2 class="title-h2">Dernières Occasions</h2>
+            <div class="line-style flux"></div>
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,14 +44,15 @@
 
                 <div class="carousel-inner flux border-shadow">
                     <?php foreach ($cars as $key => $car) {
-                            if ($car['image1'] === null) {
-                                $imagePath = "assets/default.jpg";
+                            $image_car = selectOneImage($pdo, $car["car_id"], 1);
+                            if ($image_car == "") {
+                                $imagePath = "./assets/default.jpg";
                             }
                             else {
-                                $imagePath = _CAR_IMAGE_PATH_.$car["image1"];
+                                $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
                             }?>
                         <div class="carousel-item active">
-                            <img src="<?= $imagePath?>" class="d-block w-100" alt="<?php $car["name"] ?>">
+                            <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
                             <div class="carousel-caption d-none d-md-block">
                                 <h3><?= htmlentities($car["name"])?></h3>
                                 <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
@@ -73,6 +76,7 @@
 
         <section class="section__opinion flux">
             <h2 class="title-h2">Dernier avis</h2>
+            <div class="line-style flux"></div>
             <?php foreach ($opinions as $key => $opinion)  {
                     if($opinion["verify"] == "yes") {?>  
                     <div class="section__last-opinion border-shadow">

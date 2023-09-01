@@ -9,6 +9,12 @@ require_once ('template/header.php');
 $messages = [];
 $errors = [];
 
+if (isset($_GET["page"])) {
+    $page = (int)$_GET["page"];
+}else {
+    $page = 1;
+}
+
 $opinions = getOpinions($pdo);
 
 if(isset($_POST["add-contact"])){
@@ -28,6 +34,10 @@ if(isset($_POST["add_opinion"])){
         $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
     }
 }
+
+$opinions = getOpinions($pdo, _LIMIT_OPINION_PER_PAGE_, $page);
+$totalOpinion = getTotalOpinion($pdo);
+$totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 
 ?>
 
@@ -102,16 +112,26 @@ if(isset($_POST["add_opinion"])){
 <section class="opinion flux">
     <h2 class="title-h2">Dernier avis</h2>
     <div class="line-style flux"></div>
-    <?php foreach ($opinions as $key => $opinion) { ?>
+    <?php foreach ($opinions as $key => $opinion) { 
+            if($opinion["verify"] == "yes"){?>
 
-        <div class="section__last-opinion border-shadow">
-            <h3><?= $opinion["name"]?></h3>
-            <div class="line-inside-div-style flux"></div>
-            <p><?= $opinion["opinion_text"] ?></p>
-            <p class="section__opinion__note">Note : <?= $opinion["note"] ?>/5</p>
-        </div>
-        
+                <div class="section__last-opinion border-shadow">
+                    <h3><?= $opinion["name"]?></h3>
+                    <div class="line-inside-div-style flux"></div>
+                    <p><?= $opinion["opinion_text"] ?></p>
+                    <p class="section__opinion__note">Note : <?= $opinion["note"] ?>/5</p>
+                </div>
+        <?php } ?>
     <?php } ?>
+    <?php if ($totalPageOpinion) {?>
+                <nav>
+                    <ul class="navigation-page">
+                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
+                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php }  ?>
+                    </ul>
+                </nav>
+        <?php }?>
 
 </section>
 

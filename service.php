@@ -15,7 +15,7 @@ $services = getServices($pdo);
 
     <div class="flux">
     <?php  foreach ($services as $key => $service) {?>
-        <div class="service-php ">
+        <div class="service-php " id="<?=$service["name_service"]?>">
             <div class="service-img">
                 <img src=".<?=_SERVICE_IMG_PATH_.$service["image_service"];?>" alt=<?= $service["name_service"] ?>>
                 <h3> <?= $service["name_service"]?> </h3>

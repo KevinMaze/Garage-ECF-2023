@@ -24,7 +24,6 @@ if(isset($_POST["add_opinion_verify"])){
         $errors[] = "Une erreur s'est produite !";
     }
 }
-var_dump($_POST)
 ?>
 
 <section class="flux">

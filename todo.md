@@ -4,7 +4,8 @@
 <!-- - page de création de compte employer et de suppression (table users deja créé)
 - affichage en fonction des admins -->
 <!-- - page admin de contact -->
-- enlever page delete en trop
+<!-- - enlever page delete en trop -->
+- ajouter page equipements
 
 
 // fonction a integrer
@@ -13,6 +14,8 @@
 <!-- - Formulaire de contact -->
 - ajouter photo de profil ?
 - afficher/cacher les mots de passe
+- pagination avis page contact
+- rajouter user_id dans car
 <!-- - ajouter champ "verify" dans bdd et faire un if pour afficher -->
 
 
@@ -25,12 +28,12 @@
 - voir page de modification voitures // images
 - image carrousel bug page principale
 - changement présentation image occasion_page
-- rajouter user_id dans car
+- suppression page article car erreur
 
 
 
 // alimentation bdd
-<!-- - ajout de plusieur véhicules en bdd -->
+- ajout de plusieur véhicules en bdd
 - ajout de plusieurs avis clients
 
 ________________________________________________________________________________
