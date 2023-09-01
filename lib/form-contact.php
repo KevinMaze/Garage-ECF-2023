@@ -23,3 +23,26 @@ function getContact(PDO $pdo):array|bool
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
+
+//recuperation contact avec id
+function getContactById(PDO $pdo, int $id):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM contact WHERE contact_id = :id");
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+// suppresion contact
+function deleteContact(PDO $pdo, int $id):bool
+{
+    $query = $pdo->prepare("DELETE FROM contact WHERE contact_id = :id");
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    return $query->execute();
+    if($query->rowCount() > 0){
+        return true;
+    }else{
+        return false;
+    }
+}

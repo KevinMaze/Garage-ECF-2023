@@ -12,9 +12,8 @@
 <!-- - requete de suppression images add car, suppriemr image table car -> requete table image_car -->
 <!-- - requete de suppresion d'article service, add service -->
 <!-- - Formulaire de contact -->
-- ajouter photo de profil ?
-- afficher/cacher les mots de passe
-- pagination avis page contact
+<!-- - afficher/cacher les mots de passe -->
+<!-- - pagination avis page contact -->
 - rajouter user_id dans car
 <!-- - ajouter champ "verify" dans bdd et faire un if pour afficher -->
 

@@ -6,6 +6,7 @@
     require_once  ("../lib/opinion.php");
     require_once  ("../lib/services.php");
     require_once  ("../lib/user.php");
+    require_once  ("../lib/form-contact.php");
     require_once  ("../admin/template-admin/header-admin.php");
 
     $imageCar = false;
@@ -71,6 +72,20 @@
             }
         }else{
             $errors[] = "L'utilisateur n'existe pas";
+        }
+    }
+
+    //selection contact avec id
+    if(isset($_GET["id"])){
+        $contact = getContactByID($pdo, (int)$_GET["id"]);
+        if($contact){
+            if(deleteContact($pdo, (int)$_GET["id"])){
+                $messages[] = "Le formulaire contact a bien été supprimé";
+            }else{
+                $errors[] = "Une erreur s'est produite";
+            }
+        }else{
+            $errors[] = "Le contact n'existe pas";
         }
     }
 ?>
