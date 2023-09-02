@@ -13,7 +13,7 @@ $errors = [];
 
 if(isset($_GET["id"])){
     $car = getCarById($pdo, (int)$_GET["id"]);
-    $imagesCar = selectImageCar($pdo, $_GET["id"]);
+    $imagesCar = selectImage($pdo, $car["car_id"]);
     if($car === false){
         $errors[]="L'article n'hexiste pas";
     }

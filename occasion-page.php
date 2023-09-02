@@ -13,6 +13,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCarById($pdo, $id);
+        $imageCar = selectImageCar($pdo, $car["car_id"]);
         if (!$car){
             $error = true;
         }
@@ -28,8 +29,6 @@
             $errors[] = "Une erreur est survenue, veuillez rééssayer ultérieurement";
         }
     }
-    
-    $arrayImages = selectImageCar($pdo, $id);
 ?>
 
 <div class="line-style flux"></div>
@@ -50,9 +49,8 @@
             <div class="line-inside-div-style"></div>
             
             <div class="image-grid__occasion-page">
-                <?php foreach ($arrayImages as $key => $arrayImage){ 
-?> 
-                        <img src=".<?=_CAR_IMAGE_PATH_.$arrayImage["name_image"]?>" class="img-occasion-page" alt="<?=$arrayImage["name_image"]?>">
+                <?php foreach ($imageCar as $key => $image) {?>
+                    <img src=".<?=_CAR_IMAGE_PATH_.$image["name_image"]?>" class="img-occasion-page" alt="<?=$image["name_image"]?>">
                 <?php } ?>
             </div>
 

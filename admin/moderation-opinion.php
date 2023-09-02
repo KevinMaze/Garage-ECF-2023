@@ -59,7 +59,7 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
                         <td><?= $opinion["verify"] ?></td>
-                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-page.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
+                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php } ?>
                 <?php } ?>
@@ -102,7 +102,7 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
-                        <td><a href="./delete-.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
+                        <td><a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php }?>
                 <?php }  ?>

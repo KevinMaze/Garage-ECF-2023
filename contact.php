@@ -18,7 +18,7 @@ if (isset($_GET["page"])) {
 $opinions = getOpinions($pdo);
 
 if(isset($_POST["add-contact"])){
-    $result = addContact($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], $_POST["car_id"]);
+    $result = addContact($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], null);
     if($result){
         $messages[] = "Votre message a bien été envoyé";
     }else{
@@ -65,8 +65,6 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 			<label for="phone"><input name="phone" type="tel" id="phone" placeholder="Téléphone" class="form-input"></label>
 
 			<textarea name="text" type="textarea" id="ask" placeholder="Demande" class="form-textarea"></textarea>
-
-			<label for="car_id"><input name="car_id" type="text" id="ref" placeholder="Référence annonce" required class="form-input"></label>
 
 			<div class="form-button">
 				<input name="add-contact" type="submit" value="Envoyer" class="custom-button">

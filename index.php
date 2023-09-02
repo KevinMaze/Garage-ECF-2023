@@ -44,7 +44,7 @@
 
                 <div class="carousel-inner flux border-shadow">
                     <?php foreach ($cars as $key => $car) {
-                            $image_car = selectOneImage($pdo, $car["car_id"], 1);
+                            $image_car = selectImage($pdo, $car["car_id"], 1);
                             if ($image_car == "") {
                                 $imagePath = "./assets/default.jpg";
                             }

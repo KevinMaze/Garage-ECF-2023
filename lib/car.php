@@ -50,15 +50,16 @@ function getTotalPageCar(PDO $pdo):int
 }
 
 // ajouter un article car (requète d'insertion)
-function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year):bool|int
+function addCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, int $user_id):bool|int
 {
-    $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year) VALUES (:name, :description, :price, :mileage, :year)");
+    $query = $pdo->prepare("INSERT INTO car (name, description, price, mileage, year, user_id) VALUES (:name, :description, :price, :mileage, :year, :user_id)");
 
     $query->bindValue(":name", $name, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
     $query->bindValue(":price", $price, PDO::PARAM_INT);
     $query->bindValue(":mileage", $mileage, PDO::PARAM_INT);
     $query->bindValue(":year", $year, PDO::PARAM_INT);
+    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
     $query->execute();
     $car_id = $pdo->lastInsertId();
 
@@ -78,20 +79,19 @@ function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
 }
 
 // Selection des images de la table image_car avec car_id
-function selectImageCar(PDO $pdo, int $id):array
+function selectImageCar(PDO $pdo, int $car_id):array|bool
 {
-    $query = $pdo->prepare("SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car WHERE image_car.car_id = :car_id");
+    $query = $pdo->prepare("SELECT image_car.name_image, image_car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id GROUP BY image_car.name_image");
     
-    $query->bindValue(":car_id", $id, PDO::PARAM_INT);
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
     $query->execute();
-    $selectImageCar = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $selectImageCar;
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // select image avec limit
-function selectOneImage(PDO $pdo, int $id, int $limit = null):array|bool
+function selectImage(PDO $pdo, int $id, int $limit = null):array|bool
 {
-    $sql = "SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car WHERE image_car.car_id = :car_id" ;
+    $sql = "SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id" ;
 
     if($limit){
         $sql .= " LIMIT :limit";
@@ -105,9 +105,9 @@ function selectOneImage(PDO $pdo, int $id, int $limit = null):array|bool
 
     $query->execute();
 
-    $oneImageCar = $query->fetch(PDO::FETCH_ASSOC);
+    $imageCar = $query->fetch(PDO::FETCH_ASSOC);
 
-    return $oneImageCar;
+    return $imageCar;
 }
 
 //Suppression des image_car

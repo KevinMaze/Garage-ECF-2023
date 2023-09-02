@@ -31,6 +31,7 @@ $pagetitle = "Formualire d'ajout de voiture";
 
 // Si la touche "envoyer" est pressée
 if(isset($_POST["add-car"])){
+    $user_id = intval($_SESSION["user"]["user_id"]);
     // On stocke les données envoyé dans un tableau, pour ne pas perdre les données saisi
     $car = [
         "name" => $_POST["name"],
@@ -41,7 +42,7 @@ if(isset($_POST["add-car"])){
     ];
     
     // On passe les données a addCar
-    $result = addCar($pdo, $_POST["name"], $_POST["description"], $_POST["price"], $_POST["mileage"], $_POST["year"]);
+    $result = addCar($pdo, $_POST["name"], $_POST["description"], $_POST["price"], $_POST["mileage"], $_POST["year"], $user_id);
     // Si un fichier est envoyé
     if ($result) {
         $fileName1 = null;
