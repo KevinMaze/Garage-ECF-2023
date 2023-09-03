@@ -13,9 +13,22 @@ $errors = [];
 
 if(isset($_GET["id"])){
     $car = getCarById($pdo, (int)$_GET["id"]);
-    $imagesCar = selectImage($pdo, $car["car_id"]);
+    $imagesCar = selectImageCar($pdo, $car["car_id"]);
     if($car === false){
         $errors[]="L'article n'hexiste pas";
+    }
+}
+
+foreach ($imagesCar as $key => $image) {
+    if(isset($_POST["delete_image"])){
+        if(file_exists($image["image_id"])){
+            deleteImageCar($pdo, $car["car_id"]);
+            $messages[] = "L'image a été supprimer";
+        }else{
+            $errors[] = "Le fichier n'existe plus";
+        }
+    }else{
+        // $errors[] = "Une erreur s'est produit";
     }
 }
 
@@ -25,17 +38,6 @@ if(isset($_POST["add-car"])){
         $messages[] = "Modification effectué";
     }else{
         $errors[] = "Une erreur s'est produite";
-    }
-    foreach ($imagesCar as $key => $imageCar) {
-        if(isset($_POST["delete_image"])){
-            if(file_exists($imageCar["image_id"])){
-                unlink(_CAR_IMAGE_PATH_.$imagesCar["name_image"]);
-            }else{
-                $errors[] = "Le fichier n'existe plus";
-            }
-        }else{
-            $errors[] = "Une erreur s'est produit";
-        }
     }
 }
 
@@ -70,7 +72,7 @@ if(isset($_POST["add-car"])){
             <?php foreach ($imagesCar as $key => $imageCar) {?>
                 <div>
                     <div>
-                        <label for="delete_image" class="form-file"><input type="checkbox" name="delete_image" id="delete_image">Supprimer l'image précédente</label>
+                        <input type="submit" name="delete_image" id="delete_image" value="Supprimer l'image<?= $imageCar['image_id'] ?>">
                         <input type="hidden" name="delete_image" value="<?= $imageCar['image_id']; ?>">
                     </div>
                     <input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg" class="form-file">

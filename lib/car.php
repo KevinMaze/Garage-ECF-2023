@@ -81,7 +81,7 @@ function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
 // Selection des images de la table image_car avec car_id
 function selectImageCar(PDO $pdo, int $car_id):array|bool
 {
-    $query = $pdo->prepare("SELECT image_car.name_image, image_car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id GROUP BY image_car.name_image");
+    $query = $pdo->prepare("SELECT image_car.image_id, image_car.name_image, image_car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id GROUP BY image_car.name_image");
     
     $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
     $query->execute();

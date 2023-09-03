@@ -14,7 +14,7 @@
 <!-- - Formulaire de contact -->
 <!-- - afficher/cacher les mots de passe -->
 <!-- - pagination avis page contact -->
-- rajouter user_id dans car
+<!-- - rajouter user_id dans car -->
 <!-- - ajouter champ "verify" dans bdd et faire un if pour afficher -->
 
 
@@ -24,8 +24,8 @@
 <!-- - messages [] et errors [] dans add service/ add car et delete car (div bugger) -->
 <!-- - image qui ne s'enregistre pas en bdd sur add car -->
 <!-- - voir page de modification services -->
-- suppression page article car erreur
-- voir page de modification voitures // images
+<!-- - suppression page article car erreur -->
+- voir page de modification voitures // images // suppression des images
 <!-- - image carrousel bug page principale -->
 <!-- - changement présentation image occasion_page -->
 
