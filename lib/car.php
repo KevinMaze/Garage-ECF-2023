@@ -111,17 +111,12 @@ function selectImage(PDO $pdo, int $id, int $limit = null):array|bool
 }
 
 //Suppression des image_car
-function deleteImageCar(PDO $pdo, int $car_id):bool
+function deleteImageCar(PDO $pdo, $image_id):bool
 {
-    $query = $pdo->prepare("DELETE FROM image_car WHERE car_id = :id");
-    $query->bindValue(':id', $car_id, PDO::PARAM_INT);
-    $query->execute();
+    $query = $pdo->prepare("DELETE FROM image_car WHERE image_id = :image_id");
+    $query->bindValue(":image_id", $image_id, PDO::PARAM_INT);
 
-    if($query->rowCount() > 0){
-        return true;
-    }else{
-        return false;
-    }
+    return $query->execute();
 }
 
 // Suppression de l'article car
@@ -139,9 +134,9 @@ function deleteCar(PDO $pdo, int $id):bool
 }
 
 // Requète de modification des cars
-function changeCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, int $id):bool
+function changeCar(PDO $pdo, string $name, string $description, float $price, int $mileage, int $year, int $id, int $user_id):bool
 {
-    $query = $pdo->prepare("UPDATE car SET name = :name, description = :description, price = :price, mileage = :mileage, year = :year WHERE car_id = :id");
+    $query = $pdo->prepare("UPDATE car SET name = :name, description = :description, price = :price, mileage = :mileage, year = :year, user_id = :user_id WHERE car_id = :id");
 
     $query->bindValue(":name", $name, PDO::PARAM_STR);
     $query->bindValue(":description", $description, PDO::PARAM_STR);
@@ -149,6 +144,7 @@ function changeCar(PDO $pdo, string $name, string $description, float $price, in
     $query->bindValue(":mileage", $mileage, PDO::PARAM_INT);
     $query->bindValue(":year", $year, PDO::PARAM_INT);
     $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
     return $query->execute();
 }

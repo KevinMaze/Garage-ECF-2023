@@ -27,7 +27,6 @@ $car = [
     'mileage' => '',
     'year' => '',
 ];
-$pagetitle = "Formualire d'ajout de voiture";
 
 // Si la touche "envoyer" est pressée
 if(isset($_POST["add-car"])){
@@ -174,7 +173,7 @@ if(isset($_POST["add-car"])){
             <div class="alert alert-danger"><?= $error ?></div>
             <?php }?>
         <fieldset class="form-style">
-            <legend class="form-legend"><?= $pagetitle ?></legend>
+            <legend class="form-legend">Formulaire d'ajout de voiture</legend>
             
             <div class="line-style"></div>
             

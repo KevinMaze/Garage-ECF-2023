@@ -45,7 +45,6 @@ if(isset($_POST["add_opinion"])){
                     <th scope="col">Nom</th>
                     <th scope="col">Text</th>
                     <th scope="col">Note</th>
-                    <th scope="col">Vérifié</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -58,7 +57,6 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
-                        <td><?= $opinion["verify"] ?></td>
                         <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php } ?>
@@ -90,6 +88,7 @@ if(isset($_POST["add_opinion"])){
                     <th scope="col">Nom</th>
                     <th scope="col">Text</th>
                     <th scope="col">Note</th>
+                    <th scope="col">Vérifié</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -102,6 +101,7 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
+                        <td><?= $opinion["verify"] ?></td>
                         <td><a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>">Supprimer</a></td>
                     </tr>
                     <?php }?>

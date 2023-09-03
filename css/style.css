@@ -285,9 +285,14 @@ body{
 }
 
 /*  SECTION OPINION */
+.section__opinion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .section__last-opinion{
-    width: 100%;
+    width: 90%;
     height: 300px;
     background-color: var(--timberwolf);
     display: flex;
