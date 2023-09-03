@@ -16,6 +16,7 @@
 <!-- - pagination avis page contact -->
 <!-- - rajouter user_id dans car -->
 <!-- - ajouter champ "verify" dans bdd et faire un if pour afficher -->
+- filtres voitures
 
 
 
@@ -25,7 +26,7 @@
 <!-- - image qui ne s'enregistre pas en bdd sur add car -->
 <!-- - voir page de modification services -->
 <!-- - suppression page article car erreur -->
-- voir page de modification voitures // images // suppression des images
+<!-- - voir page de modification voitures // images // suppression des images -->
 <!-- - image carrousel bug page principale -->
 <!-- - changement présentation image occasion_page -->
 
