@@ -7,6 +7,7 @@ require_once ("../lib/user.php");
 require_once ("../lib/hourly.php");
 require_once ('template-admin/header-admin.php');
 
+$error = false;
 $messages = [];
 $errors = [];
 
@@ -17,7 +18,13 @@ if(isset($_GET["id"])){
         $errors[] = "L'article demandé n\'existe pas !";
     }
     $pagetitle = "Formulaire de modification";
+    if (!$hourly){
+    $error = true;
+    }
+}else {
+$error = true;
 }
+
 
 if(isset($_POST["add_hourly"])){
     $result = changeHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"], $_GET["id"]);
@@ -28,6 +35,8 @@ if(isset($_POST["add_hourly"])){
     }
 };
 ?>
+
+<?php  if (!$error) {?>
 
     <section class="flux">
         <h2 class="title-h2">Horaires actuelles</h2>
@@ -82,5 +91,9 @@ if(isset($_POST["add_hourly"])){
             </fieldset>
         </form>
     </section>
+
+<?php }else {?>
+    <h1 class="title-h2"><?= _ERROR_MESSAGE_ ?></h1>
+<?php }?>
 
 <?php require_once ("template-admin/footer-admin.php") ?>

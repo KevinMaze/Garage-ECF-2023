@@ -150,7 +150,7 @@ function changeCar(PDO $pdo, string $name, string $description, float $price, in
 }
 
 // Ajout equipment
-function addEquipment(PDO $pdo, string $name_equipment, int $car_id):array|bool
+function addEquipment(PDO $pdo, string|null $name_equipment, int|null $car_id):array|bool
 {
     $query = $pdo->prepare("INSERT INTO equipment (name_equipment, car_id) VALUES (:name_equipment, :car_id)");
 
@@ -169,4 +169,14 @@ function selectEquipment(PDO $pdo, int $car_id):array|bool
     $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
     $query->execute();
     return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+// modif equipement
+function changeEquipment(PDO $pdo, string $name_equipment, int $car_id):bool
+{
+    $query = $pdo->prepare("UPDATE equipment SET name_equipment = :name_equipment WHERE car_id = :car_id");
+    $query->bindValue(":name_equipment", $name_equipment, PDO::PARAM_STR); 
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+    return $query->execute();
+    
 }

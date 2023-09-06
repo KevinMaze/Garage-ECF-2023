@@ -12,9 +12,9 @@
 
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
-        $car = getCarById($pdo, $id);
-        $imageCar = selectImageCar($pdo, $car["car_id"]);
-        $equipment = selectEquipment($pdo, $car["car_id"]);
+        $car = getCarById($pdo, (int)$_GET["id"]);
+        $imageCar = selectImageCar($pdo, (int)$_GET["id"]);
+        $equipment = selectEquipment($pdo, (int)$_GET["id"]);
         if (!$car){
             $error = true;
         }
@@ -31,8 +31,7 @@
         }
     }
 
-//explode retourne un tableau d'un ligne (avec séparateur PHP_EOL -> (saut de ligne))
-$equipments = explode(PHP_EOL, $equipment["name_equipment"]);
+
 ?>
 
 <div class="line-style flux"></div>
@@ -74,8 +73,14 @@ $equipments = explode(PHP_EOL, $equipment["name_equipment"]);
 
             <h2 class="title-h2">Options / Equipements</h2>
             <div class="section-occasion-page__description__equipment">
-                <?php foreach ($equipments as $key => $equipment) {?>
-                    <p><?= $equipment ?></p>
+            <!-- explode retourne un tableau d'un ligne (avec séparateur PHP_EOL -> (saut de ligne)) -->
+                <?php if($equipment == ""){?>
+                        <p>Aucun Equipements ou options</p>
+                <?php }else { 
+                    $equipments = explode(PHP_EOL, $equipment["name_equipment"]);
+                    foreach ($equipments as $key => $equipment) {?>
+                        <p><?= $equipment ?></p>
+                        <?php } ?>
                 <?php } ?>
             </div>
         </div>
