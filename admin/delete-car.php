@@ -18,12 +18,10 @@
     if(isset($_GET["id"])){
         $carArticle = getCarById($pdo, (int)$_GET["id"]);
         if($carArticle){
-            if(deleteImageCar($pdo, $_GET["id"])){
-                if(deleteCar($pdo, $_GET["id"])){
-                    $messages[] = "L'article a bien été supprimé";
-                }else{
-                    $errors[] = "Une erreur s'est produite !";
-                }
+            if(deleteCar($pdo, $_GET["id"])){
+                $messages[] = "L'article a bien été supprimé";
+            }else{
+                $errors[] = "Une erreur s'est produite !";
             };
         }else{
             $errors[] = "L'article n'existe pas !";
