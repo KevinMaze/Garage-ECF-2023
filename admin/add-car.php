@@ -45,6 +45,7 @@ if(isset($_POST["add-car"])){
     $result = addCar($pdo, $_POST["name"], $_POST["description"], $_POST["price"], $_POST["mileage"], $_POST["year"], $user_id);
     // Si un fichier est envoyé
     if ($result) {
+        $equipment = addEquipment($pdo, $_POST["equipment"], $result);
         $fileName1 = null;
         if (isset($_FILES["file1"]["tmp_name"]) && ($_FILES["file1"]["tmp_name"] != "")){
             $checkImage = getimagesize($_FILES["file1"]["tmp_name"]);
@@ -187,6 +188,8 @@ if(isset($_POST["add-car"])){
             <label for="mileage"><input type="text" id="mileage" name="mileage" placeholder="Kilométrage" class="form-input"></label>
 
             <label for="year"><input type="text" id="year" name="year" placeholder="Année" class="form-input"></label>
+
+            <textarea type="textarea" id="equipment" name="equipment" placeholder="Equipements / Options : saut de ligne entre chaque equipements ou options" class="form-textarea"></textarea>
 
             <p class="para-select-image">Veuiller selectionner jusqu'à 4 images du véhicule (2.5 mo max)</p>
 

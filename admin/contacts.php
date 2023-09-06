@@ -39,7 +39,7 @@ $contacts = getContact($pdo);
                         <td><?= $contact["email"] ?></td>
                         <td><?= $contact["phone"] ?></td>
                         <td><?= $contact["text"] ?></td>
-                        <td><a href="mailto : <?= $contact["contact_id"]?>">Répondre</a> | <a href="./delete-contact.php?id=<?=$contact["contact_id"]?>">Supprimer</a></td>
+                        <td><a href="mailto : <?= $contact["contact_id"]?>">Répondre</a> | <a href="./delete-contact.php?id=<?=$contact["contact_id"]?>" id="delete">Supprimer</a></td>
                     </tr>
                 <?php } ?>
 

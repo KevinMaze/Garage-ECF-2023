@@ -14,6 +14,7 @@ $errors = [];
 if(isset($_GET["id"])){
     $car = getCarById($pdo, (int)$_GET["id"]);
     $imagesCar = selectImageCar($pdo, $car["car_id"]);
+    $equipment = selectEquipment($pdo, $car["car_id"]);
     if($car === false){
         $errors[]="L'article n'hexiste pas";
     }
@@ -66,6 +67,8 @@ if(isset($_POST["add-car"])){
             <label for="mileage"><input type="text" id="mileage" name="mileage" value=<?= $car["mileage"]?> class="form-input"></label>
 
             <label for="year"><input type="text" id="year" name="year" value=<?= $car["year"]?> class="form-input"></label>
+
+            <textarea type="textarea" id="equipment" name="equipment" class="form-textarea"><?= $equipment["name_equipment"] ?></textarea>
 
             <p class="para-select-image">Veuiller selectionner jusqu'à 4 images du véhicule (2.5 mo max)</p>
 

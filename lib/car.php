@@ -153,5 +153,24 @@ function changeCar(PDO $pdo, string $name, string $description, float $price, in
     return $query->execute();
 }
 
-// Modification des image_car
-// function changeImageCar(PDo $pdo, string $name_image)
+// Ajout equipment
+function addEquipment(PDO $pdo, string $name_equipment, int $car_id):array|bool
+{
+    $query = $pdo->prepare("INSERT INTO equipment (name_equipment, car_id) VALUES (:name_equipment, :car_id)");
+
+    $query->bindValue(":name_equipment", $name_equipment, PDO::PARAM_STR);
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+
+    return $query->execute();
+
+}
+
+//selection equipment
+function selectEquipment(PDO $pdo, int $car_id):array|bool
+{
+    $query = $pdo->prepare("SELECT equipment.equipment_id, equipment.name_equipment, equipment.car_id, car.car_id FROM equipment INNER JOIN car ON equipment.car_id = :car_id GROUP BY equipment.name_equipment");
+
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}

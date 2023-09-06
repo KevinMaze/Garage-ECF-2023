@@ -14,6 +14,7 @@
         $id = $_GET["id"];
         $car = getCarById($pdo, $id);
         $imageCar = selectImageCar($pdo, $car["car_id"]);
+        $equipment = selectEquipment($pdo, $car["car_id"]);
         if (!$car){
             $error = true;
         }
@@ -29,6 +30,9 @@
             $errors[] = "Une erreur est survenue, veuillez rééssayer ultérieurement";
         }
     }
+
+//explode retourne un tableau d'un ligne (avec séparateur PHP_EOL -> (saut de ligne))
+$equipments = explode(PHP_EOL, $equipment["name_equipment"]);
 ?>
 
 <div class="line-style flux"></div>
@@ -70,16 +74,15 @@
 
             <h2 class="title-h2">Options / Equipements</h2>
             <div class="section-occasion-page__description__equipment">
-                <p>Climatisation</p>
-                <p>ABS</p>
-                <p>Aide au démarrage en côte</p>
-                <p>Direction assistée</p>
+                <?php foreach ($equipments as $key => $equipment) {?>
+                    <p><?= $equipment ?></p>
+                <?php } ?>
             </div>
         </div>
     </section>
     <div class="line-style flux"></div>
 
-    <section class="flux">
+<section class="flux">
 	<form method="POST">
 		<fieldset class="form-style">
             <legend class="form-legend">Formulaire de contact</legend>
