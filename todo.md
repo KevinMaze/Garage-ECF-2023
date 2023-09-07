@@ -5,7 +5,7 @@
 - affichage en fonction des admins -->
 <!-- - page admin de contact -->
 <!-- - enlever page delete en trop -->
-- ajouter page equipements
+<!-- - ajouter page equipements -->
 
 
 // fonction a integrer
@@ -33,7 +33,7 @@
 
 
 // alimentation bdd
-- ajout de plusieur véhicules en bdd
-- ajout de plusieurs avis clients
+<!-- - ajout de plusieur véhicules en bdd -->
+<!-- - ajout de plusieurs avis clients -->
 
 ________________________________________________________________________________

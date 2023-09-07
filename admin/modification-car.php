@@ -130,7 +130,7 @@ if (isset($_FILES["file4"]["tmp_name"]) && ($_FILES["file4"]["tmp_name"] != ""))
 
                 <textarea type="textarea" id="equipment" name="equipment" class="form-textarea"><?= $equipment["name_equipment"] ?></textarea>
 
-                <p class="para-select-image">Veuiller selectionner jusqu'à 4 images du véhicule (2.5 mo max)</p>
+                <p class="para-select-image">Veuiller re-selectionner le ou les images du véhicule (2.5 mo max)</p>
 
                 <?php foreach ($imagesCar as $key => $imageCar) {
                         if($imagesCar != ""){?>
