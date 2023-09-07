@@ -2,6 +2,7 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
+    require_once ('lib/filter.php');
     require_once ('lib/main_menu.php');
     require_once ('template/header.php');
 
@@ -15,7 +16,6 @@
     $totalArticleCar = getTotalPageCar($pdo);
     $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
     
-
 ?>
 
 <div class="line-style flux"></div>
@@ -62,6 +62,8 @@
 
 <div class="line-style flux"></div>
 
+<div class="filter"></div>
+
 <section class="section-occasion flux">
 
     <?php foreach ($cars as $key => $car){?>
@@ -87,6 +89,7 @@
 
 <div class="line-style flux"></div>
 
+<script src="./js/lib/filter.js"></script>
 <?php 
 require_once ('template/footer.php')
 ?>
