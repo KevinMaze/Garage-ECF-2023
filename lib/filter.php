@@ -1,9 +1,13 @@
 <?php
+require_once ('config.php');
+require_once ('pdo.php');
 
-function getAllCar(PDO $pdo):array|bool
-{
-    $query = $pdo->prepare("SELECT * FROM car ORDER BY car_id DESC");
+function getCar(PDO $pdo){
+    $query = $pdo->prepare("SELECT * FROM car");
     $query->execute();
-    $allCar = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $allCar;
+    $cars = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $cars;
 }
+
+echo json_encode(getCar($pdo));
+

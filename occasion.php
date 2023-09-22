@@ -2,7 +2,7 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
-    require_once ('lib/filter.php');
+    // require_once ('lib/filter.php');
     require_once ('lib/main_menu.php');
     require_once ('template/header.php');
 
@@ -15,7 +15,6 @@
     $cars = getCars($pdo, _ADMIN_CAR_PER_PAGE_, $page);
     $totalArticleCar = getTotalPageCar($pdo);
     $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
-    
 ?>
 
 <div class="line-style flux"></div>
@@ -28,12 +27,12 @@
 
         <div id="price" class="form-select">
             <h3>Prix :</h3>
-            <label for="1999"><input type="checkbox" id="1999"></input> 0 € / 1 999 €</label>
-            <label for="3999"><input type="checkbox" id="3999"></input> 2 000 € / 3 999 €</label>
-            <label for="5999"><input type="checkbox" id="5999"></input> 4 000 € / 5 999 €</label>
-            <label for="7999"><input type="checkbox" id="7999"></input> 6 000 € / 7 999 €</label>
-            <label for="9999"><input type="checkbox" id="9999"></input> 8 000 € / 9 999 €</label>
-            <label for="10000"><input type="checkbox" id="10000"></input> 10 000 € et plus</label>
+            <label for="2000"><input type="checkbox" id="2000"></input> 0 € / 2 000 €</label>
+            <label for="4000"><input type="checkbox" id="4000" name="4000"></input> 2 000 € / 4 000 €</label>
+            <label for="6000"><input type="checkbox" id="6000"></input> 4 000 € / 6 000 €</label>
+            <label for="8000"><input type="checkbox" id="8000"></input> 6 000 € / 8 000 €</label>
+            <label for="10000"><input type="checkbox" id="10000"></input> 8 000 € / 10 000 €</label>
+            <label for="10001"><input type="checkbox" id="10001"></input> 10 000 € et plus</label>
         </div>
     
         <div id="miles" class="form-select">
@@ -89,7 +88,7 @@
 
 <div class="line-style flux"></div>
 
-<script src="./js/lib/filter.js"></script>
+<script src="./js/lib/filter.js" async></script>
 <?php 
 require_once ('template/footer.php')
 ?>
