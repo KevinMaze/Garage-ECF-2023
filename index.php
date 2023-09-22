@@ -49,7 +49,7 @@
                                 $imagePath = "./assets/default.jpg";
                             }
                             else {
-                                $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
+                                $imagePath = _CAR_IMAGE_PATH_.$image_car["name_image"];
                             }?>
                         <div class="carousel-item active">
                             <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
