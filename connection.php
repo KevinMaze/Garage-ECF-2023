@@ -15,7 +15,7 @@
 
         $user = verifyUserloginPassword($pdo, $email, $password);
         if ($user) {
-            // regenerer cookie (id) de session
+            // regenerer cookie (id) de session pour éviter faille session hijacking
             session_regenerate_id(true);
             $_SESSION["user"] = $user;
             if($user["role"] === "admin"){

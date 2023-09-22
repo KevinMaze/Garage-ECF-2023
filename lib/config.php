@@ -13,10 +13,13 @@
 	define("_LIMIT_OPINION_PER_PAGE_", 10);
 
 
-	// chamin bdd
+	// chemin bdd
 	define('_DB_NAME_PATH_', 'maze_ecf_garage_2023');
 	define('_DB_SERVER_', 'mysql-maze.alwaysdata.net');
 	define('_DB_USER_', 'maze_v_parrot');
 	define('_DB_PASSWORD_', 'V_parrot_2023');
 
+
+	// Domain cookie
+	define('_DOMAIN_', 'ecf-garage-2023-3c29043c899b.herokuapp.com/');
 ?>

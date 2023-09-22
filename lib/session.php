@@ -4,7 +4,8 @@
 session_set_cookie_params([
     'lifetime' => 3600,
     'path' => '/',
-    'domain' => 'localhost',
+    'domain' => _DOMAIN_,
+    // 'domain' => 'localhost',
     'secure' => true,
     'httponly' => true
 ]);
