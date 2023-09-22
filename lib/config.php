@@ -19,9 +19,4 @@
 	define('_DB_USER_', 'maze_v_parrot');
 	define('_DB_PASSWORD_', 'V_parrot_2023');
 
-
-	// Domain cookie
-	define('_DOMAIN_', '.ecf-garage-2023-3c29043c899b.herokuapp.com');
-	// page erreur
-	define('_ERROR_MESSAGE_', '404 : Page introuvable')
 ?>

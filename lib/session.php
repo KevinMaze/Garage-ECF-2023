@@ -4,8 +4,7 @@
 session_set_cookie_params([
     'lifetime' => 3600,
     'path' => '/',
-    'domain' => _DOMAIN_,
-    // 'domain' => 'localhost',
+    'domain' => '.ecf-garage-2023-3c29043c899b.herokuapp.com',
     'secure' => true,
     'httponly' => true
 ]);
