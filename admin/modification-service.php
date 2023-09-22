@@ -8,6 +8,7 @@ require_once ("../lib/user.php");
 require_once ("../lib/services.php");
 require_once ('template-admin/header-admin.php');
 
+$error = false;
 $messages = [];
 $errors = [];
 
@@ -16,7 +17,12 @@ if(isset($_GET["id"])){
     if($service === false){
         $errors[]="L'article n'hexiste pas";
     }
-}
+    if (!$service){
+        $error = true;
+        }
+    }else {
+    $error = true;
+    }
 
 if(isset($_POST["add_service"])){
     if(isset($_POST["delete_image"])){
@@ -48,8 +54,9 @@ if(isset($_POST["add_service"])){
         $errors[] = "Une erreur s'est produite";
     }
 }
-
 ?>
+
+<?php  if (!$error) {?>
 
     <section class="flux">
         <h2 class="title-h2">Service actuelle</h2>
@@ -112,6 +119,10 @@ if(isset($_POST["add_service"])){
         </form>
 
     </section>
+
+<?php }else {?>
+    <h1 class="title-h2"><?= _ERROR_MESSAGE_ ?></h1>
+<?php }?>
 
 <?php require_once ("template-admin/footer-admin.php") ?>
 

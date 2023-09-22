@@ -184,14 +184,18 @@ body{
 
 .form-select{
     font-family: var(--font-paragraphe);
+    color: var(--davys-gray);
     background-color: var(--timberwolf);
     border: 2px solid var(--border-color);
     box-shadow: var(--shadow-box);
+    font-size: 1.2em;
     border-radius: 10px;
-    height: 3em;
     width: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* OCCASION PART */
 .section-occasion-card{
     background-color: var(--timberwolf);
     border-radius: 15px;
@@ -202,6 +206,15 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+/* .active-card{
+    display: show;
+    transition: width .3s;
+}
+.inactive-card{
+    display: none;
+    transition: width .3s;
+} */
 
 .section-occasion__div{
     border-top: 2px solid var(--davys-gray);

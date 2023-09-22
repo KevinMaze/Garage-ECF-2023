@@ -18,8 +18,10 @@ if (isset($_GET["page"])) {
 $opinions = getOpinions($pdo);
 
 if(isset($_POST["add-contact"])){
-    $result = addContact($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], null);
-    if($result){
+    $result = addContact($pdo, htmlentities($_POST["lastname"]), $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], null);
+    //htmlspecialchars() sécurise ce que l'utilisateur envoie (remplace touts les caractères spéciaux)
+    $securResult = htmlspecialchars($result, ENT_QUOTES, 'UTF-8');
+    if($securResult){
         $messages[] = "Votre message a bien été envoyé";
     }else{
         $errors[] = "Une erreur est survenue, veuillez rééssayer ultérieurement";
@@ -28,7 +30,8 @@ if(isset($_POST["add-contact"])){
 
 if(isset($_POST["add_opinion"])){
     $opinionResult = addOpinion($pdo, $_POST["name"], $_POST["text"], $_POST["note"]);
-    if($opinionResult){
+    $securOpinionResult = htmlspecialchars($opinionResult, ENT_QUOTES, 'UTF-8');
+    if($securOpinionResult){
         $messages[] = "Votre note a bien été enregistré, merci de votre avis";
     }else{
         $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";

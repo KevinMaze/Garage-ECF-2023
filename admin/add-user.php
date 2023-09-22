@@ -56,7 +56,7 @@
                         <td><?= $user["lastname"] ?></td>
                         <td><?= $user["firstname"] ?></td>
                         <td><?= $user["role"] ?></td>
-                        <td><a href="modification-user.php?id=<?= $user["user_id"] ?>">Modifier</a> | <a href="delete-user.php?id=<?= $user["user_id"] ?>" id="delete">Supprimer</a></td>
+                        <td><a href="modification-user.php?id=<?= $user["user_id"] ?>">Modifier</a> | <a href="delete-user.php?id=<?= $user["user_id"] ?>" class="delete">Supprimer</a></td>
                     </tr>
                     
                 <?php }  ?>

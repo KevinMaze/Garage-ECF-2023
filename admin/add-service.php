@@ -89,7 +89,7 @@ if(isset($_POST['add-service'])){
                         <tr>
                         <th scope="row"><?= $serviceArticle["service_id"] ?></th>
                             <td><?= $serviceArticle["name_service"] ?></td>
-                            <td><a href="modification-service.php?id=<?= $serviceArticle["service_id"] ?>">Modifier</a> | <a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>" id="delete">Supprimer</a></td>
+                            <td><a href="modification-service.php?id=<?= $serviceArticle["service_id"] ?>">Modifier</a> | <a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>" class="delete">Supprimer</a></td>
                         </tr>
                         
                     <?php }  ?>
