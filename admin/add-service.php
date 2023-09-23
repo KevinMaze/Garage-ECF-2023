@@ -74,7 +74,7 @@ if(isset($_POST['add-service'])){
         <div class="line-style"></div>
 
         <div class="section-admin__crud__description" id="services">
-            <table class="table ">
+            <table class="table-style">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

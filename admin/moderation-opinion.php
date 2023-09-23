@@ -38,7 +38,7 @@ if(isset($_POST["add_opinion"])){
     <div class="line-style"></div>
     
     <div class="section-admin__crud__description" id="moderation">
-        <table class="table ">
+        <table class="table-style">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -63,15 +63,6 @@ if(isset($_POST["add_opinion"])){
                 <?php } ?>
             </tbody>
         </table>
-        <?php if ($totalPageOpinion) {?>
-                <nav>
-                    <ul class="navigation-page">
-                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
-                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
-                        <?php }  ?>
-                    </ul>
-                </nav>
-        <?php }?>
     </div>
 
     <div class="line-style"></div>
@@ -81,7 +72,7 @@ if(isset($_POST["add_opinion"])){
     <div class="line-style"></div>
 
     <div class="section-admin__crud__description" id="moderation">
-        <table class="table ">
+        <table class="table-style">
             <thead>
                 <tr>
                     <th scope="col">#</th>

@@ -54,10 +54,10 @@
                             }?>
                         <div class="carousel-item active">
                             <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
-                            <div class="carousel-caption d-none d-md-block">
+                            <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block">
                                 <h3><?= htmlentities($car["name"])?></h3>
                                 <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
-                            </div>
+                            </div></a>
                         </div>
                     <?php }; ?>
 
@@ -76,7 +76,7 @@
         <div class="line-style flux"></div>
 
         <section class="section__opinion flux">
-            <h2 class="title-h2">Dernier avis</h2>
+            <h2 class="title-h2">Derniers avis</h2>
             <div class="line-style flux"></div>
             <?php foreach ($opinions as $key => $opinion)  {
                     if($opinion["verify"] == "yes") {?>  

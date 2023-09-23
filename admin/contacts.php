@@ -17,7 +17,7 @@ $contacts = getContact($pdo);
     <div class="line-style"></div>
     
     <div class="section-admin__crud__description" id="moderation">
-        <table class="table ">
+        <table class="table-style">
             <thead>
                 <tr>
                     <th scope="col">Annonce</th>
@@ -33,7 +33,7 @@ $contacts = getContact($pdo);
             <tbody>
                 <?php foreach ($contacts as $key => $contact) {?>
                     <tr>
-                    <th scope="row"><?= $contact["car_id"] ?></th>
+                        <td ><?= $contact["car_id"] ?></td>
                         <td><?= $contact["lastname"] ?></td>
                         <td><?= $contact["firstname"] ?></td>
                         <td><?= $contact["email"] ?></td>

@@ -1,16 +1,140 @@
-@import url("../css/style.css");
+@import url("style.css");
+
+/* FORM ADD USER ADMIN */
+.form-select__add-user{
+    font-family: var(--font-paragraphe);
+    background-color: var(--timberwolf);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-box);
+    border-radius: 10px;
+    height: 3em;
+}
+
+.form-select__add-user__label{
+    margin: 15px;
+}
+
+/* SECTION ADMIN STYLE */
+.witdh-logo{
+    width: 5em;
+}
 
 .section-admin{
     height: 100vh;
     display: grid;
+    grid-template-columns: 2fr;
 }
 
 .section-admin__nav{
-    width: 50%;
+    background-color: var(--timberwolf);
+    border-radius: 0 0 15px 15px;
+    box-shadow: var(--shadow-box);
+}
+
+.section-admin__nav__header{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    padding: 10px;
+    color: var(--davys-grayr);
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+}
+
+.section-admin__liste ul li{
+    color: var(--davys-gray);
+    font-family: var(--font-paragraphe);
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.section-admin__liste ul li:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+    color: var(--hoover-color);
+}
+
+.section-admin__liste ul li::before{
+    content: "> ";
+}
+
+.section-admin__footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--font-paragraphe);
+    font-size: 1.5em;
+}
+
+.section-admin__footer img{
+    border-radius: 50%;
+}
+
+.button-group-admin{
+    border-radius: 50%;
     background-color: var(--timberwolf);
 }
 
-.section-admin__description{
-    width: 50%;
+.button-group-admin__menu{
+    background-color: var(--timberwolf);
+    padding-left: 10px;
+}
+
+.button-group-admin__menu li{
+    margin: 10px;
+}
+
+/* SECTION ADMIN CRUD */
+.section-admin__crud__description {
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    font-size: 1.1em ;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.section-admin__crud__description a{
+    font-weight: bold;
+}
+
+.section-admin__crud__description a:hover{
+    color: var(--hoover-color);
+    text-decoration: underline;
+}
+
+/* NAVIGATION PAGE ADMIN */
+.navigation-page{
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation-page__item{
+    background-color: var(--timberwolf);
+    color: var(--davys-gray);
+    margin: 2.5px;
+    width: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.active-page{
+    color: var(--timberwolf);
     background-color: var(--davys-gray);
+}
+
+/* ADD CAR */
+.form-add-car{
+    margin-top: 15px;
+}
+
+.form-file{
+    color: var(--timberwolf);
+    margin: 15px;
+}
+
+.para-select-image{
+    color: var(--timberwolf);
+    font-family: var(--font-paragraphe);
+    margin: 15px;
 }

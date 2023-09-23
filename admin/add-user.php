@@ -37,7 +37,7 @@
     <div class="line-style"></div>
 
     <div class="section-admin__crud__description">
-        <table class="table ">
+        <table class="table-style">
             <thead>
                 <tr>
                     <th scope="col">#</th>

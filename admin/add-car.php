@@ -131,7 +131,7 @@ if(isset($_POST["add-car"])){
     <div class="line-style"></div>
 
     <div class="section-admin__crud__description" id="article-car">
-        <table class="table ">
+        <table class="table-style">
             <thead>
                 <tr>
                     <th scope="col">#</th>
