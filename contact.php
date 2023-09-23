@@ -111,7 +111,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <div class="line-style flux"></div>
 
 <section class="opinion flux">
-    <h2 class="title-h2">Dernier avis</h2>
+    <h2 class="title-h2">Derniers avis</h2>
     <div class="line-style flux"></div>
     <?php foreach ($opinions as $key => $opinion) { 
             if($opinion["verify"] == "yes"){?>
