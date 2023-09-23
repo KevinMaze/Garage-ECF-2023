@@ -41,7 +41,7 @@
                             <?php foreach ($mainMenu as $key => $menuItem) {
                                 if($menuItem["exclude"] == false){
                                 ?>
-                                <li><a href=<?= $key ?>><?= $menuItem["title"] ?></a></li>
+                                <li><a class="side_navlink_hover" href=<?= $key ?>><?= $menuItem["title"] ?></a></li>
                             <?php }
                             } 
                             ?>

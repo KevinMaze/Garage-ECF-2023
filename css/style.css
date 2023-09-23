@@ -1,8 +1,11 @@
+@import url("admin.css");
+
 /* VARIABLE */
 :root{
     --davys-gray: #565264;
     --timberwolf: #D6CFCB;
     --border-color: #706677;
+    --hoover-color: #A6808C;     
     --shadow-box:10px 10px 30px 2px #3b3a41;
     --shadow-box-smooth: rgba(112, 102, 119, 0.35) 0px 5px 15px;
     --font-paragraphe: 'Marvel', sans-serif;
@@ -38,20 +41,35 @@
     border-radius: 15px;
 }
 
+/* TABLE STYLE */
+.table-style{
+    width: 100%;
+}
+
+.table-style th, td{
+    border-bottom: 1px solid var(--timberwolf);
+    padding: 10px;
+}
+
+
 /* BODY */
 body{
     background: var(--davys-gray);
 }
 
 /* HEADER */
-.header__background{
+.header__background::before{
+    content: "";
     height: 100vh;
     width: 100%;
-    background-image: url(../assets/voiture_background.jpg);
+    background-image: url(../assets/voiture_background.jpg) ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    position: absolute;
+    filter: brightness(0.5);
+    z-index: -1;
 }
 
 .header__description{
@@ -104,12 +122,13 @@ body{
 .section__service__img img{
     object-fit: cover;
     width: 100%;
-    transition: .4s ease;
+    transition: .5s ease-in-out;
     border-radius: 10px;
 }
 
 .section__service__img img:hover {
     transform: scale(1.2);
+    filter: brightness(0.7);
 }
 
 .card-service p{
@@ -335,7 +354,7 @@ body{
     box-shadow: var(--shadow-box-smooth);
 }
 
-/* CONTACT.PHP */
+/* FORMULAIRE */
 .form-legend{
     font-family: var(--font-titles);
     font-size: 2em;
@@ -374,10 +393,16 @@ body{
     font-size: 1.5em;
 }
 
+.form-button{
+    margin-left: 2em;
+}
+
 .form-opinion{
     display: grid;
     grid-template-columns: 1fr;
 }
+
+/* OPINION */
 
 :placeholder-shown{
     padding-left: 10px;
@@ -391,23 +416,6 @@ body{
     margin: 15px;
 }
 
-.form-button{
-    margin-left: 2em;
-}
-
-/* FORM ADD USER ADMIN */
-.form-select__add-user{
-    font-family: var(--font-paragraphe);
-    background-color: var(--timberwolf);
-    border: 2px solid var(--border-color);
-    box-shadow: var(--shadow-box);
-    border-radius: 10px;
-    height: 3em;
-}
-
-.form-select__add-user__label{
-    margin: 15px;
-}
 
 /* CONNECTION */
 .header__description__connection{
@@ -442,6 +450,7 @@ body{
 
 .icone-password{
     width: 30px;
+    border-radius: 50%;
     background-color: var(--timberwolf);
     cursor: pointer;
 }
@@ -474,7 +483,7 @@ body{
 }
 
 .footer-grid-div a:hover{
-    color: var(--davys-gray);
+    color: var(--hoover-color);
 }
 
 .border-div{
@@ -486,129 +495,6 @@ body{
     text-align: center;
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
-}
-
-/* SECTION ADMIN STYLE */
-.witdh-logo{
-    width: 5em;
-}
-
-.section-admin{
-    display: grid;
-    grid-template-rows: 1fr;
-}
-
-.section-admin__nav{
-    background-color: var(--timberwolf);
-    border-radius: 0 0 15px 15px;
-    box-shadow: var(--shadow-box);
-}
-
-.section-admin__nav__header{
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    justify-content: space-between;
-    padding: 10px;
-    color: var(--davys-grayr);
-    font-family: var(--font-paragraphe);
-    font-size: 1.5em;
-}
-
-.section-admin__liste ul li{
-    color: var(--davys-gray);
-    font-family: var(--font-paragraphe);
-    padding: 10px;
-    font-size: 1.2em;
-}
-
-.section-admin__liste ul li:hover{
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
-.section-admin__liste ul li::before{
-    content: "-> ";
-}
-
-.section-admin__footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-family: var(--font-paragraphe);
-    font-size: 1.5em;
-}
-
-.section-admin__footer img{
-    border-radius: 50%;
-}
-
-.button-group-admin{
-    border-radius: 50%;
-    background-color: var(--timberwolf);
-}
-
-.button-group-admin__menu{
-    background-color: var(--timberwolf);
-    padding-left: 10px;
-}
-
-.button-group-admin__menu li{
-    margin: 10px;
-}
-
-/* SECTION ADMIN CRUD */
-.section-admin__crud__description {
-    color: var(--timberwolf);
-    font-family: var(--font-paragraphe);
-    font-size: 1.1em ;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-.section-admin__crud__description a{
-    font-weight: bold;
-}
-
-.section-admin__crud__description a:hover{
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
-/* NAVIGATION PAGE ADMIN */
-.navigation-page{
-    display: flex;
-    flex-direction: row;
-}
-
-.navigation-page__item{
-    background-color: var(--timberwolf);
-    color: var(--davys-gray);
-    margin: 2.5px;
-    width: 20px;
-    text-align: center;
-    border: 1px solid black;
-}
-
-.active-page{
-    color: var(--timberwolf);
-    background-color: var(--davys-gray);
-}
-
-/* ADD CAR */
-.form-add-car{
-    margin-top: 15px;
-}
-
-.form-file{
-    color: var(--timberwolf);
-    margin: 15px;
-}
-
-.para-select-image{
-    color: var(--timberwolf);
-    font-family: var(--font-paragraphe);
-    margin: 15px;
 }
 
 /********MEDIA QUERY********/

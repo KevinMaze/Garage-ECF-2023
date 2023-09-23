@@ -61,11 +61,14 @@
     font-family: var(--font-paragraphe);
     font-weight: bold;
     letter-spacing: 1px;
-    opacity: 0.8;
+    opacity: 1;
 }
 
-.side_navlinks a:hover {
-    opacity: 1;
+.side_navlink_hover:hover {
+    opacity: 0.8;
+    color: var(--hoover-color);
+    text-decoration: underline;
+    font-size: 1.1em;
 }
 
 /*---- Sidebar-Toggler ----*/
@@ -74,12 +77,15 @@
     top: 4vh;
     right: 3vw;
     width: 2rem;
-    height: 1.5rem;
+    height: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     overflow: hidden;
+    background-color: var(--timberwolf);
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .sidebar_toggler span {
