@@ -142,11 +142,30 @@ if(isset($_POST["add-car"])){
 
             <tbody>
                 <?php foreach ($carArticles as $key => $carArticle) {?>
-
                     <tr>
-                    <th scope="row"><?= $carArticle["car_id"] ?></th>
+                        <th scope="row"><?= $carArticle["car_id"] ?></th>
                         <td><?= $carArticle["name"] ?></td>
-                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | <a href="delete-car.php?id=<?=$carArticle["car_id"] ?>" class="delete">Supprimer</a></td>
+                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | 
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $carArticle["car_id"] ?>" class="custom-button-admin">Supprimer</button>
+                            <div class="modal fade" id="exampleModal<?= $carArticle["car_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'article <?= $carArticle["car_id"] ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Attention, vous êtes sur le point de supprimer l'article <?= $carArticle["name"] ?>. La suppression est définitive.
+                                            Etes-vous sûr ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?=$carArticle["car_id"] ?>">Supprimer</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php }  ?>
             </tbody>

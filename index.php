@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="carousel-inner flux border-shadow">
-                    <?php foreach ($cars as $key => $car) {
+                    <?php $i = 1; foreach ($cars as $key => $car) {
                             $image_car = selectImage($pdo, $car["car_id"], 1);
                             if ($image_car == "") {
                                 $imagePath = "./assets/default.jpg";
@@ -52,14 +52,14 @@
                             else {
                                 $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
                             }?>
-                        <div class="carousel-item active">
+                        <div class="carousel-item <?php ($i == 1 ? "active" : "") ?>">
                             <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
                             <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block">
                                 <h3><?= htmlentities($car["name"])?></h3>
                                 <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
                             </div></a>
                         </div>
-                    <?php }; ?>
+                    <?php $i++; }; ?>
 
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

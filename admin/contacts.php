@@ -20,12 +20,12 @@ $contacts = getContact($pdo);
         <table class="table-style">
             <thead>
                 <tr>
-                    <th scope="col">Annonce</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Téléphon</th>
+                    <th scope="col">Téléphone</th>
                     <th scope="col">Texte</th>
+                    <th scope="col">Annonce N°</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -33,12 +33,12 @@ $contacts = getContact($pdo);
             <tbody>
                 <?php foreach ($contacts as $key => $contact) {?>
                     <tr>
-                        <td ><?= $contact["car_id"] ?></td>
                         <td><?= $contact["lastname"] ?></td>
                         <td><?= $contact["firstname"] ?></td>
                         <td><?= $contact["email"] ?></td>
                         <td><?= $contact["phone"] ?></td>
                         <td><?= $contact["text"] ?></td>
+                        <td ><?= $contact["car_id"] ?></td>
                         <td><a href="mailto : <?= $contact["contact_id"]?>">Répondre</a> | <a href="./delete-contact.php?id=<?=$contact["contact_id"]?>" class="delete">Supprimer</a></td>
                     </tr>
                 <?php } ?>

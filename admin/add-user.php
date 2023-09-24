@@ -52,11 +52,31 @@
                 <?php foreach ($users as $key => $user) {?>
 
                     <tr>
-                    <th scope="row"><?= $user["user_id"] ?></th>
+                        <th scope="row"><?= $user["user_id"] ?></th>
                         <td><?= $user["lastname"] ?></td>
                         <td><?= $user["firstname"] ?></td>
                         <td><?= $user["role"] ?></td>
-                        <td><a href="modification-user.php?id=<?= $user["user_id"] ?>">Modifier</a> | <a href="delete-user.php?id=<?= $user["user_id"] ?>" class="delete">Supprimer</a></td>
+                        <td><a href="modification-user.php?id=<?= $user["user_id"] ?>">Modifier</a> | 
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $user["user_id"] ?>" class="custom-button-admin">Supprimer</button>
+                            <div class="modal fade" id="exampleModal<?= $user["user_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'employé <?= $user["user_id"] ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Attention, vous êtes sur le point de supprimer l'employé <?= $user["lastname"] ?> <?= $user["firstname"] ?>. La suppression est définitive.
+                                            Etes-vous sûr ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $user["user_id"] ?>">Supprimer</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     
                 <?php }  ?>
