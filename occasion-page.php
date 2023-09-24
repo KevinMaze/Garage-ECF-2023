@@ -13,7 +13,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCarById($pdo, (int)$_GET["id"]);
-        $imageCar = selectImageCar($pdo, (int)$_GET["id"]);
+        $imageCar = selectImage($pdo, (int)$_GET["id"]);
         $equipment = selectEquipment($pdo, (int)$_GET["id"]);
         if (!$car){
             $error = true;

@@ -1,12 +1,15 @@
 <?php
     $image_car = selectImage($pdo, $car["car_id"], 1);
     
-    if ($image_car == "") {
-        $imagePath = "./assets/default.jpg";
+    foreach ($image_car as $key => $image) {
+        if ($image_car == "") {
+            $imagePath = "./assets/default.jpg";
+        }
+        else {
+            $imagePath =".". _CAR_IMAGE_PATH_.$image["name_image"];
+        }
     }
-    else {
-        $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
-    }
+
 ?>
 
 <div class="section-occasion-card">
@@ -20,3 +23,14 @@
         <a href="occasion-page.php?id=<?=$car['car_id']?>" class="custom-button">Voir l'annonce</a>
     </div>
 </div>
+
+
+
+
+$image_car = selectImage($pdo, $car["car_id"], 1);
+                            if ($image_car == "") {
+                                $imagePath = "./assets/default.jpg";
+                            }
+                            else {
+                                $imagePath = _CAR_IMAGE_PATH_.$image_car["name_image"];
+                            }

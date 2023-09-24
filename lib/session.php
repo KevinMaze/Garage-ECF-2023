@@ -12,4 +12,13 @@ session_set_cookie_params([
 
 
 // création session utilisateur après connection
-session_start(); 
+try {
+    
+    session_start();
+
+} catch (Exception $e) {
+
+    echo $e->getMessage();
+    header("location: ./connection.php");
+}
+

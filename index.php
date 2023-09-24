@@ -22,7 +22,7 @@
 
                     <div class="card-service">
                         <div class="section__service__img">
-                            <a href="./service.php#<?=$service["name_service"]?>"><img src=".<?=_SERVICE_IMG_PATH_.$service['image_service']?>" alt="<?=$service['image_service']?>"></a>
+                            <a href="./service.php#<?= htmlentities($service["name_service"])?>"><img src=".<?=_SERVICE_IMG_PATH_.$service['image_service']?>" alt="<?= htmlentities($service['image_service'])?>"></a>
                         </div>
                         <p><?= $service['name_service'] ?></p>
                     </div>
@@ -44,22 +44,24 @@
                 </div>
 
                 <div class="carousel-inner flux border-shadow">
-                    <?php $i = 1; foreach ($cars as $key => $car) {
+                    <?php foreach ($cars as $key => $car) {
                             $image_car = selectImage($pdo, $car["car_id"], 1);
-                            if ($image_car == "") {
-                                $imagePath = "./assets/default.jpg";
-                            }
-                            else {
-                                $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
+                            foreach ($image_car as $key => $image) {
+                                if ($image_car == "") {
+                                    $imagePath = "./assets/default.jpg";
+                                }
+                                else {
+                                    $imagePath =".". _CAR_IMAGE_PATH_.$image["name_image"];
+                                }
                             }?>
-                        <div class="carousel-item <?php ($i == 1 ? "active" : "") ?>">
-                            <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
+                        <div class="carousel-item <?php if($key === array_key_first($cars)){ echo "active"; }else{echo "";}?>">
+                            <img src="<?= $imagePath?>" alt="<?= $imagePath?>">
                             <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block">
                                 <h3><?= htmlentities($car["name"])?></h3>
                                 <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
                             </div></a>
                         </div>
-                    <?php $i++; }; ?>
+                    <?php } ?>
 
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -81,10 +83,10 @@
             <?php foreach ($opinions as $key => $opinion)  {
                     if($opinion["verify"] == "yes") {?>  
                     <div class="section__last-opinion border-shadow">
-                        <h3><?= $opinion["name"] ?></h3>
+                        <h3><?= htmlentities($opinion["name"]) ?></h3>
                         <div class="line-inside-div-style flux"></div>
-                        <p><?= $opinion["opinion_text"] ?>.</p>
-                        <p class="section__opinion__note">Note : <?= $opinion["note"] ?> / 5</p>
+                        <p><?= htmlentities($opinion["opinion_text"]) ?>.</p>
+                        <p class="section__opinion__note">Note : <?= htmlentities($opinion["note"]) ?> / 5</p>
                     </div>
                     <?php } ?>
             <?php } ?>

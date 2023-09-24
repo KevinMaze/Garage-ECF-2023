@@ -180,11 +180,24 @@ body{
 /* SECTION CARROUSEL LAST OCCASION */
 .carrousel-last-occasion{
     margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .carrousel-title{
     color: var(--timberwolf);
     font-size: 1.5em;
+}
+
+.carousel{
+    width: 90%;
+    align-self: center;
+}
+
+.carousel-item img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--shadow-box);
 }
 
 /* OCCASION.PHP */
