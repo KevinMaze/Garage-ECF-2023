@@ -57,7 +57,27 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["name"] ?></td>
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
-                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | <a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>" class="delete">Supprimer</a></td>
+                        <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | 
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $opinion["opinion_id"] ?>" class="custom-button-admin">Supprimer</button>
+                            <div class="modal fade" id="exampleModal<?= $opinion["opinion_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'avis <?= $opinion["opinion_id"] ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Attention, vous êtes sur le point de supprimer l'avis <?= $opinion["opinion_id"] ?>. La suppression est définitive.
+                                            Etes-vous sûr ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <?php } ?>
                 <?php } ?>
@@ -93,7 +113,27 @@ if(isset($_POST["add_opinion"])){
                         <td><?= $opinion["opinion_text"] ?></td>
                         <td><?= $opinion["note"] ?></td>
                         <td><?= $opinion["verify"] ?></td>
-                        <td><a href="./delete-opinion.php?id=<?=$opinion["opinion_id"]?>" class="delete">Supprimer</a></td>
+                        <td>
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $opinion["opinion_id"] ?>" class="custom-button-admin">Supprimer</button>
+                            <div class="modal fade" id="exampleModal<?= $opinion["opinion_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'avis <?= $opinion["opinion_id"] ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Attention, vous êtes sur le point de supprimer l'avis <?= $opinion["opinion_id"] ?>. La suppression est définitive.
+                                            Etes-vous sûr ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <?php }?>
                 <?php }  ?>
