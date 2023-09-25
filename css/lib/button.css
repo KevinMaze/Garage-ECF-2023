@@ -8,6 +8,8 @@
     padding: 1em;
     letter-spacing: 1px;
     text-align: center;
+    font-family: var(--font-paragraphe);
+    text-transform: uppercase;
 }
 
 .custom-button:hover {
