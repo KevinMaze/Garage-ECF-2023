@@ -34,3 +34,12 @@ $image_car = selectImage($pdo, $car["car_id"], 1);
                             else {
                                 $imagePath = _CAR_IMAGE_PATH_.$image_car["name_image"];
                             }
+
+
+            <div class="carousel-item ">
+                <img src="<?= $imagePath?>" alt="<?= $imagePath?>">
+                <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block">
+                    <h3><?= htmlentities($car["name"])?></h3>
+                    <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
+                </div></a>
+            </div>

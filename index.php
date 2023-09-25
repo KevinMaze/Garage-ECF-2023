@@ -35,7 +35,7 @@
         <section class="carrousel-last-occasion flux">
             <h2 class="title-h2">Dernières Occasions</h2>
             <div class="line-style flux"></div>
-
+            
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -43,8 +43,9 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
 
-                <div class="carousel-inner flux border-shadow">
-                    <?php foreach ($cars as $key => $car) {
+                    <div class="carousel-inner border-shadow">
+                        <?php foreach ($cars as $keyCar => $car) {
+
                             $image_car = selectImage($pdo, $car["car_id"], 1);
                             foreach ($image_car as $key => $image) {
                                 if ($image_car == "") {
@@ -54,25 +55,27 @@
                                     $imagePath =".". _CAR_IMAGE_PATH_.$image["name_image"];
                                 }
                             }?>
-                        <div class="carousel-item <?php if($key === array_key_first($cars)){ echo "active"; }else{echo "";}?>">
-                            <img src="<?= $imagePath?>" alt="<?= $imagePath?>">
-                            <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block">
-                                <h3><?= htmlentities($car["name"])?></h3>
-                                <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
-                            </div></a>
-                        </div>
-                    <?php } ?>
+                            <div class="carousel-item <?php if($keyCar === 0){ echo "active"; }else{echo "";}?> ">
+                                <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
+                                <a href="occasion-page.php?id=<?=$car['car_id']?>"><div class="carousel-caption d-none d-md-block hover-action">
+                                    <h5><?= htmlentities($car["name"])?></h5>
+                                    <p><?= htmlentities($car["mileage"])?> km | <?= htmlentities($car["year"])?> | <?= htmlentities($car["price"])?> €</p>
+                                </div></a>
+                            </div>
+                        <?php } ?>
+                    </div>
 
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
             </div>
+
+
         </section>
 
         <div class="line-style flux"></div>

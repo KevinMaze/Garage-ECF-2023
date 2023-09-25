@@ -1,5 +1,6 @@
 @import url("admin.css");
 
+
 /* VARIABLE */
 :root{
     --davys-gray: #565264;
@@ -49,6 +50,14 @@
 .table-style th, td{
     border-bottom: 1px solid var(--timberwolf);
     padding: 10px;
+}
+
+/* HOVER */
+.hover-action:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+    color: var(--hoover-color);
+    transition: .2s ease;
 }
 
 
@@ -493,10 +502,6 @@ body{
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.footer-grid-div a:hover{
-    color: var(--hoover-color);
 }
 
 .border-div{

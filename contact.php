@@ -44,7 +44,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 
 <div class="line-style flux"></div>
 
-<section class="flux">
+<section class="flux" id="contact">
 	<form method="POST">
 		<fieldset class="form-style">
             <legend class="form-legend">Formulaire de contact</legend>
@@ -78,7 +78,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <div class="line-style flux"></div>
 
 
-<section class="flux">
+<section class="flux" id="opinions">
     <form method="POST">
         <fieldset class="form-opinion">
 
