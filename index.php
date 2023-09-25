@@ -47,11 +47,13 @@
                         <?php foreach ($cars as $keyCar => $car) {
 
                             $image_car = selectImage($pdo, $car["car_id"], 1);
-                            if ($image_car == "") {
-                                $imagePath = "./assets/default.jpg";
-                            }
-                            else {
-                                $imagePath = "."._CAR_IMAGE_PATH_.$image_car["name_image"];
+                            foreach ($image_car as $key => $image) {
+                                if ($image_car == "") {
+                                    $imagePath = "./assets/default.jpg";
+                                }
+                                else {
+                                    $imagePath =".". _CAR_IMAGE_PATH_.$image["name_image"];
+                                }
                             }?>
                             <div class="carousel-item <?php if($keyCar === 0){ echo "active"; }else{echo "";}?> ">
                                 <img src="<?= $imagePath?>" class="d-block w-100" alt="<?= $imagePath?>">
