@@ -13,7 +13,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         $car = getCarById($pdo, (int)$_GET["id"]);
-        $imageCar = selectImageCar($pdo, (int)$_GET["id"]);
+        $imageCar = selectImage($pdo, (int)$_GET["id"]);
         $equipment = selectEquipment($pdo, (int)$_GET["id"]);
         if (!$car){
             $error = true;
@@ -23,7 +23,7 @@
     }
     
     if(isset($_POST["add-contact"])){
-        $result = addContact($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], $_POST["car_id"]);
+        $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["car_id"], ENT_QUOTES, 'UTF-8'));
         if($result){
             $messages[] = "Votre message a bien été envoyé";
         }else{

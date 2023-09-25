@@ -1,5 +1,6 @@
 @import url("admin.css");
 
+
 /* VARIABLE */
 :root{
     --davys-gray: #565264;
@@ -49,6 +50,14 @@
 .table-style th, td{
     border-bottom: 1px solid var(--timberwolf);
     padding: 10px;
+}
+
+/* HOVER */
+.hover-action:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+    color: var(--hoover-color);
+    transition: .2s ease;
 }
 
 
@@ -180,11 +189,24 @@ body{
 /* SECTION CARROUSEL LAST OCCASION */
 .carrousel-last-occasion{
     margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .carrousel-title{
     color: var(--timberwolf);
     font-size: 1.5em;
+}
+
+.carousel{
+    width: 90%;
+    align-self: center;
+}
+
+.carousel-item img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--shadow-box);
 }
 
 /* OCCASION.PHP */
@@ -194,14 +216,25 @@ body{
     gap: 20px;
 }
 
-.form-filter{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-left: 10%;
+.section-filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 30px;
+
+}
+.button-filter-reload{
+    margin: 15px;
+    align-self: center;
+    width: 25%;
 }
 
-.form-select{
+.form-filter h3{
+    color: var(--timberwolf);
+    text-decoration: underline;
+}
+
+.input-form{
     font-family: var(--font-paragraphe);
     color: var(--davys-gray);
     background-color: var(--timberwolf);
@@ -209,10 +242,13 @@ body{
     box-shadow: var(--shadow-box);
     font-size: 1.2em;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
+
 
 /* OCCASION PART */
 .section-occasion-card{
@@ -221,28 +257,23 @@ body{
     box-shadow: var(--shadow-box);
     width: 350px;
     margin: auto;
-    padding: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    min-height: 35em;
 }
-
-/* .active-card{
-    display: show;
-    transition: width .3s;
-}
-.inactive-card{
-    display: none;
-    transition: width .3s;
-} */
 
 .section-occasion__div{
-    border-top: 2px solid var(--davys-gray);
-    margin: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .occasion-para{
     font-size: 1em;
     color: var(--davys-gray);
+    font-family: var(--font-paragraphe);
 }
 
 .section-occasion img{
@@ -482,10 +513,6 @@ body{
     letter-spacing: 1px;
 }
 
-.footer-grid-div a:hover{
-    color: var(--hoover-color);
-}
-
 .border-div{
     border-bottom: 2px solid var(--timberwolf);
 }
@@ -547,10 +574,7 @@ body{
         font-size: 1.2em;
     }
 
-    .form-filter{
-        grid-template-columns: repeat(3, 1fr);
-        margin-left: 5%;
-    }
+
 
     /**OCCASION PAGE**/
     .section-occasion-page h2{
@@ -669,6 +693,25 @@ body{
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .section-filter{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .button-filter-reload{
+        margin: 15px;
+        align-self: center;
+        width: 25%;
+    }
+    .form-filter{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .form-filter input{
+        width: 300px;
+    }
+
     /**OCCASION PAGE**/
     .section-occasion-page h2{
         font-size: 2.2em;
@@ -685,11 +728,9 @@ body{
     .section-occasion-page__description__equipment{
         font-size: 1.8em;
     }
-
     .img-occasion-page{
         width: 30em;
     }
-
 
     /**OPINION**/
     .section__last-opinion h3{

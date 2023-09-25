@@ -78,26 +78,16 @@ function addImageCar(PDO $pdo, string $name_image, int $car_id):bool
     return $query->execute();
 }
 
-// Selection des images de la table image_car avec car_id
-function selectImageCar(PDO $pdo, int $car_id):array|bool
+// select image avec limit et id
+function selectImage(PDO $pdo, int $car_id, int $limit = null):array|bool
 {
-    $query = $pdo->prepare("SELECT image_car.image_id, image_car.name_image, image_car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id GROUP BY image_car.name_image");
-    
-    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
-}
-
-// select image avec limit
-function selectImage(PDO $pdo, int $id, int $limit = null):array|bool
-{
-    $sql = "SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id" ;
+    $sql = "SELECT image_car.image_id, image_car.name_image, image_car.car_id, car.car_id FROM image_car INNER JOIN car ON image_car.car_id = :car_id GROUP BY image_car.name_image" ;
 
     if($limit){
         $sql .= " LIMIT :limit";
     }
     $query = $pdo->prepare($sql);
-    $query->bindValue(":car_id", $id, PDO::PARAM_INT);
+    $query->bindValue(":car_id", $car_id, PDO::PARAM_INT);
 
     if($limit){
     $query->bindValue(":limit", $limit, PDO::PARAM_INT);
@@ -105,9 +95,7 @@ function selectImage(PDO $pdo, int $id, int $limit = null):array|bool
 
     $query->execute();
 
-    $imageCar = $query->fetch(PDO::FETCH_ASSOC);
-
-    return $imageCar;
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 //Suppression des image_car

@@ -18,10 +18,9 @@ if (isset($_GET["page"])) {
 $opinions = getOpinions($pdo);
 
 if(isset($_POST["add-contact"])){
-    $result = addContact($pdo, htmlentities($_POST["lastname"]), $_POST["firstname"], $_POST["email"], $_POST["phone"], $_POST["text"], null);
     //htmlspecialchars() sécurise ce que l'utilisateur envoie (remplace touts les caractères spéciaux)
-    $securResult = htmlspecialchars($result, ENT_QUOTES, 'UTF-8');
-    if($securResult){
+    $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), null);
+    if($result){
         $messages[] = "Votre message a bien été envoyé";
     }else{
         $errors[] = "Une erreur est survenue, veuillez rééssayer ultérieurement";
@@ -29,9 +28,8 @@ if(isset($_POST["add-contact"])){
 }
 
 if(isset($_POST["add_opinion"])){
-    $opinionResult = addOpinion($pdo, $_POST["name"], $_POST["text"], $_POST["note"]);
-    $securOpinionResult = htmlspecialchars($opinionResult, ENT_QUOTES, 'UTF-8');
-    if($securOpinionResult){
+    $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), $_POST["note"]);
+    if($opinionResult){
         $messages[] = "Votre note a bien été enregistré, merci de votre avis";
     }else{
         $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
@@ -46,7 +44,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 
 <div class="line-style flux"></div>
 
-<section class="flux">
+<section class="flux" id="contact">
 	<form method="POST">
 		<fieldset class="form-style">
             <legend class="form-legend">Formulaire de contact</legend>
@@ -80,7 +78,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <div class="line-style flux"></div>
 
 
-<section class="flux">
+<section class="flux" id="opinions">
     <form method="POST">
         <fieldset class="form-opinion">
 
@@ -111,7 +109,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <div class="line-style flux"></div>
 
 <section class="opinion flux">
-    <h2 class="title-h2">Dernier avis</h2>
+    <h2 class="title-h2">Derniers avis</h2>
     <div class="line-style flux"></div>
     <?php foreach ($opinions as $key => $opinion) { 
             if($opinion["verify"] == "yes"){?>

@@ -1,19 +1,85 @@
-
-const xhr = new XMLHttpRequest();
-const verb = 'GET';
-const route = './lib/filter.php';
-let result;
-
-xhr.open(verb, route, true);
-
-xhr.addEventListener('readystatechange', function() {
-    xhr.onload = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            result = xhr.responseText
-            // console.log(result)
-
-        }
-    }
+const reload = document.querySelector('#reload')
+reload.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.location.reload()
 })
 
-xhr.send()
+
+
+const searchPrice = async () => {
+    document.getElementById("response").innerHTML = ""
+    let price = document.querySelector('#price').value
+    console.log(price)
+    if(price.length > 3) {
+        const req = await fetch(`./lib/filter-price.php?price=${price}`)
+        const json = await req.json()
+        console.log(json)
+        if(json.length > 0) {
+            json.forEach((price) => {
+                document.getElementById("response").innerHTML += `<div class="section-occasion-card">
+                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
+                                                                    <div class="section-occasion__div">
+                                                                        <h2 class="title-h2">${price.name}</h2>
+                                                                        <p class="occasion-para">Kilométrage : ${price.mileage}.</p>
+                                                                        <p class="occasion-para">Année : ${price.year}.</p>
+                                                                        <p class="occasion-para">Prix : ${price.price} €</p>
+                                                                        <a href="occasion-page.php?id=${price.car_id}" class="custom-button">Voir l'annonce</a>
+                                                                    </div>
+                                                                </div>`
+    
+            })
+        }
+    }
+}
+
+const searchMileage = async () => {
+    document.getElementById("response").innerHTML = ""
+    let mileage = document.querySelector('#mileage').value
+    console.log(mileage)
+    if(mileage.length > 1) {
+        const req = await fetch(`./lib/filter-mileage.php?mileage=${mileage}`)
+        const json = await req.json()
+        console.log(json)
+        if(json.length > 0) {
+            json.forEach((mileage) => {
+                document.getElementById("response").innerHTML += `<div class="section-occasion-card">
+                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
+                                                                    <div class="section-occasion__div">
+                                                                        <h2 class="title-h2">${mileage.name}</h2>
+                                                                        <p class="occasion-para">Kilométrage : ${mileage.mileage}.</p>
+                                                                        <p class="occasion-para">Année : ${mileage.year}.</p>
+                                                                        <p class="occasion-para">Prix : ${mileage.price} €</p>
+                                                                        <a href="occasion-page.php?id=${mileage.car_id}" class="custom-button">Voir l'annonce</a>
+                                                                    </div>
+                                                                </div>`
+    
+            })
+        }
+    }
+}
+
+const searchYear = async () => {
+    document.getElementById("response").innerHTML = ""
+    let year = document.querySelector('#year').value
+    console.log(year)
+    if(year.length > 3) {
+        const req = await fetch(`./lib/filter-year.php?year=${year}`)
+        const json = await req.json()
+        console.log(json)
+        if(json.length > 0) {
+            json.forEach((year) => {
+                document.getElementById("response").innerHTML += `<div class="section-occasion-card">
+                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
+                                                                    <div class="section-occasion__div">
+                                                                        <h2 class="title-h2">${year.name}</h2>
+                                                                        <p class="occasion-para">Kilométrage : ${year.mileage}.</p>
+                                                                        <p class="occasion-para">Année : ${year.year}.</p>
+                                                                        <p class="occasion-para">Prix : ${year.price} €</p>
+                                                                        <a href="occasion-page.php?id=${year.car_id}" class="custom-button">Voir l'annonce</a>
+                                                                    </div>
+                                                                </div>`
+    
+            })
+        }
+    }
+}

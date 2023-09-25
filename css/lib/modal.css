@@ -1,0 +1,11 @@
+@import url("../style.css");
+
+.title-modal{
+    font-family: var(--font-titles);
+    font-size: 1em;
+    text-transform: uppercase;
+    margin: 30px;
+    text-align: center;
+    color: var(--timberwolf);
+    letter-spacing: 1px;
+}

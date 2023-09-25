@@ -11,20 +11,20 @@
                 <div  class="footer-grid-div border-div">
                     <h3>Contact</h3>
                     <ul>
-                        <li>Téléphone : <a href="tel:+33606060606">0606060606</a></li>
+                        <li>Téléphone : <a href="tel:+33606060606" class="hover-action">0606060606</a></li>
                         <li>Adresse : TOULOUSE</li>
-                        <li>Email : <a href="mailto : vincent@parrot.com">vincent@parrot.com</a></li>
-                        <li><a href="#">Formulaire de contact</a></li>
+                        <li>Email : <a href="mailto : kekeproject@hotmail.fr" class="hover-action">vincent@parrot.com</a></li>
+                        <li><a href="#" class="hover-action">Formulaire de contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-grid-div">
                     <h3>Autres liens</h3>
                     <ul>
-                        <li><a href="#">Conditions Générales</a></li>
-                        <li><a href="./service.php">Services</a></li>
-                        <li><a href="./occasion.php">Véhicules Occasions</a></li>
-                        <li><a href="./contact.php">Contact</a></li>
-                        <li><a href="#">Avis Clients</a></li>
+                        <li><a href="#" class="hover-action">Mentions Légales</a></li>
+                        <li><a href="./service.php" class="hover-action">Services</a></li>
+                        <li><a href="./occasion.php" class="hover-action">Véhicules Occasions</a></li>
+                        <li><a href="./contact.php#contact" class="hover-action">Contact</a></li>
+                        <li><a href="./contact.php#opinions" class="hover-action">Avis Clients</a></li>
                     </ul>
                 </div>
             </div>
