@@ -2,7 +2,6 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
-    // require_once ('lib/filter/filter-price.php');
     require_once ('lib/main_menu.php');
     require_once ('template/header.php');
 

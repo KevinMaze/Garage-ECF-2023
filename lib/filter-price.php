@@ -11,5 +11,4 @@ require_once ('pdo.php');
 
     echo json_encode($resp);
 
-
 ?>
