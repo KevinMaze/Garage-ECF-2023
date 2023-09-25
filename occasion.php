@@ -2,7 +2,7 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
     require_once ('lib/car.php');
-    // require_once ('lib/filter-price.php');
+    // require_once ('lib/filter/filter-price.php');
     require_once ('lib/main_menu.php');
     require_once ('template/header.php');
 
@@ -31,12 +31,12 @@
 
             <div>
                 <h3>Kilométrage :</h3>
-                <input type="text" name="price" id="price" class="input-form" placeholder="Kilométrage maximum" onkeyup="searchMileage()">
+                <input type="text" name="mileage" id="mileage" class="input-form" placeholder="Kilométrage maximum" onkeyup="searchMileage()">
             </div>
 
             <div>
                 <h3>Année :</h3>
-                <input type="text" name="price" id="price" class="input-form" placeholder="Année maximum" onkeyup="searchYear()">
+                <input type="text" name="year" id="year" class="input-form" placeholder="Année maximum" onkeyup="searchYear()">
             </div>
         </fieldset>
     </form>
