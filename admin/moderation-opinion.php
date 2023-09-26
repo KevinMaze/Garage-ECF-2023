@@ -72,7 +72,7 @@ if(isset($_POST["add_opinion"])){
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-opinion.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ if(isset($_POST["add_opinion"])){
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-opinion.php?id=<?= $opinion["opinion_id"] ?>">Supprimer</a></button>
                                         </div>
                                     </div>
                                 </div>

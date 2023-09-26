@@ -50,7 +50,7 @@ if(isset($_POST['add-service'])){
         "description" => $_POST["description"],
     ];
     // on passe les données addService
-    $result = addService($pdo, $_POST["name_service"], $_POST["description"], $fileName, $user_id);
+    $result = addService($pdo, htmlspecialchars($_POST["name_service"]), htmlspecialchars($_POST["description"]), $fileName, $user_id);
     if($result) {
         $messages[] = "Enregistrement effectué";
         // on efface le tableau
@@ -104,7 +104,7 @@ if(isset($_POST['add-service'])){
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $serviceArticle["service_id"] ?>">Supprimer</a></button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-service.php?id=<?= $serviceArticle["service_id"] ?>">Supprimer</a></button>
                                         </div>
                                     </div>
                                 </div>
