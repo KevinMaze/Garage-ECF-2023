@@ -14,7 +14,7 @@ $hourlys = getHourly($pdo);
 
 // Récupération des données car pour modification (requête de récupération)
 if(isset($_GET["id"])){
-    $hourly = getHourlyById($pdo, $_GET["id"]);
+    $hourly = getHourlyById($pdo, int($_GET["id"]));
     if($hourly === false){
         $errors[] = "L'article demandé n\'existe pas !";
     }
@@ -22,7 +22,7 @@ if(isset($_GET["id"])){
 
 // Requète d'ajout
 if(isset($_POST["add_hourly"])){
-    $result = addHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"]);
+    $result = addHourly($pdo, htmlspecialchars($_POST["name_day"]), htmlspecialchars($_POST["hourly_am"]), htmlspecialchars($_POST["hourly_pm"]));
     if($result) {
         $messages[] = "Enregistrement réussi";
     }else{

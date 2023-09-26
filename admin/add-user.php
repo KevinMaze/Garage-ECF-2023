@@ -21,7 +21,7 @@
 
     // requete ajout
     if(isset($_POST["add-user"])){
-        $result = addUser($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["password"], $_POST["role"]);
+        $result = addUser($pdo, htmlspecialchars($_POST["lastname"]), htmlspecialchars($_POST["firstname"]), htmlspecialchars($_POST["email"]), htmlspecialchars($_POST["password"]), htmlspecialchars($_POST["role"]));
         if($result){
             $messages[] = "Enregistrement effectué";
         }else{
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                            <button type="button" class="btn btn-danger"><a href="delete-car.php?id=<?= $user["user_id"] ?>">Supprimer</a></button>
+                                            <button type="button" class="btn btn-danger"><a href="delete-user.php?id=<?= $user["user_id"] ?>">Supprimer</a></button>
                                         </div>
                                     </div>
                                 </div>

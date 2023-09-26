@@ -1,6 +1,6 @@
 <section class="flux">
 
-    <div class="line-style"></div>
+    <div class="line-style flux"></div>
 
     <h2 class="title-h2">Page de suppression</h2>
     <?php foreach ($messages as $message) { ?>

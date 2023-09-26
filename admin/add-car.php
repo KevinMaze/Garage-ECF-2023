@@ -45,7 +45,7 @@ if(isset($_POST["add-car"])){
     // Si un fichier est envoyé
     if ($result) {
         $filename = null;
-        $equipment = addEquipment($pdo, $_POST["equipment"], $result);
+        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"]), $result);
         foreach ($_FILES["file"]["error"] as $key => $error) {
             if ($error == UPLOAD_ERR_OK){
                 $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
