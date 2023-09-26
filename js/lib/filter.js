@@ -26,7 +26,7 @@ const searchPrice = async () => {
         if(json.length > 0) {
             json.forEach((price) => {
                 document.getElementById("response").innerHTML += `<div class="section-occasion-card">
-                <img src="${imagePath}${price.name_image}" alt="${imagePath}">
+                <img src="${imagePath}${price.name_image}" alt="Image Voiture">
                 <div class="section-occasion__div">
                 <h2 class="title-h2">${price.name}</h2>
                 <p class="occasion-para">Kilométrage : ${price.mileage}.</p>
@@ -36,6 +36,8 @@ const searchPrice = async () => {
                 </div>
                 </div>`
             })
+        }else if(json.length == 0) {
+            document.getElementById("response").innerHTML = `<h3 class="title-h2">Aucun résultat</h3>`
         }
     }
 }
@@ -51,7 +53,7 @@ const searchMileage = async () => {
         if(json.length > 0) {
             json.forEach((mileage) => {
                 document.getElementById("response").innerHTML += `<div class="section-occasion-card">
-                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
+                                                                    <img src="${imagePath}${mileage.name_image}" alt="Image Voiture">
                                                                     <div class="section-occasion__div">
                                                                         <h2 class="title-h2">${mileage.name}</h2>
                                                                         <p class="occasion-para">Kilométrage : ${mileage.mileage}.</p>
@@ -62,6 +64,8 @@ const searchMileage = async () => {
                                                                 </div>`
     
             })
+        }else if(json.length == 0) {
+            document.getElementById("response").innerHTML = `<h3 class="title-h2">Aucun résultat</h3>`
         }
     }
 }
@@ -77,7 +81,7 @@ const searchYear = async () => {
         if(json.length > 0) {
             json.forEach((year) => {
                 document.getElementById("response").innerHTML += `<div class="section-occasion-card">
-                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
+                                                                    <img src="${imagePath}${year.name_image}" alt="Image Voiture">
                                                                     <div class="section-occasion__div">
                                                                         <h2 class="title-h2">${year.name}</h2>
                                                                         <p class="occasion-para">Kilométrage : ${year.mileage}.</p>
@@ -88,6 +92,8 @@ const searchYear = async () => {
                                                                 </div>`
     
             })
+        }else if(json.length == 0) {
+            document.getElementById("response").innerHTML = `<h3 class="title-h2">Aucun résultat</h3>`
         }
     }
 }

@@ -3,7 +3,7 @@ require_once ('config.php');
 require_once ('pdo.php');
 
 
-    function selectCar(PDO $pdo, int $price, int $limit = null):array|bool
+function selectPrice(PDO $pdo, int $price, int $limit = null):array|bool
 {
     $price = $_GET['price'];
     $sql = "SELECT * FROM image_car INNER JOIN car ON image_car.car_id = car.car_id WHERE price <= :price GROUP BY car.name " ;
@@ -23,5 +23,5 @@ require_once ('pdo.php');
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-echo json_encode(selectCar($pdo, 1));
+echo json_encode(selectPrice($pdo, 1));
 ?>
