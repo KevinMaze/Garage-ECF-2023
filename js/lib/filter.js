@@ -5,6 +5,15 @@ reload.addEventListener('click', (e) => {
 })
 
 
+let imagePath = "./upload/cars/"
+const imagePathName = async () => {
+    if(price.name_image ===""){
+        imagePath = "./assets/default.jpg";
+    }else{
+        imagePath = "./upload/cars/" + price.name_image;
+}
+}
+
 
 const searchPrice = async () => {
     document.getElementById("response").innerHTML = ""
@@ -17,16 +26,15 @@ const searchPrice = async () => {
         if(json.length > 0) {
             json.forEach((price) => {
                 document.getElementById("response").innerHTML += `<div class="section-occasion-card">
-                                                                    <img src="<?= $imagePath ?>" alt="<?= $imagePath ?>">
-                                                                    <div class="section-occasion__div">
-                                                                        <h2 class="title-h2">${price.name}</h2>
-                                                                        <p class="occasion-para">Kilométrage : ${price.mileage}.</p>
-                                                                        <p class="occasion-para">Année : ${price.year}.</p>
-                                                                        <p class="occasion-para">Prix : ${price.price} €</p>
-                                                                        <a href="occasion-page.php?id=${price.car_id}" class="custom-button">Voir l'annonce</a>
-                                                                    </div>
-                                                                </div>`
-    
+                <img src="${imagePath}${price.name_image}" alt="${imagePath}">
+                <div class="section-occasion__div">
+                <h2 class="title-h2">${price.name}</h2>
+                <p class="occasion-para">Kilométrage : ${price.mileage}.</p>
+                <p class="occasion-para">Année : ${price.year}.</p>
+                <p class="occasion-para">Prix : ${price.price} €</p>
+                <a href="occasion-page.php?id=${price.car_id}" class="custom-button">Voir l'annonce</a>
+                </div>
+                </div>`
             })
         }
     }
