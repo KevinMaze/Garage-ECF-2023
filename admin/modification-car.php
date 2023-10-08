@@ -34,7 +34,7 @@ if(isset($_POST["add-car"])){
     }
 }
 
-if(isset($_POST["add_image"])){
+if(isset($_POST["add-image"])){
     $filename = null;
     foreach ($_FILES["file"]["error"] as $key => $error) {
         if ($error == UPLOAD_ERR_OK){
@@ -54,15 +54,6 @@ if(isset($_POST["add_image"])){
         $messages[] = "Enregistrement effectuer";
     } 
 }
-
-if(isset($_POST["delete_image"])){
-    deleteImageCar($pdo, $imageCar['image_id']);
-    $messages[] = "L'image a été supprimer";
-}else{
-    $errors[] = "Le fichier n'existe plus";
-}
-
-var_dump($_FILES);
 
 ?>
 
@@ -101,23 +92,33 @@ var_dump($_FILES);
             </fieldset>
         </form>
 
-        <form method="POST" enctype="multipart/form-data" class="form-add-car">
-            <fieldset class="form-style">
-
-                <p class="para-select-image">Supprimer ou selectionner la ou les images du véhicule (2.5 mo max)</p>
-                
-                <?php foreach ($imagesCar as $key => $imageCar) {
-                    if($imagesCar != ""){?>
+        <form method="POST" class="form-add-car">
+            <p class="para-select-image">Supprimer les images</p>
+            
+            <?php foreach ($imagesCar as $key => $imageCar) {
+                if($imagesCar != ""){?>
                     <div>
                         <div>
-                            <img src="..<?=_CAR_IMAGE_PATH_.$imageCar["name_image"]?>" alt="#" class="w-25">
+                            <img src="..<?=_CAR_IMAGE_PATH_.$imageCar["name_image"]?>" alt="#" class="w-25 m-2">
                             <input type="submit" name="delete_image" id="delete_image" value="Supprimer l'image" class="custom-button">
                             <input type="hidden" name="delete_image" value="<?= $imageCar['image_id']; ?>">
                         </div>
                     </div>
                     <?php } 
                 }?>
+                <?php if(isset($_POST["delete_image"])){
+                    deleteImageCar($pdo, $imageCar['image_id']);
+                        $messages[] = "L'image a été supprimer";
+                    }else{
+                        $errors[] = "Le fichier n'existe plus";
+                }?>
+        </form>
 
+        <form method="POST" enctype="multipart/form-data" class="form-add-car">
+            <fieldset class="form-style">
+
+                <p class="para-select-image">Selectionner la ou les images du véhicule (2.5 mo max)</p>
+                
                 <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file" multiple>
 
                 <div class="form-button">
