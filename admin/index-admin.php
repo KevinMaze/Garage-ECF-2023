@@ -1,9 +1,10 @@
 <?php  
 
-require_once ("../lib/session.php");
-require_once ("../lib/config.php");
-require_once ("../lib/pdo.php");
-require_once ('template-admin/header-admin.php');
+    require_once ("../lib/session.php");
+    require_once ("../lib/config.php");
+    require_once ("../lib/pdo.php");
+    require_once ('template-admin/header-admin.php');
+
 
     if (isset($_GET["page"])) {
         $page = (int)$_GET["page"];

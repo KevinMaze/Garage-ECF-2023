@@ -60,6 +60,11 @@
     transition: .2s ease;
 }
 
+/* HIDDEN */
+.hidden{
+    display: none;
+}
+
 
 /* BODY */
 body{
@@ -527,6 +532,10 @@ body{
 @media screen and (min-width: 720px) {
     .title-h2{
         font-size: 2.5em;
+    }
+
+    .hidden{
+        display: inline;
     }
 
     /**HEADER**/

@@ -32,7 +32,8 @@
 
                 <div class="section-admin__liste">
                     <ul>
-                        <?php if ($_SESSION["user"]["role"] === "admin")  {?>
+                        <?php
+                            if ($_SESSION["user"]["role"] === "admin")  {?>
                             <li><a href="../admin/index-admin.php">Accueil Administrateur</a></li>
                             <li><a href="../admin/add-car.php">Articles</a></li>
                             <li><a href="../admin/add-hourly.php">Horaires</a></li>
@@ -45,7 +46,7 @@
                             <li><a href="../admin/add-car.php">Articles</a></li>
                             <li><a href="../admin/moderation-opinion.php">Modération avis clients</a></li>
                             <li><a href="../admin/contacts.php">Contacts</a></li>
-                        <?php };?>
+                        <?php }?>
                     </ul>
                 </div>
 
