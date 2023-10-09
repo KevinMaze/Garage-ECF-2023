@@ -11,7 +11,7 @@
 }
 
 .form-select__add-user__label{
-    margin: 15px;
+    margin: var(--margin);
 }
 
 /* SECTION ADMIN STYLE */
@@ -36,7 +36,7 @@
     flex-direction: row;
     align-items: end;
     justify-content: space-between;
-    padding: 10px;
+    padding: var(--padding);
     color: var(--davys-grayr);
     font-family: var(--font-paragraphe);
     font-size: 1.5em;
@@ -45,7 +45,7 @@
 .section-admin__liste ul li{
     color: var(--davys-gray);
     font-family: var(--font-paragraphe);
-    padding: 10px;
+    padding: var(--padding);
     font-size: 1.2em;
 }
 
@@ -78,7 +78,7 @@
 
 .button-group-admin__menu{
     background-color: var(--timberwolf);
-    padding-left: 10px;
+    padding-left: var(--padding);
 }
 
 .button-group-admin__menu li{
@@ -124,16 +124,16 @@
 
 /* ADD CAR */
 .form-add-car{
-    margin-top: 15px;
+    margin-top: var(--margin);
 }
 
 .form-file{
     color: var(--timberwolf);
-    margin: 15px;
+    margin: var(--margin);
 }
 
 .para-select-image{
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
-    margin: 15px;
+    margin: var(--margin);
 }

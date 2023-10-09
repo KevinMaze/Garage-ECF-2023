@@ -35,7 +35,7 @@ $opinions = getOpinions($pdo);
 <div class="line-style flux"></div>
 
 <section class="flux" id="contact">
-	<form method="POST">
+	<form method="POST" id="form-contact">
 		<fieldset class="form-style">
             <h2 class="title-h2">Formulaire de contact</h2>
             
@@ -48,12 +48,16 @@ $opinions = getOpinions($pdo);
             <div class="line-style flux"></div>
 		
 			<label for="lastname"><input name="lastname" type="text" id="lastname" placeholder="Nom" required class="form-input"></label>
+            <div class="invalid-feedback">Veuillez saisir votre Nom</div>
 
 			<label for="firstname"><input name="firstname" type="text" id="firstname" placeholder="Prénom" required class="form-input"></label>
+            <div class="invalid-feedback">Veuillez saisir votre Prénom</div>
 
 			<label for="email"><input name="email" type="email" id="email" placeholder="exemple@exemple.com" required class="form-input"></label>
+            <div class="invalid-feedback">Veuillez saisir votre Email</div>
 
 			<label for="phone"><input name="phone" type="tel" id="phone" placeholder="Téléphone" class="form-input"></label>
+            <div class="invalid-feedback">Veuillez saisir votre Téléphone</div>
 
 			<textarea name="text" type="textarea" id="ask" placeholder="Demande" class="form-textarea"></textarea>
 
