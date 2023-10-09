@@ -5,13 +5,6 @@
     require_once ("../lib/pdo.php");
     require_once ('template-admin/header-admin.php');
 
-
-    if (isset($_GET["page"])) {
-        $page = (int)$_GET["page"];
-    }else {
-        $page = 1;
-    }
-
 ?>
 
 

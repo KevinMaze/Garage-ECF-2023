@@ -14,6 +14,8 @@ $services = getServices($pdo);
 
     <h2 class="title-h2">Nos Services</h2>
 
+    <div class="line-style flux"></div>
+
     <div class="flux">
     <?php  foreach ($services as $key => $service) {?>
 

@@ -90,7 +90,7 @@
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
     font-size: 1.1em ;
-
+    margin: 20px;
 }
 
 .section-admin__crud__description a{
