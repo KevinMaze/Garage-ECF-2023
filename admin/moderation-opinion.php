@@ -37,7 +37,7 @@ if(isset($_POST["add_opinion"])){
 
     <div class="line-style"></div>
     
-    <div class="section-admin__crud__description" id="moderation">
+    <div class="section-admin__crud__description flux" id="moderation">
         <table class="table-style">
             <thead>
                 <tr>

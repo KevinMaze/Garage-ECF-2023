@@ -11,20 +11,16 @@ $services = getServices($pdo);
 <div class="line-style flux"></div>
 
 <section class="flux">
+
     <h2 class="title-h2">Nos Services</h2>
+
+    <div class="line-style flux"></div>
 
     <div class="flux">
     <?php  foreach ($services as $key => $service) {?>
-        <div class="service-php " id="<?=$service["name_service"]?>">
-            <div class="service-img">
-                <img src=".<?=_SERVICE_IMG_PATH_.$service["image_service"];?>" alt=<?= $service["name_service"] ?>>
-                <h3> <?= $service["name_service"]?> </h3>
-            </div>
-            <div class="description-service">
-                <!-- nl2br permet un saut de ligne ou utilisation explode(PHP_EOL, $service["description"]) -->
-                <p><?= nl2br($service["description"])?></p>
-            </div>
-        </div>
+
+        <?php require ('template/service-part.php')  ?>
+        
     <?php } ?>
     </div>
 </section>

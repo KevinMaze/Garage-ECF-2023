@@ -45,7 +45,7 @@ if(isset($_POST["add-car"])){
     // Si un fichier est envoyé
     if ($result) {
         $filename = null;
-        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"]), $result);
+        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_QUOTES, 'UTF-8'), $result);
         foreach ($_FILES["file"]["error"] as $key => $error) {
             if ($error == UPLOAD_ERR_OK){
                 $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
@@ -168,13 +168,7 @@ if(isset($_POST["add-car"])){
 
             <p class="para-select-image">Veuiller selectionner jusqu'à 4 images du véhicule (2.5 mo max)</p>
 
-            <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file">
-            
-            <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file">
-            
-            <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file">
-            
-            <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file">
+            <input type="file" id="file" name="file[]" accept="image/png, image/jpg, image/jpeg" class="form-file" multiple>
             
             <div class="form-button">
                 <input type="submit" name="add-car" value="Envoyer" class="custom-button">

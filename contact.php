@@ -9,14 +9,6 @@ require_once ('template/header.php');
 $messages = [];
 $errors = [];
 
-if (isset($_GET["page"])) {
-    $page = (int)$_GET["page"];
-}else {
-    $page = 1;
-}
-
-$opinions = getOpinions($pdo);
-
 if(isset($_POST["add-contact"])){
     //htmlspecialchars() sécurise ce que l'utilisateur envoie (remplace touts les caractères spéciaux)
     $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), null);
@@ -36,9 +28,7 @@ if(isset($_POST["add_opinion"])){
     }
 }
 
-$opinions = getOpinions($pdo, _LIMIT_OPINION_PER_PAGE_, $page);
-$totalOpinion = getTotalOpinion($pdo);
-$totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
+$opinions = getOpinions($pdo);
 
 ?>
 
@@ -47,7 +37,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <section class="flux" id="contact">
 	<form method="POST">
 		<fieldset class="form-style">
-            <legend class="form-legend">Formulaire de contact</legend>
+            <h2 class="title-h2">Formulaire de contact</h2>
             
             <?php foreach ($messages as $message) { ?>
                 <div class="alert alert-success"><?= $message ?></div>
@@ -82,7 +72,7 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
     <form method="POST">
         <fieldset class="form-opinion">
 
-            <legend class="form-legend">Donnez vôtre avis</legend>
+            <h2 class="title-h2">Donnez vôtre avis</h2>
 
             <div class="line-style flux"></div>
             
@@ -109,33 +99,39 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 <div class="line-style flux"></div>
 
 <section class="opinion flux">
-    <h2 class="title-h2">Derniers avis</h2>
-    <div class="line-style flux"></div>
-    <?php foreach ($opinions as $key => $opinion) { 
-            if($opinion["verify"] == "yes"){?>
 
-                <div class="section__last-opinion border-shadow">
-                    <h3><?= $opinion["name"]?></h3>
-                    <div class="line-inside-div-style flux"></div>
-                    <p><?= $opinion["opinion_text"] ?></p>
-                    <p class="section__opinion__note">Note : <?= $opinion["note"] ?>/5</p>
-                </div>
-        <?php } ?>
-    <?php } ?>
-    <?php if ($totalPageOpinion) {?>
-                <nav>
-                    <ul class="navigation-page">
-                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
-                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
-                        <?php }  ?>
-                    </ul>
-                </nav>
-        <?php }?>
+    <h2 class="title-h2">Derniers avis</h2>
+
+    <div class="line-style flux"></div>
+
+
+    <div id="carouselExampleAutoplaying" class="carousel slide border-shadow section__last-opinion flux" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <?php foreach ($opinions as $key => $opinion) { 
+                if($opinion["verify"] == "yes"){?>
+                    <div class="carousel-item <?php if($key === 0){ echo "active"; }else{echo "";}?>">
+                        <h3><?= $opinion["name"]?></h3>
+                        <div class="line-inside-div-style flux"></div>
+                        <p><?= $opinion["opinion_text"] ?></p>
+                        <p class="section__opinion__note">Note : <?= $opinion["note"] ?>/5</p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="carousel-item active">
 
 </section>
 
 <div class="line-style flux"></div>
 
-<?php  
-require_once ('template/footer.php')
-?>
+<?php require_once ('template/footer.php') ?>

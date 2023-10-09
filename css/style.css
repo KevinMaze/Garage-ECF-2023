@@ -60,6 +60,11 @@
     transition: .2s ease;
 }
 
+/* HIDDEN */
+.hidden{
+    display: none;
+}
+
 
 /* BODY */
 body{
@@ -448,6 +453,7 @@ body{
 
 
 /* CONNECTION */
+
 .header__description__connection{
     display: flex;
     flex-direction: column;
@@ -527,6 +533,10 @@ body{
 @media screen and (min-width: 720px) {
     .title-h2{
         font-size: 2.5em;
+    }
+
+    .hidden{
+        display: inline;
     }
 
     /**HEADER**/
@@ -621,6 +631,7 @@ body{
     /**CONTACT**/
     .para-select-image{
         font-size: 1.2em;
+        margin: 20px;
     }
 
     /**FOOTER**/
