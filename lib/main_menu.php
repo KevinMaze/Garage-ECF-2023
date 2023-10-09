@@ -1,4 +1,6 @@
 <?php 
+
+//Défini dynamiquement les titres et métadonnées de chaque page
     $mainMenu = [
         "index.php" =>["title" => "Accueil", "head_title" => "VP Garage" ,"meta-description" => "Vincent Parrot, fort de ses 15 années d'expérience dans la réparation automobile, a ouvert 
         son propre garage à Toulouse en 2021.
@@ -18,6 +20,8 @@
         "connection.php" =>["title" => "Expace connection", "head_title" => "VP Garage - Connection", "meta-description" => "Connection", "exclude" => true],
 
         "index-admin.php" =>["title" => "", "head_title" => "VP Garage - Administration", "meta-description" => "", "exclude" => true],
+
+        "mention.php" =>["title" => "Mentions légales", "head_title" => "VP Garage - Mentions légales", "meta-description" => "Mentions légales", "exclude" => true],
     ];
 
 ?>

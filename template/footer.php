@@ -20,7 +20,7 @@
                 <div class="footer-grid-div">
                     <h3>Autres liens</h3>
                     <ul>
-                        <li><a href="#" class="hover-action">Mentions Légales</a></li>
+                        <li><a href="./mention.php" class="hover-action">Mentions Légales</a></li>
                         <li><a href="./service.php" class="hover-action">Services</a></li>
                         <li><a href="./occasion.php" class="hover-action">Véhicules Occasions</a></li>
                         <li><a href="./contact.php#contact" class="hover-action">Contact</a></li>

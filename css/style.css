@@ -453,6 +453,20 @@ body{
 
 
 /* CONNECTION */
+.header__background__mention{
+    content: "";
+    height: 100vh;
+    width: 100%;
+    background-image: url(../assets/voiture_background.jpg) ;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    filter: brightness(0.5);
+    z-index: -1;
+}
+
 .header__description__connection{
     display: flex;
     flex-direction: column;
