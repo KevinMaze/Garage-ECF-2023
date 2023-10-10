@@ -424,6 +424,13 @@ body{
     grid-template-columns: 1fr;
 }
 
+.form-style__label{
+    font-family: var(--font-paragraphe);
+    color: var(--timberwolf);
+    margin-left: var(--margin);
+    font-size: 1.2em;
+}
+
 .form-input{
     font-family: var(--font-paragraphe);
     background-color: var(--timberwolf);
@@ -640,6 +647,9 @@ body{
     .para-select-image{
         font-size: 1.2em;
         margin: 20px;
+    }
+    .form-style__label{
+        font-size: 1.5em;
     }
 
     /**FOOTER**/
