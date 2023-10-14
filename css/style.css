@@ -1,16 +1,24 @@
 @import url("admin.css");
 
-
 /* VARIABLE */
 :root{
+    /* color */
     --davys-gray: #565264;
     --timberwolf: #D6CFCB;
     --border-color: #706677;
-    --hoover-color: #A6808C;     
+    --hoover-color: #A6808C;
+    /* shadow */
     --shadow-box:10px 10px 30px 2px #3b3a41;
     --shadow-box-smooth: rgba(112, 102, 119, 0.35) 0px 5px 15px;
+    /* font */
     --font-paragraphe: 'Marvel', sans-serif;
     --font-titles: 'Fira Sans Extra Condensed', sans-serif;
+    /* radius */
+    --border: 15px;
+    /* margin / padding*/
+    --margin: 15px;
+    --padding: 10px;
+
 
 }
 
@@ -22,15 +30,15 @@
 
 .line-inside-div-style{
     border: 2px solid var(--davys-gray);
-    margin: 10px;
+    margin: var(--margin);
 }
 
 /* TITLE STYLE */
 .title-h2{
     font-family: var(--font-titles);
-    font-size: 2em;
+    font-size: 1.8em;
     text-transform: uppercase;
-    margin: 30px;
+    margin: 25px;
     text-align: center;
     color: var(--timberwolf);
     letter-spacing: 1px;
@@ -39,7 +47,7 @@
 /* BORDER SHADOW */
 .border-shadow{
     box-shadow: var(--shadow-box);
-    border-radius: 15px;
+    border-radius: var(--border);
 }
 
 /* TABLE STYLE */
@@ -49,7 +57,7 @@
 
 .table-style th, td{
     border-bottom: 1px solid var(--timberwolf);
-    padding: 10px;
+    padding: var(--padding);
 }
 
 /* HOVER */
@@ -137,7 +145,7 @@ body{
     object-fit: cover;
     width: 100%;
     transition: .5s ease-in-out;
-    border-radius: 10px;
+    border-radius: var(--border);
 }
 
 .section__service__img img:hover {
@@ -172,7 +180,7 @@ body{
 
 .service-img img{
     width: 300px;
-    border-radius: 15px;
+    border-radius: var(--border);
     box-shadow: var(--shadow-box);
 }
 
@@ -181,7 +189,7 @@ body{
     color: var(--davys-gray);
     font-family: var(--font-paragraphe);
     width: 100%;
-    border-radius: 15px;
+    border-radius: var(--border);
     padding: 1em;
     box-shadow: var(--shadow-box);
 }
@@ -210,7 +218,7 @@ body{
 
 .carousel-item img{
     width: 100%;
-    border-radius: 15px;
+    border-radius: var(--border);
     box-shadow: var(--shadow-box);
 }
 
@@ -225,11 +233,11 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 30px;
+    margin: var(--margin);
 
 }
 .button-filter-reload{
-    margin: 15px;
+    margin: var(--margin);
     align-self: center;
     width: 25%;
 }
@@ -250,15 +258,15 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    padding-bottom: 10px;
+    padding-left: var(--padding);
+    padding-bottom: var(--padding);
 }
 
 
 /* OCCASION PART */
 .section-occasion-card{
     background-color: var(--timberwolf);
-    border-radius: 15px;
+    border-radius: var(--border);
     box-shadow: var(--shadow-box);
     width: 350px;
     margin: auto;
@@ -283,7 +291,7 @@ body{
 
 .section-occasion img{
     width: 100%;
-    border-radius: 15px;
+    border-radius: var(--border);
 }
 
 .section-occasion h2{
@@ -301,19 +309,19 @@ body{
 }
 
 .occasion_paging{
-    margin-top: 15px;
+    margin-top: var(--margin);
 }
 
 /* OCCASION PAGE*/
 .section-occasion-page{
     background-color: var(--timberwolf);
-    border-radius: 15px;
+    border-radius: var(--border);
     box-shadow: var(--shadow-box);
 }
 
 .section-occasion-page h2{
     color: var(--davys-gray);
-    padding-top: 10px;
+    padding-top: var(--padding);
     font-size: 1.5em;
 }
 
@@ -365,8 +373,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 25px;
-    margin: 20px;
+    padding: 20px;
+    margin: var(--margin);
 }
 
 .section__last-opinion h3{
@@ -384,7 +392,7 @@ body{
 .section__opinion__note{
     align-self: flex-end;
     border: 1px solid var(--border-color);
-    padding: 10px;
+    padding: var(--padding);
     border-radius: 5px;
     box-shadow: var(--shadow-box-smooth);
 }
@@ -392,7 +400,7 @@ body{
 /* FORMULAIRE */
 .form-legend{
     font-family: var(--font-titles);
-    font-size: 2em;
+    font-size: 1.8em;
     text-transform: uppercase;
     color: var(--timberwolf);
     text-align: center;
@@ -404,7 +412,7 @@ body{
     font-family: var(--font-paragraphe);
     width: 90%;
     height: 20em;
-    margin: 15px;
+    margin: var(--margin);
     border: 2px solid var(--border-color);
     border-radius: 10px;
     box-shadow: var(--shadow-box);
@@ -416,13 +424,20 @@ body{
     grid-template-columns: 1fr;
 }
 
+.form-style__label{
+    font-family: var(--font-paragraphe);
+    color: var(--timberwolf);
+    margin-left: var(--margin);
+    font-size: 1.2em;
+}
+
 .form-input{
     font-family: var(--font-paragraphe);
     background-color: var(--timberwolf);
     border: 2px solid var(--border-color);
     box-shadow: var(--shadow-box);
     border-radius: 10px;
-    margin: 15px;
+    margin: var(--margin);
     height: 3em;
     width: 90%;
     font-size: 1.5em;
@@ -440,7 +455,7 @@ body{
 /* OPINION */
 
 :placeholder-shown{
-    padding-left: 10px;
+    padding-left: var(--padding);
 }
 
 .opinion{
@@ -448,7 +463,7 @@ body{
     grid-template-columns: 1fr;
     gap: 20px;
     width: 90%;
-    margin: 15px;
+    margin: var(--margin);
 }
 
 
@@ -470,7 +485,7 @@ body{
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
     font-size: 1.5em;
-    margin-left: 20px;
+    margin-left: var(--margin);
 }
 
 .form-style-connection{
@@ -503,7 +518,7 @@ body{
 }
 
 .footer-grid-div ul li {
-    margin: 10px;
+    margin: var(--margin);
     color: var(--timberwolf);
     font-family: var(--font-titles);
     font-size: 1.2em;
@@ -523,7 +538,7 @@ body{
 }
 
 .copyright{
-    margin: 20px;
+    margin: var(--margin);
     text-align: center;
     color: var(--timberwolf);
     font-family: var(--font-paragraphe);
@@ -633,6 +648,9 @@ body{
         font-size: 1.2em;
         margin: 20px;
     }
+    .form-style__label{
+        font-size: 1.5em;
+    }
 
     /**FOOTER**/
     .footer-grid{
@@ -709,7 +727,7 @@ body{
         justify-content: space-around;
     }
     .button-filter-reload{
-        margin: 15px;
+        margin: var(--margin);
         align-self: center;
         width: 25%;
     }

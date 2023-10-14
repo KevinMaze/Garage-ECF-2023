@@ -41,11 +41,11 @@ if(isset($_POST["add-car"])){
     ];
     
     // On passe les données a addCar
-    $result = addCar($pdo, htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_QUOTES, 'UTF-8'), $user_id);
+    $result = addCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), $user_id);
     // Si un fichier est envoyé
     if ($result) {
         $filename = null;
-        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_QUOTES, 'UTF-8'), $result);
+        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), $result);
         foreach ($_FILES["file"]["error"] as $key => $error) {
             if ($error == UPLOAD_ERR_OK){
                 $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);

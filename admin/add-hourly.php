@@ -22,7 +22,7 @@ if(isset($_GET["id"])){
 
 // Requète d'ajout
 if(isset($_POST["add_hourly"])){
-    $result = addHourly($pdo, htmlspecialchars($_POST["name_day"]), htmlspecialchars($_POST["hourly_am"]), htmlspecialchars($_POST["hourly_pm"]));
+    $result = addHourly($pdo, htmlspecialchars($_POST["name_day"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_am"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_pm"], ENT_IGNORE, 'UTF-8'));
     if($result) {
         $messages[] = "Enregistrement réussi";
     }else{

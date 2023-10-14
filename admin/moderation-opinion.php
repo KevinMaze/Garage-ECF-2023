@@ -19,7 +19,7 @@ $messages = [];
 $errors = [];
 
 if(isset($_POST["add_opinion"])){
-    $opinionResult = addOpinion($pdo, $_POST["name"], $_POST["text"], $_POST["note"]);
+    $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_IGNORE, 'UTF-8'), $_POST["note"]);
     if($opinionResult){
         $messages[] = "Votre note a bien été enregistré, merci de votre avis";
     }else{

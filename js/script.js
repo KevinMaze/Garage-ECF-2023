@@ -1,5 +1,5 @@
 
-// defilement vers le haut avec flèche
+/////////////////////// FLECHE DE DEFILEMENT ///////////////////////
 const btn = document.querySelector('.button-up')
 
 btn.addEventListener('click', () => {
@@ -9,5 +9,4 @@ btn.addEventListener('click', () => {
         left:0,
         behavior: "smooth",
         })
-})
-
+});

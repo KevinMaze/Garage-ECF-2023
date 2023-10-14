@@ -25,7 +25,7 @@
 
     // requete de modification
     if(isset($_POST["add-user"])){
-        $result = changeUser($pdo, $_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["password"], $_POST["role"], $_GET["id"]);
+        $result = changeUser($pdo, htmlspecialchars($_POST["lastname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["password"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["role"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
         if($result){
             $messages[] = "Modifications effectuées";
         }else{

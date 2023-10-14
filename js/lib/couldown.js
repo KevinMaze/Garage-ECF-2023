@@ -7,7 +7,6 @@ function countDown(){
         if(seconde < 0){
             clearInterval(timer);
         }else{
-            console.log(seconde);
             couldown.innerHTML = seconde;
         }
     }, 1000); 
