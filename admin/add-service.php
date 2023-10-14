@@ -50,7 +50,7 @@ if(isset($_POST['add-service'])){
         "description" => $_POST["description"],
     ];
     // on passe les données addService
-    $result = addService($pdo, htmlspecialchars($_POST["name_service"]), htmlspecialchars($_POST["description"]), $fileName, $user_id);
+    $result = addService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id);
     if($result) {
         $messages[] = "Enregistrement effectué";
         // on efface le tableau

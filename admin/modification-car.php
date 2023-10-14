@@ -25,8 +25,8 @@ $error = true;
 
 if(isset($_POST["add-car"])){
     $user_id = intval($_SESSION["user"]["user_id"]);
-    $result = changeCar($pdo, htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_QUOTES, 'UTF-8'), (int)$_GET["id"], (int) $user_id);
-    $equipment = changeEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_QUOTES, 'UTF-8'), (int) $_GET["id"]);
+    $result = changeCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), (int)$_GET["id"], (int) $user_id);
+    $equipment = changeEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), (int) $_GET["id"]);
     if($result){
         $messages[] = "Modification effectué";
     }else{

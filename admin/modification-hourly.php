@@ -27,7 +27,7 @@ $error = true;
 
 
 if(isset($_POST["add_hourly"])){
-    $result = changeHourly($pdo, $_POST["name_day"], $_POST["hourly_am"], $_POST["hourly_pm"], $_GET["id"]);
+    $result = changeHourly($pdo, htmlspecialchars($_POST["name_day"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_am"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_pm"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
     if($result) {
         $messages[] = "Enregistrement réussi";
     }else{

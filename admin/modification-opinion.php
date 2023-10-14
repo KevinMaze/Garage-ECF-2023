@@ -23,7 +23,7 @@ if(isset($_GET["id"])){
     }
 
 if(isset($_POST["add_opinion_verify"])){
-    $opinionVerify = addVerifyOpinion($pdo, $_POST["name"], $_POST["opinion_text"], $_POST["note"], $_POST["verify"], $_GET["id"]);
+    $opinionVerify = addVerifyOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["opinion_text"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["note"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["verify"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
     if($opinionVerify) {
         $messages[] = "Vérification effectué et envoyé";
     }else{

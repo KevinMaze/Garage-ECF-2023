@@ -47,7 +47,7 @@ if(isset($_POST["add_service"])){
             $errors[] = "Fichier non conforme";
         }
     }
-    $result = changeService($pdo, $_POST["name_service"], $_POST["description"], $fileName, $user_id, $_GET["id"]);
+    $result = changeService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id, $_GET["id"]);
     if($result){
         $messages[] = "Modification effectué";
     }else{

@@ -21,7 +21,7 @@
 
     // requete ajout
     if(isset($_POST["add-user"])){
-        $result = addUser($pdo, htmlspecialchars($_POST["lastname"]), htmlspecialchars($_POST["firstname"]), htmlspecialchars($_POST["email"]), htmlspecialchars($_POST["password"]), htmlspecialchars($_POST["role"]));
+        $result = addUser($pdo, htmlspecialchars($_POST["lastname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["password"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["role"], ENT_IGNORE, 'UTF-8'));
         if($result){
             $messages[] = "Enregistrement effectué";
         }else{

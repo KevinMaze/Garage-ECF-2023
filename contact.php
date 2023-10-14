@@ -12,7 +12,7 @@ $errors = [];
 try {
     if(isset($_POST["add-contact"])){
         //htmlspecialchars() sécurise ce que l'utilisateur envoie (remplace touts les caractères spéciaux)
-        $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), null);
+        $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_IGNORE, 'UTF-8'), null);
         if($result){
             $messages[] = "Votre message a bien été envoyé";
         }else{
@@ -22,16 +22,17 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
-
-
-if(isset($_POST["add_opinion"])){
-    $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), $_POST["note"]);
-    if($opinionResult){
-        $messages[] = "Votre note a bien été enregistré, merci de votre avis";
-    }else{
-        $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
+try {
+    if(isset($_POST["add_opinion"])){
+        $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_IGNORE, 'UTF-8'), $_POST["note"]);
+        if($opinionResult){
+            $messages[] = "Votre note a bien été enregistré, merci de votre avis";
+        }else{
+            $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
+        }
     }
+}catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 $opinions = getOpinions($pdo);
@@ -55,25 +56,25 @@ $opinions = getOpinions($pdo);
             
             <div class="form-style">
                 <label for="lastname" class="form-style__label">Nom :</label>
-                <input name="lastname" type="text" id="lastname" class="form-input">
+                <input name="lastname" type="text" id="lastname" required class="form-input">
                 <div class="invalid-feedback">Veuillez saisir votre Nom</div>
             </div>
 
             <div class="form-style">
                 <label for="firstname" class="form-style__label">Prénom :</label>
-                <input name="firstname" type="text" id="firstname" class="form-input">
+                <input name="firstname" type="text" id="firstname" required class="form-input">
                 <div class="invalid-feedback">Veuillez saisir votre Prénom</div>
             </div>
 
             <div class="form-style">
                 <label for="email" class="form-style__label">Email :</label>
-                <input name="email" type="email" id="email" class="form-input">
+                <input name="email" type="email" id="email" required class="form-input">
                 <div class="invalid-feedback">Veuillez saisir votre Email</div>
             </div>
 
             <div class="form-style">
                 <label for="phone" class="form-style__label">Téléphone :</label>
-                <input name="phone" type="tel" id="phone" class="form-input">
+                <input name="phone" type="tel" id="phone" required class="form-input">
                 <div class="invalid-feedback">Veuillez saisir votre Téléphone</div>
             </div>
 
@@ -81,7 +82,7 @@ $opinions = getOpinions($pdo);
 			<textarea name="text" type="textarea" id="ask" class="form-textarea"></textarea>
 
 			<div class="form-button">
-				<button name="add-contact" type="submit" value="Envoyer" class="custom-button" id="submit">Envoyer</button>
+				<input name="add-contact" type="submit" value="Envoyer" class="custom-button" id="submit"></input>
 			</div>
 
 		</fieldset>
@@ -92,7 +93,7 @@ $opinions = getOpinions($pdo);
 
 
 <section class="flux" id="opinions">
-    <form method="POST">
+    <form method="POST" id="form-opinion">
         <fieldset class="form-opinion">
 
             <h2 class="title-h2">Donnez vôtre avis</h2>
@@ -136,7 +137,7 @@ $opinions = getOpinions($pdo);
     <div id="carouselExampleAutoplaying" class="carousel slide border-shadow section__last-opinion flux" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($opinions as $key => $opinion) { 
-                if($opinion["verify"] == "yes"){?>
+                if($opinion["verify"] === "yes"){?>
                     <div class="carousel-item <?php if($key === 0){ echo "active"; }else{echo "";}?>">
                         <h3><?= $opinion["name"]?></h3>
                         <div class="line-inside-div-style flux"></div>
@@ -163,4 +164,5 @@ $opinions = getOpinions($pdo);
 <div class="line-style flux"></div>
 
 <script src="js/form.js"></script>
+
 <?php require_once ('template/footer.php') ?>
