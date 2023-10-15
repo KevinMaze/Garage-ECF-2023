@@ -52,7 +52,7 @@ $totalPageCar = ceil($totalArticleCar / _ADMIN_CAR_PER_PAGE_);
     </section>
 
     <div class="flux occasion_paging">
-        <?php if ($totalPageCar) {?>
+        <?php if ($totalPageCar > 1) {?>
             <nav>
                 <ul class="navigation-page">
                     <?php for ($i = 1; $i <= $totalPageCar; $i++) { ?>
