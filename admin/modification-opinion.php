@@ -10,25 +10,33 @@ $error = false;
 $messages = [];
 $errors = [];
 
-if(isset($_GET["id"])){
-    $opinion = getOpinionById($pdo, (int)$_GET["id"]);
-    if($opinion === false){
-        $errors[]="L'article n'hexiste pas";
-    }
-    if (!$opinion){
-        $error = true;
+try {
+    if(isset($_GET["id"])){
+        $opinion = getOpinionById($pdo, (int)$_GET["id"]);
+        if($opinion === false){
+            $errors[]="L'article n'hexiste pas";
         }
-    }else {
-    $error = true;
+        if (!$opinion){
+            $error = true;
+            }
+        }else {
+        $error = true;
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
-if(isset($_POST["add_opinion_verify"])){
-    $opinionVerify = addVerifyOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["opinion_text"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["note"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["verify"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
-    if($opinionVerify) {
-        $messages[] = "Vérification effectué et envoyé";
-    }else{
-        $errors[] = "Une erreur s'est produite !";
+try {
+    if(isset($_POST["add_opinion_verify"])){
+        $opinionVerify = addVerifyOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["opinion_text"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["note"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["verify"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
+        if($opinionVerify) {
+            $messages[] = "Vérification effectué et envoyé";
+        }else{
+            $errors[] = "Une erreur s'est produite !";
+        }
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 ?>
 
@@ -52,9 +60,9 @@ if(isset($_POST["add_opinion_verify"])){
         <form method="POST">
             <fieldset class="form-opinion">
             
-                <label for="name"><input name="name" type="text" id="name" class="form-input" value="<?= $opinion["name"] ?>"></label>
+                <label for="name"><input name="name" type="text" id="name" class="form-input" value="<?= htmlentities($opinion["name"]) ?>"></label>
 
-                <textarea name="opinion_text" type="textarea" id="ask" class="form-textarea"><?= $opinion["opinion_text"]?></textarea>
+                <textarea name="opinion_text" type="textarea" id="ask" class="form-textarea"><?= htmlentities($opinion["opinion_text"])?></textarea>
 
                 <label for="note" id="note">
                 <select name="note" id="note-select" class="form-input">
@@ -79,5 +87,4 @@ if(isset($_POST["add_opinion_verify"])){
 <?php }else {?>
     <h1 class="title-h2"><?= _ERROR_MESSAGE_ ?></h1>
 <?php }?>
-
 <?php require_once ("template-admin/footer-admin.php") ?>

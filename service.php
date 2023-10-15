@@ -8,25 +8,23 @@ require_once ('template/header.php');
 $services = getServices($pdo);
 ?>
 
-<div class="line-style flux"></div>
+    <div class="line-style flux"></div>
 
-<section class="flux">
+    <section class="flux">
 
-    <h2 class="title-h2">Nos Services</h2>
+        <h2 class="title-h2">Nos Services</h2>
+
+        <div class="line-style flux"></div>
+
+        <div class="flux">
+        <?php  foreach ($services as $key => $service) {?>
+
+            <?php require ('template/service-part.php')  ?>
+            
+        <?php } ?>
+        </div>
+    </section>
 
     <div class="line-style flux"></div>
 
-    <div class="flux">
-    <?php  foreach ($services as $key => $service) {?>
-
-        <?php require ('template/service-part.php')  ?>
-        
-    <?php } ?>
-    </div>
-</section>
-
-<div class="line-style flux"></div>
-
-<?php  
-require_once ('template/footer.php')
-?>
+<?php require_once ('template/footer.php') ?>

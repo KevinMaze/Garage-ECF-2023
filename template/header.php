@@ -24,7 +24,6 @@
     <link rel="shortcut icon" href="assets/logo_VP.png" type="image/png">
     <title><?=$mainMenu[$currentPage]["head_title"]?></title>
 </head>
-
     <body>
 
         <nav>

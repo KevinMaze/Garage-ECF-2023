@@ -12,47 +12,55 @@ $error = false;
 $messages = [];
 $errors = [];
 
-if(isset($_GET["id"])){
-    $service = getServiceById($pdo, (int)$_GET["id"]);
-    if($service === false){
-        $errors[]="L'article n'hexiste pas";
-    }
-    if (!$service){
+try {
+    if(isset($_GET["id"])){
+        $service = getServiceById($pdo, (int)$_GET["id"]);
+        if($service === false){
+            $errors[]="L'article n'hexiste pas";
+        }
+        if (!$service){
+            $error = true;
+            }
+        }else {
         $error = true;
-        }
-    }else {
-    $error = true;
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
-if(isset($_POST["add_service"])){
-    if(isset($_POST["delete_image"])){
-        if(file_exists($service["image_service"])){
-            unlink(_SERVICE_IMG_PATH_.$service["image_service"]);
+try {
+    if(isset($_POST["add_service"])){
+        if(isset($_POST["delete_image"])){
+            if(file_exists($service["image_service"])){
+                unlink(_SERVICE_IMG_PATH_.$service["image_service"]);
+            }else{
+                $errors[] = "Le fichier n'existe plus!";
+            }
+        }
+        $user_id = intval($_SESSION["user"]["user_id"]);
+        $fileName = null;
+        if(isset($_FILES["file"]["tmp_name"]) && ($_FILES["file"]["tmp_name"] != "")){
+            $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
+    
+            //si image ok
+            if($checkImage != false){
+                $fileName = slugify(basename($_FILES["file"]["name"]));
+                $fileName = uniqid()."-".$fileName;
+                move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__)._SERVICE_IMG_PATH_.$fileName);
+            }else{
+                // problème image upload
+                $errors[] = "Fichier non conforme";
+            }
+        }
+        $result = changeService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id, $_GET["id"]);
+        if($result){
+            $messages[] = "Modification effectué";
         }else{
-            $errors[] = "Le fichier n'existe plus!";
+            $errors[] = "Une erreur s'est produite";
         }
     }
-    $user_id = intval($_SESSION["user"]["user_id"]);
-    $fileName = null;
-    if(isset($_FILES["file"]["tmp_name"]) && ($_FILES["file"]["tmp_name"] != "")){
-        $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
-
-        //si image ok
-        if($checkImage != false){
-            $fileName = slugify(basename($_FILES["file"]["name"]));
-            $fileName = uniqid()."-".$fileName;
-            move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__)._SERVICE_IMG_PATH_.$fileName);
-        }else{
-            // problème image upload
-            $errors[] = "Fichier non conforme";
-        }
-    }
-    $result = changeService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id, $_GET["id"]);
-    if($result){
-        $messages[] = "Modification effectué";
-    }else{
-        $errors[] = "Une erreur s'est produite";
-    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 ?>
 
@@ -74,9 +82,9 @@ if(isset($_POST["add_service"])){
                 </thead>
                 <tbody>
                         <tr>
-                        <th scope="row"><?= $service["service_id"] ?></th>
-                            <td><?= $service["name_service"] ?></td>
-                            <td><?= $service["description"] ?></td>
+                        <th scope="row"><?= htmlentities($service["service_id"]) ?></th>
+                            <td><?= htmlentities($service["name_service"]) ?></td>
+                            <td><?= htmlentities($service["description"]) ?></td>
                         </tr>
                 </tbody>
             </table>
@@ -97,15 +105,15 @@ if(isset($_POST["add_service"])){
                 
                 <div class="line-style"></div>
                 
-                <label for="name-service"><input type="text" id="name_service" name="name_service" value=<?= $service["name_service"] ?> class="form-input"></label>
+                <label for="name-service"><input type="text" id="name_service" name="name_service" value=<?= htmlentities($service["name_service"]) ?> class="form-input"></label>
                 
-                <textarea type="textarea" id="description" name="description" class="form-textarea"><?= $service["description"]?></textarea>
+                <textarea type="textarea" id="description" name="description" class="form-textarea"><?= htmlentities($service["description"])?></textarea>
 
                 <p class="para-select-image">Veuiller selectionner 1 image (2.5mo max.)</p>
 
                 <div>
                     <label for="delete_image"  class="form-file"><input type="checkbox" name="delete_image" id="delete_image"> Supprimer l'image précedente</label>
-                    <input type="hidden" name="file" value="<?= $service['image_service']; ?>">
+                    <input type="hidden" name="file" value="<?= htmlentities($service['image_service']); ?>">
                 </div>
 
                 <input type="hidden" name="MAX_FILE_SIZE" value="2621440" />
@@ -123,7 +131,6 @@ if(isset($_POST["add_service"])){
 <?php }else {?>
     <h1 class="title-h2"><?= _ERROR_MESSAGE_ ?></h1>
 <?php }?>
-
 <?php require_once ("template-admin/footer-admin.php") ?>
 
 

@@ -1,12 +1,11 @@
 <?php
-    require_once ('lib/config.php');
-    require_once ('lib/session.php');
-    require_once ('lib/pdo.php');
-    require_once ('lib/hourly.php');
-    require_once ('lib/main_menu.php');
-    $hourlys = getHourly($pdo);
-    $currentPage = basename($_SERVER['SCRIPT_NAME']);
-
+require_once ('lib/config.php');
+require_once ('lib/session.php');
+require_once ('lib/pdo.php');
+require_once ('lib/hourly.php');
+require_once ('lib/main_menu.php');
+$hourlys = getHourly($pdo);
+$currentPage = basename($_SERVER['SCRIPT_NAME']);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +13,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="#">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -26,7 +24,6 @@
     <link rel="shortcut icon" href="assets/logo_VP.png" type="image/png">
     <title><?=$mainMenu[$currentPage]["head_title"]?></title>
 </head>
-
     <body>
 
         <nav>
@@ -134,6 +131,4 @@
 
             <div class="line-style flux"></div>
         </section>
-                    
-
-        <?php require_once ('template/footer.php'); ?>
+<?php require_once ('template/footer.php'); ?>

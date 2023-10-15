@@ -1,7 +1,7 @@
 <?php 
 
 //Défini dynamiquement les titres et métadonnées de chaque page
-// flase dans navbar // true pas dans navbar
+// exclude :  false dans navbar // true pas dans navbar
     $mainMenu = [
         "index.php" =>["title" => "Accueil", "head_title" => "VP Garage" ,"meta-description" => "Vincent Parrot, fort de ses 15 années d'expérience dans la réparation automobile, a ouvert 
         son propre garage à Toulouse en 2021.

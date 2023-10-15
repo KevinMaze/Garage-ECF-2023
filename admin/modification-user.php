@@ -1,16 +1,17 @@
 <?php
-    require_once ("../lib/session.php");
-    require_once ("../lib/config.php");
-    require_once ("../lib/pdo.php");
-    require_once ("../lib/user.php");
-    require_once ('template-admin/header-admin.php');
+require_once ("../lib/session.php");
+require_once ("../lib/config.php");
+require_once ("../lib/pdo.php");
+require_once ("../lib/user.php");
+require_once ('template-admin/header-admin.php');
 
-    //tableau des messages
-    $error = false;
-    $messages = [];
-    $errors = [];
+//tableau des messages
+$error = false;
+$messages = [];
+$errors = [];
 
-    // recuperation d'un user avec id
+// recuperation d'un user avec id
+try {
     if(isset($_GET["id"])){
         $user = getUserById($pdo, (int)$_GET["id"]);
         if($user === false){
@@ -21,9 +22,13 @@
             }
         }else {
         $error = true;
-        }
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
-    // requete de modification
+// requete de modification
+try {
     if(isset($_POST["add-user"])){
         $result = changeUser($pdo, htmlspecialchars($_POST["lastname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_IGNORE, 'UTF-8'), $_POST["password"], htmlspecialchars($_POST["role"], ENT_IGNORE, 'UTF-8'), $_GET["id"]);
         if($result){
@@ -32,6 +37,9 @@
             $errors[] = "Un problème est survenue";
         }
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 ?>
 
 <?php  if (!$error) {?>
@@ -56,11 +64,11 @@
 
                 <tbody>
                         <tr>
-                        <th scope="row"><?= $user["user_id"] ?></th>
-                            <td><?= $user["lastname"] ?></td>
-                            <td><?= $user["firstname"] ?></td>
-                            <td><?= $user["email"] ?></td>
-                            <td><?= $user["role"] ?></td>
+                        <th scope="row"><?= htmlentities($user["user_id"]) ?></th>
+                            <td><?= htmlentities($user["lastname"]) ?></td>
+                            <td><?= htmlentities($user["firstname"]) ?></td>
+                            <td><?= htmlentities($user["email"]) ?></td>
+                            <td><?= htmlentities($user["role"]) ?></td>
                         </tr>
                 </tbody>
             </table>
@@ -80,13 +88,13 @@
 
                 <div class="line-style flux"></div>
             
-                <label for="lastname"><input type="text" id="lastname" placeholder="Nom" class="form-input" name="lastname" value=<?= $user["lastname"] ?>></label>
+                <label for="lastname"><input type="text" id="lastname" placeholder="Nom" class="form-input" name="lastname" value=<?= htmlentities($user["lastname"]) ?>></label>
 
-                <label for="firstname"><input type="text" id="firstname" placeholder="Prénom" class="form-input" name="firstname" value=<?= $user["firstname"] ?>></label>
+                <label for="firstname"><input type="text" id="firstname" placeholder="Prénom" class="form-input" name="firstname" value=<?= htmlentities($user["firstname"]) ?>></label>
 
-                <label for="email"><input type="email" id="email" placeholder="exemple@exemple.com" class="form-input" name="email" value=<?= $user["email"] ?>></label>
+                <label for="email"><input type="email" id="email" placeholder="exemple@exemple.com" class="form-input" name="email" value=<?= htmlentities($user["email"]) ?>></label>
 
-                <label for="password"><input type="password" id="password" placeholder="Téléphone" class="form-input" name="password" value=<?= $user["password"] ?>></label>
+                <label for="password"><input type="password" id="password" placeholder="Téléphone" class="form-input" name="password" value=<?= htmlentities($user["password"]) ?>></label>
 
                 <label for="role" id="role" class="form-select__add-user__label">
                 <select id="role" class="form-select__add-user" name="role">
@@ -107,5 +115,4 @@
 <?php }else {?>
     <h1 class="title-h2"><?= _ERROR_MESSAGE_ ?></h1>
 <?php }?>
-
 <?php require_once ("../admin/template-admin/footer-admin.php") ?>

@@ -18,13 +18,17 @@ $totalPageOpinion = ceil($totalOpinion / _LIMIT_OPINION_PER_PAGE_);
 $messages = [];
 $errors = [];
 
-if(isset($_POST["add_opinion"])){
-    $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_IGNORE, 'UTF-8'), $_POST["note"]);
-    if($opinionResult){
-        $messages[] = "Votre note a bien été enregistré, merci de votre avis";
-    }else{
-        $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
+try {
+    if(isset($_POST["add_opinion"])){
+        $opinionResult = addOpinion($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_IGNORE, 'UTF-8'), $_POST["note"]);
+        if($opinionResult){
+            $messages[] = "Votre note a bien été enregistré, merci de votre avis";
+        }else{
+            $errors[]= "Un problème est survenue, veuillez rééssayer ultérieurement";
+        }
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 ?>
@@ -53,10 +57,10 @@ if(isset($_POST["add_opinion"])){
                 <?php foreach ($opinions as $key => $opinion) {
                     if($opinion["verify"] == null){?>
                     <tr>
-                    <th scope="row"><?= $opinion["opinion_id"] ?></th>
-                        <td><?= $opinion["name"] ?></td>
-                        <td><?= $opinion["opinion_text"] ?></td>
-                        <td><?= $opinion["note"] ?></td>
+                    <th scope="row"><?= htmlentities($opinion["opinion_id"]) ?></th>
+                        <td><?= htmlentities($opinion["name"]) ?></td>
+                        <td><?= htmlentities($opinion["opinion_text"]) ?></td>
+                        <td><?= htmlentities($opinion["note"]) ?></td>
                         <td><a href="./modification-opinion.php?id=<?= $opinion["opinion_id"]?>">Modifier</a> | 
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $opinion["opinion_id"] ?>" class="custom-button-admin">Supprimer</button>
                             <div class="modal fade" id="exampleModal<?= $opinion["opinion_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,11 +112,11 @@ if(isset($_POST["add_opinion"])){
                 <?php foreach ($opinions as $key => $opinion) {
                     if($opinion["verify"] == "yes"){?>
                     <tr>
-                    <th scope="row"><?= $opinion["opinion_id"] ?></th>
-                        <td><?= $opinion["name"] ?></td>
-                        <td><?= $opinion["opinion_text"] ?></td>
-                        <td><?= $opinion["note"] ?></td>
-                        <td><?= $opinion["verify"] ?></td>
+                    <th scope="row"><?= htmlentities($opinion["opinion_id"]) ?></th>
+                        <td><?= htmlentities($opinion["name"]) ?></td>
+                        <td><?= htmlentities($opinion["opinion_text"]) ?></td>
+                        <td><?= htmlentities($opinion["note"]) ?></td>
+                        <td><?= htmlentities($opinion["verify"]) ?></td>
                         <td>
                             <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $opinion["opinion_id"] ?>" class="custom-button-admin">Supprimer</button>
                             <div class="modal fade" id="exampleModal<?= $opinion["opinion_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

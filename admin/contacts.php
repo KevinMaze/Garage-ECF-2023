@@ -33,23 +33,23 @@ $contacts = getContact($pdo);
             <tbody>
                 <?php foreach ($contacts as $key => $contact) {?>
                     <tr>
-                        <td><?= $contact["lastname"] ?></td>
-                        <td><?= $contact["firstname"] ?></td>
-                        <td><?= $contact["email"] ?></td>
-                        <td><?= $contact["phone"] ?></td>
-                        <td><?= $contact["text"] ?></td>
-                        <td ><?= $contact["car_id"] ?></td>
+                        <td><?= htmlentities($contact["lastname"]) ?></td>
+                        <td><?= htmlentities($contact["firstname"]) ?></td>
+                        <td><?= htmlentities($contact["email"]) ?></td>
+                        <td><?= htmlentities($contact["phone"]) ?></td>
+                        <td><?= htmlentities($contact["text"]) ?></td>
+                        <td ><?= htmlentities($contact["car_id"]) ?></td>
                         <td><a href="mailto : <?= $contact["contact_id"]?>">Répondre</a> | 
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $contact["contact_id"] ?>" class="custom-button-admin">Supprimer</button>
                             <div class="modal fade" id="exampleModal<?= $contact["contact_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'avis de <?= $contact["lastname"]." ".$contact["firstname"] ?></h1>
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'avis de <?= htmlentities($contact["lastname"])." ".htmlentities($contact["firstname"]) ?></h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Attention, vous êtes sur le point de supprimer l'avis de <?= $contact["lastname"]." ".$contact["firstname"] ?>. La suppression est définitive.
+                                            Attention, vous êtes sur le point de supprimer l'avis de <?= htmlentities($contact["lastname"])." ".htmlentities($contact["firstname"]) ?>. La suppression est définitive.
                                             Etes-vous sûr ?
                                         </div>
                                         <div class="modal-footer">
@@ -64,15 +64,6 @@ $contacts = getContact($pdo);
 
             </tbody>
         </table>
-        <!-- <?php if ($totalPageOpinion) {?>
-                <nav>
-                    <ul class="navigation-page">
-                        <?php for ($i = 1; $i <= $totalPageOpinion; $i++) { ?>
-                            <li class="navigation-page__item <?php if ($i === $page) echo "active-page" ?>"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
-                        <?php }  ?>
-                    </ul>
-                </nav>
-        <?php }?> -->
     </div>
 
     <div class="line-style"></div>
