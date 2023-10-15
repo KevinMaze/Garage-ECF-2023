@@ -28,57 +28,60 @@ $car = [
     'year' => '',
 ];
 
-// Si la touche "envoyer" est pressée
-if(isset($_POST["add-car"])){
-    $user_id = intval($_SESSION["user"]["user_id"]);
-    // On stocke les données envoyé dans un tableau, pour ne pas perdre les données saisi
-    $car = [
-        "name" => $_POST["name"],
-        "description" => $_POST["description"],
-        "price" => $_POST["price"],
-        "mileage" => $_POST["mileage"],
-        "year" => $_POST["year"],
-    ];
-    
-    // On passe les données a addCar
-    $result = addCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), $user_id);
-    // Si un fichier est envoyé
-    if ($result) {
-        $filename = null;
-        $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), $result);
-        foreach ($_FILES["file"]["error"] as $key => $error) {
-            if ($error == UPLOAD_ERR_OK){
-                $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
-                // si image alors ok
-                if ($checkImage != false) {
-                    $fileName = slugify(basename($_FILES["file"]["name"][$key]));
-                    $fileName = uniqid()."-".$fileName;
-                    // On déplace le fichier dans upload/car
-                    move_uploaded_file($_FILES["file"]["tmp_name"][$key], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName);
-                    $imageCar = addImageCar($pdo, $fileName, $result);
-                }else { 
-                    //sinon
-                    $errors[] = "Fichier non conforme";
+// Si la touche "envoyer" est "pressée"
+try {
+    if(isset($_POST["add-car"])){
+        $user_id = intval($_SESSION["user"]["user_id"]);
+        // On stocke les données envoyé dans un tableau, pour ne pas perdre les données saisi
+        $car = [
+            "name" => $_POST["name"],
+            "description" => $_POST["description"],
+            "price" => $_POST["price"],
+            "mileage" => $_POST["mileage"],
+            "year" => $_POST["year"],
+        ];
+        
+        // On passe les données a addCar
+        $result = addCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), $user_id);
+        // Si un fichier est envoyé
+        if ($result) {
+            $filename = null;
+            $equipment = addEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), $result);
+            foreach ($_FILES["file"]["error"] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK){
+                    $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
+                    // si image alors ok
+                    if ($checkImage != false) {
+                        $fileName = slugify(basename($_FILES["file"]["name"][$key]));
+                        $fileName = uniqid()."-".$fileName;
+                        // On déplace le fichier dans upload/car
+                        move_uploaded_file($_FILES["file"]["tmp_name"][$key], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName);
+                        $imageCar = addImageCar($pdo, $fileName, $result);
+                    }else { 
+                        //sinon
+                        $errors[] = "Fichier non conforme";
+                    }
                 }
             }
+            $messages[] = "Enregistrement effectuer";
+    
+            // On vide le tableau des données
+            if(!isset($_GET["id"])){
+                $car = [
+                    "name" => "",
+                    "description" => "",
+                    "price" => "",
+                    "mileage" => "",
+                    "year" => ""
+                ];
+            }
+        }else {
+            $errors[] = "Une erreur s'est produite !";
         }
-        $messages[] = "Enregistrement effectuer";
-
-        // On vide le tableau des données
-        if(!isset($_GET["id"])){
-            $car = [
-                "name" => "",
-                "description" => "",
-                "price" => "",
-                "mileage" => "",
-                "year" => ""
-            ];
-        }
-    }else {
-        $errors[] = "Une erreur s'est produite !";
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
-
 ?>
 
 <section class="flux">
@@ -100,15 +103,15 @@ if(isset($_POST["add-car"])){
             <tbody>
                 <?php foreach ($carArticles as $key => $carArticle) {?>
                     <tr>
-                        <th scope="row"><?= $carArticle["car_id"] ?></th>
-                        <td><?= $carArticle["name"] ?></td>
-                        <td><a href="modification-car.php?id=<?= $carArticle["car_id"] ?>">Modifier</a> | 
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $carArticle["car_id"] ?>" class="custom-button-admin">Supprimer</button>
+                        <th scope="row"><?= htmlentities($carArticle["car_id"]) ?></th>
+                        <td><?= htmlentities($carArticle["name"]) ?></td>
+                        <td><a href="modification-car.php?id=<?= htmlentities($carArticle["car_id"]) ?>">Modifier</a> | 
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= htmlentities($carArticle["car_id"]) ?>" class="custom-button-admin">Supprimer</button>
                             <div class="modal fade" id="exampleModal<?= $carArticle["car_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'article <?= $carArticle["car_id"] ?></h1>
+                                            <h1 class="title-modal" id="exampleModalLabel">Suppression de l'article <?= htmlentities($carArticle["car_id"]) ?></h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -140,7 +143,7 @@ if(isset($_POST["add-car"])){
 
     <div class="line-style"></div>
 
-    <form method="POST" action="" enctype="multipart/form-data" class="form-add-car">
+    <form method="POST" enctype="multipart/form-data" class="form-add-car" id="form-add-car">
         <?php 
         foreach ($messages as $message) { ?>
             <div class="alert alert-success"><?= $message ?></div>
@@ -154,15 +157,15 @@ if(isset($_POST["add-car"])){
             
             <div class="line-style"></div>
             
-            <label for="name"><input type="text" id="name" name="name" placeholder="Nom"  class="form-input"></label>
+            <label for="name"><input type="text" id="name" name="name" placeholder="Nom" required  class="form-input"></label>
             
-            <textarea type="textarea" id="description" name="description" placeholder="Description" class="form-textarea"></textarea>
+            <textarea type="textarea" id="description" name="description" placeholder="Description" required class="form-textarea"></textarea>
             
-            <label for="price"><input type="text" id="price" name="price" placeholder="Prix" class="form-input"></label>
+            <label for="price"><input type="text" id="price" name="price" placeholder="Prix" required class="form-input"></label>
                 
-            <label for="mileage"><input type="text" id="mileage" name="mileage" placeholder="Kilométrage" class="form-input"></label>
+            <label for="mileage"><input type="text" id="mileage" name="mileage" placeholder="Kilométrage" required class="form-input"></label>
 
-            <label for="year"><input type="text" id="year" name="year" placeholder="Année" class="form-input"></label>
+            <label for="year"><input type="text" id="year" name="year" placeholder="Année" required class="form-input"></label>
 
             <textarea type="textarea" id="equipment" name="equipment" placeholder="Equipements / Options : saut de ligne entre chaque equipements ou options" class="form-textarea"></textarea>
 

@@ -12,23 +12,31 @@ $messages = [];
 $errors = [];
 $hourlys = getHourly($pdo);
 
-// Récupération des données car pour modification (requête de récupération)
-if(isset($_GET["id"])){
-    $hourly = getHourlyById($pdo, int($_GET["id"]));
-    if($hourly === false){
-        $errors[] = "L'article demandé n\'existe pas !";
+// Récupération des données horaires pour modification (requête de récupération)
+try {
+    if(isset($_GET["id"])){
+        $hourly = getHourlyById($pdo, int($_GET["id"]));
+        if($hourly === false){
+            $errors[] = "L'article demandé n\'existe pas !";
+        }
     }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 // Requète d'ajout
-if(isset($_POST["add_hourly"])){
-    $result = addHourly($pdo, htmlspecialchars($_POST["name_day"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_am"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_pm"], ENT_IGNORE, 'UTF-8'));
-    if($result) {
-        $messages[] = "Enregistrement réussi";
-    }else{
-        $errors[] = "Problème survenu !";
+try {
+    if(isset($_POST["add_hourly"])){
+        $result = addHourly($pdo, htmlspecialchars($_POST["name_day"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_am"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["hourly_pm"], ENT_IGNORE, 'UTF-8'));
+        if($result) {
+            $messages[] = "Enregistrement réussi";
+        }else{
+            $errors[] = "Problème survenu !";
+        }
     }
-};
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
 ?>
 
@@ -54,10 +62,10 @@ if(isset($_POST["add_hourly"])){
                 <?php foreach ($hourlys as $key => $hourly) {?>
 
                     <tr>
-                    <th scope="row"><?= $hourly["hourly_id"] ?></th>
-                        <td><?= $hourly["name_day"] ?></td>
-                        <td><?= $hourly["hourly_am"] ?></td>
-                        <td><?= $hourly["hourly_pm"] ?></td>
+                    <th scope="row"><?= htmlentities($hourly["hourly_id"]) ?></th>
+                        <td><?= htmlentities($hourly["name_day"]) ?></td>
+                        <td><?= htmlentities($hourly["hourly_am"]) ?></td>
+                        <td><?= htmlentities($hourly["hourly_pm"]) ?></td>
                         <td><a href="modification-hourly.php?id=<?= $hourly["hourly_id"] ?>">Modifier</a></td>
                     </tr>
                     
@@ -95,7 +103,6 @@ if(isset($_POST["add_hourly"])){
 
 		</fieldset>
 	</form>
-
 </section>
 
 <?php require_once ("template-admin/footer-admin.php") ?>

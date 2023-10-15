@@ -27,46 +27,48 @@ $service = [
     'description' => ''
 ];
 
-if(isset($_POST['add-service'])){
-    $user_id = intval($_SESSION["user"]["user_id"]);
-    $fileName = null;
-    if(isset($_FILES["file"]["tmp_name"]) && ($_FILES["file"]["tmp_name"] != "")){
-        $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
-
-        //si image ok
-        if($checkImage != false){
-            $fileName = slugify(basename($_FILES["file"]["name"]));
-            $fileName = uniqid()."-".$fileName;
-            move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__)._SERVICE_IMG_PATH_.$fileName);
+try {
+    if(isset($_POST['add-service'])){
+        $user_id = intval($_SESSION["user"]["user_id"]);
+        $fileName = null;
+        if(isset($_FILES["file"]["tmp_name"]) && ($_FILES["file"]["tmp_name"] != "")){
+            $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
+    
+            //si image ok
+            if($checkImage != false){
+                $fileName = slugify(basename($_FILES["file"]["name"]));
+                $fileName = uniqid()."-".$fileName;
+                move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__)._SERVICE_IMG_PATH_.$fileName);
+            }else{
+                // problème image upload
+                $errors[] = "Fichier non conforme";
+            }
+        }
+    
+        // On stocke les données envoyé dans le tableau
+        $service = [
+            "name" => $_POST["name_service"],
+            "description" => $_POST["description"],
+        ];
+        // on passe les données addService
+        $result = addService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id);
+        if($result) {
+            $messages[] = "Enregistrement effectué";
+            // on efface le tableau
+            if(!isset($_GET["id"])){
+                $service = [
+                    "name" => "",
+                    "description" => "",
+                ];
+            }
         }else{
-            // problème image upload
-            $errors[] = "Fichier non conforme";
+            $errors[] = "Une erreur s'est produite !";
         }
     }
-
-    // On stocke les données envoyé dans le tableau
-    $service = [
-        "name" => $_POST["name_service"],
-        "description" => $_POST["description"],
-    ];
-    // on passe les données addService
-    $result = addService($pdo, htmlspecialchars($_POST["name_service"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), $fileName, $user_id);
-    if($result) {
-        $messages[] = "Enregistrement effectué";
-        // on efface le tableau
-        if(!isset($_GET["id"])){
-            $service = [
-                "name" => "",
-                "description" => "",
-            ];
-        }
-    }else{
-        $errors[] = "Une erreur s'est produite !";
-    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 ?>
-
-
     <section class="flux">
 
         <h2 class="title-h2">Services</h2>
@@ -143,9 +145,9 @@ if(isset($_POST['add-service'])){
                 
                 <div class="line-style"></div>
                 
-                <label for="name-service"><input type="text" id="name_service" name="name_service" class="form-input"></label>
+                <label for="name-service"><input type="text" id="name_service" name="name_service" required class="form-input"></label>
                 
-                <textarea type="textarea" id="description" name="description" class="form-textarea"></textarea>
+                <textarea type="textarea" id="description" name="description" required class="form-textarea"></textarea>
 
                 <p class="para-select-image">Veuiller selectionner 1 image (2.5mo max.)</p>
                 
@@ -158,7 +160,6 @@ if(isset($_POST['add-service'])){
 
             </fieldset>
         </form>
-
     </section>
 
 <?php require_once ("template-admin/footer-admin.php") ?>

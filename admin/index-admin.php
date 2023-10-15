@@ -1,13 +1,9 @@
 <?php  
-
-    require_once ("../lib/session.php");
-    require_once ("../lib/config.php");
-    require_once ("../lib/pdo.php");
-    require_once ('template-admin/header-admin.php');
-
+require_once ("../lib/session.php");
+require_once ("../lib/config.php");
+require_once ("../lib/pdo.php");
+require_once ('template-admin/header-admin.php');
 ?>
-
-
     <aside class="section-admin__crud flux">
 
         <h2 class="title-h2">Page d'acceuil</h2>

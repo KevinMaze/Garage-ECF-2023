@@ -1,10 +1,10 @@
-<footer class="flux">
+        <footer class="flux">
             <div class="footer-grid">
                 <div class="footer-grid-div border-div">
                     <h3>Horaires</h3>
                     <ul>
                         <?php foreach ($hourlys as $key => $hourly) {?>
-                        <li><?= $hourly["name_day"] ?> : <?= $hourly["hourly_am"] ?> | <?= $hourly["hourly_pm"] ?></li>
+                        <li><?= htmlentities($hourly["name_day"]) ?> : <?= htmlentities($hourly["hourly_am"]) ?> | <?= htmlentities($hourly["hourly_pm"]) ?></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -29,17 +29,14 @@
                 </div>
             </div>
             <div class="copyright">
-                    &#169;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                    &#160;VP Garage.
-                </div>
+                &#169;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                &#160;VP Garage.
+            </div>
         </footer>
 
-
-
-    
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="./js/script.js"></script>
         <script src="./js/lib/nav.js"></script>

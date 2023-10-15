@@ -12,52 +12,62 @@ $error = false;
 $messages = [];
 $errors = [];
 
-if(isset($_GET["id"])){
-    $car = getCarById($pdo, (int)$_GET["id"]);
-    $imagesCar = selectImage($pdo, (int)$_GET["id"]);
-    $equipment = selectEquipment($pdo, (int)$_GET["id"]);
-    if (!$car){
+try {
+    if(isset($_GET["id"])){
+        $car = getCarById($pdo, (int)$_GET["id"]);
+        $imagesCar = selectImage($pdo, (int)$_GET["id"]);
+        $equipment = selectEquipment($pdo, (int)$_GET["id"]);
+        if (!$car){
+        $error = true;
+        }
+    }else {
     $error = true;
     }
-}else {
-$error = true;
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
-if(isset($_POST["add-car"])){
-    $user_id = intval($_SESSION["user"]["user_id"]);
-    $result = changeCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), (int)$_GET["id"], (int) $user_id);
-    $equipment = changeEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), (int) $_GET["id"]);
-    if($result){
-        $messages[] = "Modification effectué";
-    }else{
-        $errors[] = "Une erreur s'est produite";
-    }
-}
-
-if(isset($_POST["add-image"])){
-    $filename = null;
-    foreach ($_FILES["file"]["error"] as $key => $error) {
-        if ($error == UPLOAD_ERR_OK){
-            $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
-            // si image alors ok
-            if ($checkImage != false) {
-                $fileName = slugify(basename($_FILES["file"]["name"][$key]));
-                $fileName = uniqid()."-".$fileName;
-                // On déplace le fichier dans upload/car
-                move_uploaded_file($_FILES["file"]["tmp_name"][$key], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName);
-                $imageCar = addImageCar($pdo, $fileName, (int) $_GET["id"]);
-            }else { 
-                //sinon
-                $errors[] = "Fichier non conforme";
-            }
+try {
+    if(isset($_POST["add-car"])){
+        $user_id = intval($_SESSION["user"]["user_id"]);
+        $result = changeCar($pdo, htmlspecialchars($_POST["name"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["description"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["price"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["mileage"], ENT_IGNORE, 'UTF-8'), htmlspecialchars($_POST["year"], ENT_IGNORE, 'UTF-8'), (int)$_GET["id"], (int) $user_id);
+        $equipment = changeEquipment($pdo, htmlspecialchars($_POST["equipment"], ENT_IGNORE, 'UTF-8'), (int) $_GET["id"]);
+        if($result){
+            $messages[] = "Modification effectué";
+        }else{
+            $errors[] = "Une erreur s'est produite";
         }
-        $messages[] = "Enregistrement effectuer";
-    } 
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+try {
+    if(isset($_POST["add-image"])){
+        $filename = null;
+        foreach ($_FILES["file"]["error"] as $key => $error) {
+            if ($error == UPLOAD_ERR_OK){
+                $checkImage = getimagesize($_FILES["file"]["tmp_name"][$key]);
+                // si image alors ok
+                if ($checkImage != false) {
+                    $fileName = slugify(basename($_FILES["file"]["name"][$key]));
+                    $fileName = uniqid()."-".$fileName;
+                    // On déplace le fichier dans upload/car
+                    move_uploaded_file($_FILES["file"]["tmp_name"][$key], dirname(__DIR__)._CAR_IMAGE_PATH_.$fileName);
+                    $imageCar = addImageCar($pdo, $fileName, (int) $_GET["id"]);
+                }else { 
+                    //sinon
+                    $errors[] = "Fichier non conforme";
+                }
+            }
+            $messages[] = "Enregistrement effectuer";
+        } 
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 ?>
-
-
     <section class="flux">
         <form method="POST" enctype="multipart/form-data" class="form-add-car">
             <?php 
@@ -73,17 +83,17 @@ if(isset($_POST["add-image"])){
                 
                 <div class="line-style"></div>
                 
-                <label for="name"><input type="text" id="name" name="name" value=<?= $car["name"] ?>  class="form-input"></label>
+                <label for="name"><input type="text" id="name" name="name" value=<?= htmlentities($car["name"]) ?>  class="form-input"></label>
                 
-                <textarea type="textarea" id="description" name="description" class="form-textarea"><?=$car["description"]?></textarea>
+                <textarea type="textarea" id="description" name="description" class="form-textarea"><?= htmlentities($car["description"])?></textarea>
                 
-                <label for="price"><input type="text" id="price" name="price" value=<?= $car["price"]?> class="form-input"></label>
+                <label for="price"><input type="text" id="price" name="price" value=<?= htmlentities($car["price"])?> class="form-input"></label>
                     
-                <label for="mileage"><input type="text" id="mileage" name="mileage" value=<?= $car["mileage"]?> class="form-input"></label>
+                <label for="mileage"><input type="text" id="mileage" name="mileage" value=<?= htmlentities($car["mileage"])?> class="form-input"></label>
 
-                <label for="year"><input type="text" id="year" name="year" value=<?= $car["year"]?> class="form-input"></label>
+                <label for="year"><input type="text" id="year" name="year" value=<?= htmlentities($car["year"])?> class="form-input"></label>
 
-                <textarea type="textarea" id="equipment" name="equipment" class="form-textarea"><?= $equipment["name_equipment"] ?></textarea>
+                <textarea type="textarea" id="equipment" name="equipment" class="form-textarea"><?= htmlentities($equipment["name_equipment"]) ?></textarea>
 
                 <div class="form-button">
                     <input type="submit" name="add-car" value="Envoyer Article" class="custom-button">
@@ -127,9 +137,5 @@ if(isset($_POST["add-image"])){
             
             </fieldset>
         </form>
-
     </section>
-
-
-
 <?php require_once ("template-admin/footer-admin.php") ?>

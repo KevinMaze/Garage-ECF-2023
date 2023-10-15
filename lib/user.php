@@ -100,6 +100,8 @@ function changeUser(PDO $pdo, string $lastname, string $firstname, string $email
 {
     $query = $pdo->prepare("UPDATE user SET lastname = :lastname, firstname = :firstname, email = :email, password = :password, role = :role WHERE user_id = :id");
 
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    
     $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
     $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
     $query->bindValue(":email", $email, PDO::PARAM_STR);

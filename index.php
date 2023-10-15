@@ -1,15 +1,15 @@
 <?php  
-    require_once ('lib/config.php');
-    require_once ('lib/pdo.php');
-    require_once ('lib/car.php');
-    require_once ('lib/services.php');
-    require_once ('lib/opinion.php');
-    require_once ('lib/main_menu.php');
-    require_once ("template/header.php");
+require_once ('lib/config.php');
+require_once ('lib/pdo.php');
+require_once ('lib/car.php');
+require_once ('lib/services.php');
+require_once ('lib/opinion.php');
+require_once ('lib/main_menu.php');
+require_once ("template/header.php");
 
-    $cars = getCars($pdo, 3);
-    $services = getServices($pdo);
-    $opinions = getOpinions($pdo, 3);
+$cars = getCars($pdo, 3);
+$services = getServices($pdo);
+$opinions = getOpinions($pdo, 3);
 ?>
 
     <div class="line-style flux"></div>
@@ -97,6 +97,4 @@
 
     <div class="line-style flux"></div>
 
-<?php  
-    require_once ("template/footer.php")
-?>
+<?php require_once ("template/footer.php") ?>
