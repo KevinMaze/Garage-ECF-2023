@@ -1,5 +1,5 @@
 # fichier sql
 *.sql
 
-#todo
-todo.md
+# Config
+config.php

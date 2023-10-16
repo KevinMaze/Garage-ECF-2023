@@ -9,6 +9,9 @@ CREATE TABLE user (
     role VARCHAR(20) NOT NULL
 );
 
+-- #Insertion admin
+INSERT INTO user (lastname, firstname, email, password, role) VALUES ('Parrot', 'Vincent', 'vincent@parrot.com', 'V_garage_2023', 'admin');
+
 -- # Création table des horaires
 CREATE TABLE hourly
 (
@@ -39,9 +42,6 @@ CREATE TABLE equipment (
     FOREIGN KEY (car_id) REFERENCES car (car_id)
     ON DELETE CASCADE
 );
-
--- #Insertion admin
-INSERT INTO user (lastname, firstname, email, password, role) VALUES ('Parrot', 'Vincent', 'vincent@parrot.com', 'V_garage_2023', 'admin');
 
 -- # Creation table service
 CREATE TABLE services (
