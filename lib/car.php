@@ -8,8 +8,6 @@ function getCarById(PDO $pdo, int $id):array|bool
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-
-
 // récupération de la table car (avec limit et pagination)
 function getCars(PDO $pdo, int $limit = null, int $page = null):array
 {

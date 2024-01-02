@@ -22,7 +22,7 @@ function addUser(PDO $pdo, string $lastname, string $firstname, string $email, s
 {
     $query = $pdo->prepare("INSERT INTO user (lastname, firstname, email, password, role) VALUE (:lastname, :firstname, :email, :password, :role)");
 
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    $password = password_hash($password, PASSWORD_DEFAULT); // PASSWORD_BCRYPT fonctionnelle aussi
 
     $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
     $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
