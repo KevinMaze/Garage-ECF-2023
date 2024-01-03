@@ -36,9 +36,9 @@ $contacts = getContact($pdo);
                         <td><?= htmlentities($contact["lastname"]) ?></td>
                         <td><?= htmlentities($contact["firstname"]) ?></td>
                         <td><?= htmlentities($contact["email"]) ?></td>
-                        <td><?= htmlentities($contact["phone"]) ?></td>
+                        <td>0<?= htmlentities($contact["phone"]) ?></td>
                         <td><?= htmlentities($contact["text"]) ?></td>
-                        <td ><?= htmlentities($contact["car_id"]) ?></td>
+                        <td ><a href="../occasion-page.php?id=<?=$contact["car_id"]?>"><?= htmlentities($contact["car_id"]) ?></a></td>
                         <td><a href="mailto : <?= $contact["contact_id"]?>">Répondre</a> | 
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal<?= $contact["contact_id"] ?>" class="custom-button-admin">Supprimer</button>
                             <div class="modal fade" id="exampleModal<?= $contact["contact_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

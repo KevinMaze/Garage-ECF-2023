@@ -28,7 +28,7 @@ try {
 
 try {
     if(isset($_POST["add-contact"])){
-        $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["car_id"], ENT_QUOTES, 'UTF-8'));
+        $result = addContact($pdo, htmlspecialchars($_POST["lastname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["firstname"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["phone"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($_POST["text"], ENT_QUOTES, 'UTF-8'), htmlspecialchars($car["car_id"], ENT_QUOTES, 'UTF-8'));
         if($result){
             $messages[] = "Votre message a bien été envoyé";
         }else{
@@ -110,7 +110,7 @@ try {
 
                 <textarea name="text" type="textarea" id="ask" placeholder="Demande" class="form-textarea"></textarea>
 
-                <label for="car_id"><input name="car_id" type="text" id="ref" required class="form-input" value="<?= $car["car_id"] ?>"></label>
+                <p class="form-input"> Annonce Numéro : <?= $car["car_id"] ?></p>
 
                 <div class="form-button">
                     <input name="add-contact" type="submit" value="Envoyer" class="custom-button">
